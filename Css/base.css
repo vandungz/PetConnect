@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+:root {
+    --primary-color: #0096C7;
+    --secondary-color: #057AB7;
+    --third-color: #DEF9FF;
+    --white-color: #fffff;
+    --black-color: #141416;
+    --text-color: #22222;
+    --border-color: #ddddd;
+
+}
+html{
+     /* 10px */
+    font-size: 62.5%;
+    line-height: 1.6rem; 
+    font-family: "Poppins", serif;
+    box-sizing: border-box;
+}
+
