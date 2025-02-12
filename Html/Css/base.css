@@ -9,15 +9,21 @@
     --third-color: #DEF9FF;
     --white-color: #fffff;
     --black-color: #141416;
-    --text-color: #22222;
-    --border-color: #ddddd;
+    --text-color: #626264;
+    --border-color: #dddd;
 
 }
 html{
      /* 10px */
     font-size: 62.5%;
     line-height: 1.6rem; 
-    font-family: "Poppins", serif;
+    font-family: "Poppins", sans-serif;
     box-sizing: border-box;
 }
-
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
