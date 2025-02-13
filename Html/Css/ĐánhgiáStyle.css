@@ -85,6 +85,221 @@ font-size: 22px;
     position: relative;
     cursor: pointer;
 }
+.container{
+    margin-top: 76px;
+    margin-bottom: 70px;
+    padding-left: 160px;
+    padding-right: 160px;
+}
+.container-img{
+    display: flex;
+    height: 542px;
+    
+}
+.container-img--main{
+    
+   
+}
+.container-img--main-content{
+    width: 582px;
+    margin-right: 20px;
+}
+.container-img--sup{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+.container-img--sup-content{
+    width: 100%;
+    height: 261px;
+}
+.container-main-content{
+margin-top: 60px;
+position: relative;
+}
+.container-main-content--left{
+    position: relative;
+    width: 50%;
+}
+.container-main-content--left-info-head{
+    font-size: 3.2rem;
+    font-weight: 600;
+    color: var(--black-color);
+}
+.heart-container {
+    right: 22px;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    
+    
+    
+    top: -14px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+}
+
+.heart-container .fa-heart {
+    
+    width: 100%;
+    height: 100%;
+    font-size: 22px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heart-outline {
+    color: #999; /* Màu trái tim rỗng */
+}
+
+.heart-fill {
+    color: #f25f6d; /* Màu trái tim đầy */
+    opacity: 0; /* Mặc định ẩn */
+}
+
+/* Ẩn checkbox */
+#heart-toggle {
+    display: none;
+}
+
+/* Khi checkbox được chọn (click vào) */
+#heart-toggle:checked + label .heart-fill {
+    opacity: 1; /* Hiện icon trái tim đầy */
+}
+
+#heart-toggle:checked + label .heart-outline {
+    opacity: 0; /* Ẩn icon trái tim rỗng */
+}
+.container-main-content--left-info-content{
+    margin-top: 20px;
+}
+.container-main-content--left-info-content-name{
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.container-main-content--left-info-content-number-of-cages{
+    font-size: 1.7rem;
+    color: #0096C7;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.container-main-content--left-info-content-descri{
+    font-size: 1.6rem;
+    color: var(--text-color);
+    width: 70%;
+    margin-bottom: 20px;
+}
+.container-main-content--left-info-content-review{
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+.container-main-content--left-info-content-review-fist-number{
+    margin-left: 10px;
+    font-size: 1.7rem;
+    color: var(--black-color);
+    font-weight: 600;
+    margin-right: 5px;
+}
+.container-main-content--left-info-content-review-sec-number{
+    font-size: 1.7rem;
+    color: var(--text-color);
+}
+.container-main-content--left-line{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 473px;
+    height: 1px;
+    background-color: #ddd;
+}
+.container-main-content--left-utilities-header{
+    font-size: 3.2rem;
+    color: var(--black-color);
+    font-weight: 600;
+   
+}
+.container-main-content--left-utilities-list{
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.container-main-content--left-utilities-list-content{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.container-main-content--left-utilities-list-content-text{
+    font-size: 1.8rem;
+    color: var(--black-color);
+    font-weight: 600;
+}
+.container-main-content--left-utilities-list-left-content{
+    margin-right: 50px;
+}
+.container-main-content--left-utilities-all-util{
+    margin-top: 35px;
+    width: 247px;
+    height: 50px;
+    border-radius: 6px;
+    border: 1.6px solid var(--black-color);
+    box-shadow: 0 2px 5px #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.container-main-content--left-utilities-all-util-text{
+    font-size: 1.6rem;
+    color: var(--black-color);
+    font-weight: 600;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+.container-main-content--bottom-header{
+    font-size: 3.2rem;
+    color: var(--black-color);
+    font-weight: 600;
+}
+.container-main-content--bottom-location{
+    font-size: 1.8rem;
+    color: var(--black-color);
+    font-weight: 600;
+    margin-top: 30px;
+}
+.container-main-content--bottom-map-img{
+    margin-top: 40px;
+    width: 100%;
+    height: 481px;
+    
+}
+.container-main-content--bottom-map-locaiton{
+    position: absolute;
+}
+.container-main-content--bottom-map{
+    width: 100%;
+    margin-top: 40px;
+}
+
+
 
 .footer{
     height: 413px;
