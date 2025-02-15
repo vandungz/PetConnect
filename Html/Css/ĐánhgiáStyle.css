@@ -393,29 +393,74 @@ gap: 5px;
     border-radius: 12px;
     
 }
-.container-main-content--right-prepayment--date-time{
+.container-main-content--right-prepayment--date-time {
     width: 100%;
     height: 56px;
     display: flex;
-   
+    position: relative;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    overflow: hidden; /* Để bo góc không bị lỗi */
 }
+
 .container-main-content--right-prepayment--date-time-left,
-.container-main-content--right-prepayment--date-time-right
-{
+.container-main-content--right-prepayment--date-time-right {
+    position: relative;
     cursor: pointer;
     width: 50%;
     height: 100%;
-    padding-left: 15px;
-    padding-top: 10px;
-    
-    
+    padding: 5px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid #717171 ;
 }
-.container-main-content--right-prepayment--date-time-left{
-    border-bottom: 1px solid #717171;
+
+.container-main-content--right-prepayment--date-time-left {
     border-right: 1px solid #717171;
 }
-.container-main-content--right-prepayment--date-time-right{
-    border-bottom: 1px solid #717171;
+
+/* Định dạng text */
+.container-main-content--right-prepayment--date-time-head {
+    font-size: 12px;
+    font-weight: bold;
+    color: #222;
+    text-transform: uppercase;
+}
+
+.container-main-content--right-prepayment--date-time-head-content {
+    font-size: 16px;
+    color: #717171;
+}
+
+/* Định dạng input */
+.datepicker-input {
+    border: none !important;
+    font-size: 1.6rem;
+    width: 100%;
+    background: none;
+    cursor: pointer;
+    outline: none !important; /* Loại bỏ viền khi focus */
+    text-align: left;
+    padding: 5px;
+    box-shadow: none !important;
+}
+
+
+.flatpickr-input[readonly] {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+.flatpickr-calendar {
+    position: absolute !important; /* Đặt lịch tuyệt đối so với phần input */
+    top: calc(100%+10px); /* Để nó hiển thị ngay dưới input */
+    left: 0;
+    z-index: 9999; /* Đảm bảo nó luôn hiển thị trên các phần khác */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.container-main-content--right-prepayment--date-time-input{
+    border: none;
 }
 .container-main-content--right-prepayment--date-time-head,
 .container-main-content--right-prepayment--pet-head{

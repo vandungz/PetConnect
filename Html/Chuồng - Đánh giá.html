@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="./Css/base.css">
     <link rel="stylesheet" href="./Css/ĐánhgiáStyle.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/vn.js"></script>
+    <link rel="stylesheet" href="./js/Chuồng.js">
     <title>Chuồng</title>
 </head>
 <body>
@@ -241,11 +245,15 @@
     <div class="container-main-content--right-prepayment--date-time">
     <div class="container-main-content--right-prepayment--date-time-left">
         <p class="container-main-content--right-prepayment--date-time-head">CHECK-IN</p>
-        <p class="container-main-content--right-prepayment--date-time-head-content">15/2/2025</p> 
+        <div class="container-main-content--right-prepayment--date-time-head-content">
+            <input class="container-main-content--right-prepayment--date-time-input" type="text" id="checkin" placeholder="Chọn ngày">
+        </div> 
     </div>
     <div class="container-main-content--right-prepayment--date-time-right">
         <p class="container-main-content--right-prepayment--date-time-head">CHECK-OUT</p>
-        <p class="container-main-content--right-prepayment--date-time-head-content">17/2/2025</p> 
+        <div class="container-main-content--right-prepayment--date-time-head-content">
+            <input class="container-main-content--right-prepayment--date-time-input" type="text" id="checkout" placeholder="Chọn ngày">
+        </div> 
     </div>
        
     </div> 
@@ -344,5 +352,34 @@
     </div>
 </div>
 </div>
+<script>
+   flatpickr("#checkin", {
+    locale: "vn",
+    dateFormat: "d/m/Y",
+    minDate: "today",
+    defaultDate: "15/02/2025",
+    position: "below", // Ép lịch luôn hiển thị bên dưới
+    onChange: function(selectedDates, dateStr, instance) {
+        checkoutCalendar.set("minDate", dateStr);
+    }
+});
+
+let checkoutCalendar = flatpickr("#checkout", {
+    locale: "vn",
+    dateFormat: "d/m/Y",
+    minDate: "today",
+    defaultDate: "17/02/2025",
+    position: "below" // Ép lịch luôn hiển thị bên dưới
+});
+document.querySelector(".container-main-content--right-prepayment--date-time-left")
+    .addEventListener("click", function() {
+        document.querySelector("#checkin").click();
+    });
+
+document.querySelector(".container-main-content--right-prepayment--date-time-right")
+    .addEventListener("click", function() {
+        document.querySelector("#checkout").click();
+    });
+</script>
 </body>
 </html>
