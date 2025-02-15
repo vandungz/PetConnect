@@ -332,9 +332,13 @@ display: flex;
 display: flex;
 gap: 5px;
 }
-.container-main-content--left-review-content-comment-list-icon{
+.container-main-content--left-review-content-comment-list-icon,
+.container-main-content--left-review-content-comment-list-icon-no-fill{
     font-size: 12px;
     color:var(--primary-color) ;
+}
+.container-main-content--left-review-content-comment-list-icon-no-fill{
+    color: #B1B5C3 ;
 }
 .container-main-content--left-review-content-comment-text{
     font-size: 1.4rem;
@@ -450,6 +454,39 @@ gap: 5px;
     display: flex;
     justify-content: center;
 }
+
+.container-main-content--right-prepayment-detail-content,
+.container-main-content--right-prepayment-total-cost-befor-tax{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.container-main-content--right-prepayment-detail-content-describe,
+.container-main-content--right-prepayment-detail-content-price,
+.container-main-content--right-prepayment-detail-content-price-discount,
+.container-main-content--right-prepayment-total-cost-befor-tax-describe,
+.container-main-content--right-prepayment-total-cost-befor-tax-price{
+    font-size: 1.6rem;
+    color: var(--black-color);
+}
+.container-main-content--right-prepayment-detail-content-price-discount{
+    color: #008A05;
+}
+.container-main-content--right-prepayment-detail-content-describe{
+    text-decoration: underline;
+    text-decoration-color:var(--border-color) ;
+    text-underline-offset: 2px;
+}
+.container-main-content--right-prepayment-line{
+    width: 100%;
+    height: 1px;
+    background-color: var(--border-color);
+    margin-top: 10px;
+    
+}
+
+
 
 
 .container-content--bottom-header{
