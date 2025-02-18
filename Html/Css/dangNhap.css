@@ -155,7 +155,7 @@ input ::placeholder {
     padding: 4px 20px;
 }
 
-.sign-in-with-social span {
+.sign-in-with-social a {
     font-weight: medium;
     font-size: 1.2rem;
 }
