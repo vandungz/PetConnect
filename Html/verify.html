@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verification</title>
+  <link rel="stylesheet" href="./Css/base.css">
+  <link rel="stylesheet" href="/Html/Css/verify.css">
+</head>
+<body>
+  <div class="container">
+    <div class="frm_verify">
+        <form action="" class="form_verify">
+            <h1>Nhập mã xác thực cấp 2</h1>
+            <p>Mã xác thực bao gồm <strong>4 chữ số</strong></p>
+            
+            <div class="verify-inputs">
+            <!-- 4 ô input cho 4 ký tự verify -->
+            <input type="text" maxlength="1" title="Digit 1" placeholder="" />
+            <input type="text" maxlength="1" title="Digit 2" placeholder="" />
+            <input type="text" maxlength="1" title="Digit 3" placeholder="" />
+            <input type="text" maxlength="1" title="Digit 4" placeholder="" />
+            </div>
+
+            <button class="btn-verify" id="verifyBtn">Đăng Nhập</button>
+        </form>
+    </div>
+
+    <div class="image-background">
+        <img src="./assets/img/logopet.png" alt="">
+    </div>
+  </div>
+
+  <script>
+    const correctVerify = "1234";
+    // Lấy tất cả các input của mã verify
+    const verifyInputs = document.querySelectorAll('.container input');
+    const verifyBtn = document.getElementById('verifyBtn');
+
+    // Hàm tự động chuyển con trỏ sang ô kế tiếp sau khi nhập 1 ký tự
+    verifyInputs.forEach((input, index) => {
+      input.addEventListener('input', (e) => {
+        // Nếu người dùng gõ 1 ký tự, tự động focus ô tiếp theo
+        if (e.target.value.length === 1 && index < verifyInputs.length - 1) {
+          verifyInputs[index + 1].focus();
+        }
+      });
+
+      // Cho phép dùng phím Backspace để lùi lại ô trước
+      input.addEventListener('keydown', (e) => {
+        if ((e.key === 'Backspace' || e.key === 'Delete') && index > 0 && !e.target.value) {
+          verifyInputs[index - 1].focus();
+        }
+      });
+    });
+
+    // Sự kiện click nút "Verify"
+    verifyBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      let verifyCode = '';
+      verifyInputs.forEach(input => {
+        verifyCode += input.value;
+      });
+      if (verifyCode.length === 4) {
+        if (verifyCode === correctVerify) {
+            window.location.href = './dangNhap.html';
+        } else {
+            alert('Mã OTP không đúng, vui lòng thử lại!');
+        }
+      } else {
+        alert('Vui lòng nhập đủ 4 ký tự verify');
+      }
+    });
+  </script>
+</body>
+</html>
