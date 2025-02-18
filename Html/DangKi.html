@@ -5,42 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./Css/base.css">
-    <link rel="stylesheet" href="./Css/dangNhap.css">
+    <link rel="stylesheet" href="./Css/DangKi.css">
 </head>
 <body>
     <div class="container">
         <!-- left -->
-        <div class="frm_dangNhap">
-            <form action="" class="form_dangNhap">
-                <h1 class="title_dangNhap">CHÀO MỪNG BẠN</h1>
-                <h2 class="sub-title_dangNhap">Điền tài khoản của bạn để truy cập PetConnect</h2>
+        <div class="frm_dangKi">
+            <form action="" class="form_dangKi">
+                <h1 class="title_dangKi">Hãy bắt đầu</h1>
                 <!-- field -->
                 <div class="field">
-                    <label class="label_dangNhap" for="">Tên đăng nhập</label>
-                    <input class="input_dangNhap" type="email" name="" id="" placeholder="Nhập tên đăng nhập của bạn">
+                    <label class="label_dangKi" for="">Tên người dùng</label>
+                    <input class="input_dangKi" type="text" name="" id="" placeholder="Nhập tên người dùng" re>
                 </div>
                 <!-- field -->
                 <div class="field field-password">
                     <div class="password-container">
-                        <label class="label_dangNhap" for="">Mật khẩu</label>
-                        <a href="./quenMatKhau.html" class="forgot_pass">quên mật khẩu</a>
+                        <label class="label_dangKi" for="">Mật khẩu đăng kí</label>
                     </div>
-                    <input class="input_dangNhap" type="password" name="" id="" placeholder="Nhập mật khẩu của bạn">
+                    <input class="input_dangKi" type="password" name="" id="" placeholder="Nhập mật khẩu" required>
                 </div>
-                
 
-                <div class="remember">
-                    <input type="checkbox" name="" id="checkbox_remember">
-                    <label for="checkbox_remember">Lưu tài khoản trong 30 ngày</label>
+                <div class="field field-password">
+                    <div class="password-againagain-container">
+                        <label class="label_dangKi" for="">Nhập lại mật khẩu</label>
+                    </div>
+                    <input class="input_dangKi" type="password" name="" id="" placeholder="Nhập lại mật khẩu" required>
                 </div>
-                <a href="./verify.html" class="btn_dangNhap">
-                    Đăng Nhập
+
+                <div class="terms">
+                    <input type="checkbox" name="" id="checkbox_terms">
+                    <label for="checkbox_terms">Lưu tài khoản trong 30 ngày
+                        <a href="#" target="_blank"> điều khoản & hợp đồng</a> 
+                    </label>
+                </div>
+
+                <a href="./verify.html" class="btn_dangKi">
+                    Đăng Kí
                 </a>
+
                 <div class="seperate">
                     <div class="line"></div>
                     <div class="text">Hoặc</div>
                     <div class="line"></div>
                 </div>
+
                 <div class="sign-in-with-social">
                     <!-- google -->
                     <div class="sign-in-with-google">
@@ -52,7 +61,7 @@
                             </svg>                            
                         <span class="">Đăng nhập bằng Google</span>
                     </div>
-                    <!-- apple -->
+                    <!-- facebook -->
                     <div class="sign-in-with-facebook">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M24 12.073C24 5.40577 18.6269 0 12 0C5.37309 0 0 5.40577 0 12.073C0 18.0984 4.38761 23.0933 10.1252 24V15.5636H7.07748V12.073H10.1252V9.41251C10.1252 6.38703 11.9173 4.7147 14.6578 4.7147C15.9707 4.7147 17.3444 4.95069 17.3444 4.95069V7.92186H15.8306C14.3406 7.92186 13.8748 8.85225 13.8748 9.80808V12.0729H17.2026L16.671 15.5636H13.8747V23.9999C19.6123 23.0949 24 18.1001 24 12.073Z" fill="#0078FF"/>
@@ -61,8 +70,8 @@
                     </div> 
                   </div>
                 <div class="sign-up-account">
-                    <span>Chưa có tài khoản?</span>
-                    <a href="" class="sign-up">Đăng Ký</a>
+                    <span>Bạn đã có tài khoản?</span>
+                    <a href="" class="sign-up">Đăng Nhập</a>
                 </div>
         </div>
 
