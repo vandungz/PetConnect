@@ -12,7 +12,7 @@
         <!-- left -->
         <div class="frm_dangNhap">
             <form action="" class="form_dangNhap">
-                <h1 class="title_dangNhap">Chào mừng bạn</h1>
+                <h1 class="title_dangNhap">CHÀO MỪNG BẠN</h1>
                 <h2 class="sub-title_dangNhap">Điền tài khoản của bạn để truy cập PetConnect</h2>
                 <!-- field -->
                 <div class="field">
@@ -21,17 +21,21 @@
                 </div>
                 <!-- field -->
                 <div class="field field-password">
-                    <label class="label_dangNhap" for="">Mật khẩu</label>
-                    <a href="" class="forgot_pass">quên mật khẩu</a>
+                    <div class="password-container">
+                        <label class="label_dangNhap" for="">Mật khẩu</label>
+                        <a href="./quenMatKhau.html" class="forgot_pass">quên mật khẩu</a>
+                    </div>
                     <input class="input_dangNhap" type="password" name="" id="" placeholder="Nhập mật khẩu của bạn">
                 </div>
 
                 <div class="remember">
-                    <input type="checkbox" name="" id="">
-                    <label for="">Lưu tài khoản trong 30 ngày</label>
+                    <input type="checkbox" name="" id="checkbox_remember">
+                    <label for="checkbox_remember">Lưu tài khoản trong 30 ngày</label>
                 </div>
-                <button class="btn_dangNhap">Đăng nhập</button>
-                <div class="">
+                <a href="./verify.html" class="btn_dangNhap">
+                    Đăng Nhập
+                </a>
+                <div class="seperate">
                     <div class="line"></div>
                     <div class="text">Hoặc</div>
                     <div class="line"></div>
@@ -53,12 +57,12 @@
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M24 12.073C24 5.40577 18.6269 0 12 0C5.37309 0 0 5.40577 0 12.073C0 18.0984 4.38761 23.0933 10.1252 24V15.5636H7.07748V12.073H10.1252V9.41251C10.1252 6.38703 11.9173 4.7147 14.6578 4.7147C15.9707 4.7147 17.3444 4.95069 17.3444 4.95069V7.92186H15.8306C14.3406 7.92186 13.8748 8.85225 13.8748 9.80808V12.0729H17.2026L16.671 15.5636H13.8747V23.9999C19.6123 23.0949 24 18.1001 24 12.073Z" fill="#0078FF"/>
                             </svg>                            
                         <span class="">Đăng nhập bằng Facebook</span>
-                    </div>
-                    <div class="sign-up-have-account">
-                        <span>Chưa có tài khoản?</span>
-                        <a href="" class="sign-up">Đăng Ký</a>
-                    </div>
+                    </div> 
                   </div>
+                <div class="sign-up-account">
+                    <span>Chưa có tài khoản?</span>
+                    <a href="" class="sign-up">Đăng Ký</a>
+                </div>
         </div>
 
         <!-- End left -->
