@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./Css/base.css">
-    <link rel="stylesheet" href="./Css/ĐánhgiáStyle.css">
+    <link rel="stylesheet" href="./Css/Chuồng.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -14,9 +14,9 @@
 </head>
 <body>
 <div class="header">
-<div class="header-fist-content">
-<div class="icon-Pet-Connect">
-<a href=".index.html"><img class="icon-Pet-Connect-img" src="./assets/icon/icon-Pet-Connect2.jpg" alt=""></a>
+<div class="header-fist-content" onclick="goToProductPage()">
+<div class="icon-Pet-Connect ">
+<div href="./index.html"><img class="icon-Pet-Connect-img" src="./assets/icon/icon-Pet-Connect2.jpg" alt=""></div>
 
 <h1 class="icon-Pet-Connect--text">PETCONNECT</h1>
 </div>
@@ -368,7 +368,7 @@
     dateFormat: "d/m/Y",
     minDate: "today",
     defaultDate: "15/02/2025",
-    position: "below", // Ép lịch luôn hiển thị bên dưới
+    position: "below", 
     onChange: function(selectedDates, dateStr, instance) {
         checkoutCalendar.set("minDate", dateStr);
     }
@@ -379,7 +379,7 @@ let checkoutCalendar = flatpickr("#checkout", {
     dateFormat: "d/m/Y",
     minDate: "today",
     defaultDate: "17/02/2025",
-    position: "below" // Ép lịch luôn hiển thị bên dưới
+    position: "below" 
 });
 document.querySelector(".container-main-content--right-prepayment--date-time-left")
     .addEventListener("click", function() {
@@ -390,6 +390,10 @@ document.querySelector(".container-main-content--right-prepayment--date-time-rig
     .addEventListener("click", function() {
         document.querySelector("#checkout").click();
     });
+
+    function goToProductPage() {
+        window.location.href = 'index.html'; // Đường dẫn tới trang HTML của sản phẩm
+    }
 </script>
 </body>
 </html>
