@@ -51,17 +51,17 @@
 <div class="header--sub-scroll">
     
     <ul class="header--sub-scroll-list">
-    <li class="header--sub-scroll-list--text"><a href="" class="header--sub-scroll-list-link"> Ảnh</a></li>
-    <li class="header--sub-scroll-list--text"><a href="" class="header--sub-scroll-list-link"> Tiện nghi</a></li>
-    <li class="header--sub-scroll-list--text"><a href="" class="header--sub-scroll-list-link">Đánh giá</a></li>
-    <li class="header--sub-scroll-list--text"><a href="" class="header--sub-scroll-list-link"> Vị trí</a></li>
+    <li class="header--sub-scroll-list--text"><a href="#img"  class="header--sub-scroll-list-link"> Ảnh</a></li>
+    <li class="header--sub-scroll-list--text"><a href="#utilities"  class="header--sub-scroll-list-link"> Tiện nghi</a></li>
+    <li class="header--sub-scroll-list--text"><a href="#review"  class="header--sub-scroll-list-link">Đánh giá</a></li>
+    <li class="header--sub-scroll-list--text"><a href="#location" class="header--sub-scroll-list-link"> Vị trí</a></li>
     </ul>
     </div>
     
     
 
 <div class="container">
-<div class="container-img">
+<div id="img" class="container-img">
 <div class="container-img--main">
     <img src="./assets/img/Ảnh-Mẫu-rỗng.png" alt="" class="container-img--main-content">
     <div class="overlay"></div>
@@ -104,14 +104,14 @@
         </svg>
     </div> 
     <p class="container-main-content--left-info-content-review-fist-number">4,8</p>
-    <p class="container-main-content--left-info-content-review-sec-number">(12)</p>
+    <p id="utilities" class="container-main-content--left-info-content-review-sec-number">(12)</p>
 
     </div>
     
     </div>
     </div>
-    <div class="container-main-content--left-line"></div>
-  <div class="container-main-content--left-utilities">
+    <div  class="container-main-content--left-line"></div>
+  <div  class="container-main-content--left-utilities">
     <h class="container-main-content--left-utilities-header">Nơi này có những gì cho bạn</h>
     <ul class="container-main-content--left-utilities-list">
         <div class="container-main-content--left-utilities-list-left-content">
@@ -172,12 +172,12 @@
         </div>
         
     </ul>
-    <div class="container-main-content--left-utilities-all-util">
+    <div id="review" class="container-main-content--left-utilities-all-util">
         <p class="container-main-content--left-utilities-all-util-text">Hiện tất cả 12 tiện nghi</p>
     </div>
 </div>
     <div class="container-main-content--left-line"></div>
-    <div class="container-main-content--left-review">
+    <div  class="container-main-content--left-review">
         <h class="container-main-content--left-review-header">Đánh giá</h>
         <div class="container-main-content--left-review-content">
         <div class="container-main-content--left-review-content--head">
@@ -248,7 +248,7 @@
                 </div>
                 <div class="container-main-content--left-review-content-comment-line"></div>
         </div>
-        <div class="container-main-content--left-review-content-comment--all-comment">
+        <div id="location" class="container-main-content--left-review-content-comment--all-comment">
         <p class="container-main-content--left-review-content-comment--all-comment-text">Hiện tất cả 12 đánh giá</p>
         </div>
         <div class="container-main-content--left-line"></div>
@@ -646,6 +646,19 @@ window.addEventListener("scroll", function() {
         }
     }
 });
+document.addEventListener("DOMContentLoaded", function() {
+        // Lắng nghe sự kiện nhấp chuột trên các liên kết trong menu
+        document.querySelectorAll('.header--sub-scroll-list-link').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Cuộn mượt mà đến phần tử có ID tương ứng
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    });
 
 </script>
 </body>

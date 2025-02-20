@@ -263,6 +263,10 @@ display: flex;
 #heart-toggle:checked + label .heart-fill {
     opacity: 1; /* Hiện icon trái tim đầy */
 }
+.container-main-content--left-utilities-list-content-icon{
+    width: 24px;
+    height: 24px;
+}
 
 #heart-toggle:checked + label .heart-outline {
     opacity: 0; /* Ẩn icon trái tim rỗng */
