@@ -1,6 +1,7 @@
 
 
-.header{
+.header
+{
     padding-left: 160px;
     padding-right: 160px;
     height: 93px;
@@ -25,6 +26,7 @@ align-items: center;
 gap: 12px;
 background-color: var(--third-color);
 border-radius: 40px;
+cursor: pointer;
 }
 .icon-Pet-Connect-img{
 
@@ -83,6 +85,56 @@ font-size: 22px;
 }
 .header-secon-content-list-nofi-icon{
     position: relative;
+    cursor: pointer;
+}
+.header--sub-scroll{
+    padding-left: 160px;
+    padding-right: 160px;
+    height: 93px;
+    display: flex;
+    border-bottom:1px solid #ddd; 
+    position: fixed;
+    z-index: 99;
+    background-color: var(--white-color);
+    width: 100%;
+    top: -100px;
+}
+.header--sub-scroll-list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    
+}
+.header--sub-scroll-list--text{
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.header--sub-scroll-list-link{
+    color: var(--black-color);
+}
+.header--sub-scroll-list-link::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--black-color);
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-50%);
+     
+}
+.header--sub-scroll-list-link:hover::after{
+    width: 100%;
+}
+
+.header--sub-scroll-list--text{
+    font-size: 1.8rem;
+   
+    font-weight: 500;
     cursor: pointer;
 }
 .container{
@@ -407,7 +459,7 @@ gap: 5px;
     border-radius: 10px;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
     position: sticky;
-  top: 0;
+  top: 113px;
   z-index: 1;
 }
 
