@@ -360,8 +360,95 @@ display: flex;
     font-weight: 600;
     
 }
+.popup {
+    visibility: hidden;  /* Ẩn đi mặc định */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.popup.show {
+    visibility: visible;
+    opacity: 1;
+}
+.popup-content {
+    background-color: white;
+    width: 850px;
+    max-height: 90vh;  /* Đảm bảo không vượt quá màn hình */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border-radius: 38px;
+}
+.popup-content-close{
+    width: 100%;
+    height: 60px;
+    padding: 30px;
+    background-color: var(--white-color);
+}
+.close {
+    font-size: 32px;
+    cursor: pointer;
+   
+    float: left;
+}
+.popup-content-header{
+    font-size: 3rem;
+    color: var(--black-color);
+    margin-top: 40px;
+    margin-bottom: 40px;
+    height: 26px;
+    
+}
+.amenity-category {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 15px;
+    height: 100%;
+    overflow: auto;
+}
+.amenity-category-head{
+   
+    font-size: 2.4rem;
+    color: var(--black-color);
+    margin-top: 50px;
+    height: 54px;
+
+}
+.amenity-category-list-item-icon{
+    width: 32px;
+    height: 32px;
+}
+.amenity-category-list-item{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 15px;
+    height: 73px;
+}
+.amenity-category-list-item-text{
+    font-size: 2rem;
+    color: var(--black-color);
+    
+}
+.amenity-category-list-item-line{
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+}
+body.no-scroll {
+    overflow: hidden; /* Ngăn trang web cuộn */
+}
 .container-main-content--left-review-header{
-    font-size: 3.2rem;
+    font-size: 3rem;
     color: var(--black-color);
     font-weight: 600;
     
