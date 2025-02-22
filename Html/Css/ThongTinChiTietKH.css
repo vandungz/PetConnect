@@ -1,0 +1,114 @@
+.contain {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.right-panel {
+    flex: 1.2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.info-KH-right-panel {
+    width: 100%;
+    height: 100%;
+    max-width: 600px; /*466*/
+    max-height: 880px;
+}
+h1 {
+    font-size: 4rem;
+    font-weight: medium;
+    height: 48px;
+    margin-bottom: 40px;
+    margin-top: 10px;
+}
+.info-KH-right-panel{
+        margin-top: 60px;
+}
+.label{
+    display: block;
+    font-weight: medium;
+    font-size: 2.5rem;
+    height: 21px;
+    
+}
+.value {
+    flex-grow: 1;
+    color: #555;
+    font-size: 1.8rem;
+  }
+  .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.info-KH {
+    margin-top: 20px;
+}
+
+.info a {
+    color: var(--secondary-color);
+}
+
+.action{
+    text-decoration: none;
+    color: #007bff;
+    font-size: 1.6rem;
+    margin-left: 10px;
+  }
+.action:hover{
+    text-decoration: underline;
+}
+.info-KH-left-line{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 600px;
+    height: 1px;
+    background-color: #ddd;
+}
+.left-panel {
+    flex: 0.8;
+    height: 130vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    
+    background-color:hsl(0, 100%, 100%);
+}
+.img-left-panel {
+    width: 100%;
+    height: 100%;
+    max-width: 495px; /*466*/
+    max-height: 380px;
+    
+    margin-top: 65px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    
+    gap: 15px; /* Tạo khoảng cách giữa ảnh và chữ */
+    text-align: left; 
+    
+    
+    
+    /* display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    background-color: lawngreen; */
+}
+.left-panel img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+    margin-top: 20px;
+    margin-left: 20px;
+    
+    /* margin: 0 auto; */
+    /* margin-top: 10px; */
+}
