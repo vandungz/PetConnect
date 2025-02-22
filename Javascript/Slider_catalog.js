@@ -358,3 +358,38 @@ li.addEventListener('click',function(){
   reloadSlider9();
 })
 })
+
+document.querySelectorAll('.property-card').forEach(card => {
+  card.addEventListener('click', function(event) {
+      if (!event.target.closest('.buttons,.buttons2,.buttons3,.buttons4,.buttons5,.buttons6,.buttons7,.buttons8,.buttons9') && !event.target.closest('.fav-icon')) {
+          window.location.href = 'Chuồng - Đánh giá.html';
+      }
+  });
+});
+
+
+
+document.querySelectorAll('.buttons button,.buttons2 button2,.buttons3 button3,.buttons4 button4,.buttons5 button5,.buttons6 button6,.buttons7 button7,.buttons8 button8,.buttons9 button9, .fav-icon').forEach(button => {
+  button.addEventListener('click', function(event) {
+      event.stopPropagation();
+  });
+});
+
+document.querySelectorAll('.property-card').forEach(card => {
+  card.addEventListener('click', function(event) {
+      if (!event.target.closest('.buttons,.buttons2,.buttons3,.buttons4,.buttons5,.buttons6,.buttons7,.buttons8,.buttons9') && !event.target.closest('.fav-icon')) {
+          // Lưu trữ dữ liệu hình ảnh vào localStorage
+          const images = Array.from(card.querySelectorAll('.item img,.item2 img,.item3 img,.item4 img,.item5 img,.item6 img,.item7 img,.item8 img,.item9 img')).map(img => img.src);
+          localStorage.setItem('propertyImages', JSON.stringify(images));
+
+          // Chuyển hướng đến trang Chuồng - Đánh giá.html
+          window.location.href = 'Chuồng - Đánh giá.html';
+      }
+  });
+});
+
+document.querySelectorAll('.buttons button,.buttons2 button2,.buttons3 button3,.buttons4 button4,.buttons5 button5,.buttons6 button6,.buttons7 button7,.buttons8 button8,.buttons9 button9, .fav-icon').forEach(button => {
+  button.addEventListener('click', function(event) {
+      event.stopPropagation();
+  });
+});
