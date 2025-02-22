@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="./Css/base.css">
     <link rel="stylesheet" href="./Css/style.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.css">
+    <link rel="stylesheet" href="./Css/ThongBao.css">
     <title>Pet Connect</title>
+    <script src="../Javascript/ThongBao.js" defer></script>
 </head>
 <body>
     <div class="header">
@@ -24,8 +26,17 @@
         </div>
         <div class="header-secon-content">
         <ul class="header-secon-content">
-            <li class="header-secon-content-list"><i class="header-secon-content-list-nofi-icon fa-regular fa-bell" style="color: #777E90; font-size: 20px;
-            "></i></li>
+            <li class="header-secon-content-list">
+                <i class="header-secon-content-list-nofi-icon fa-regular fa-bell" style="color: #777E90; font-size: 20px;" onclick="toggleDropdown()"></i>
+                
+                <div id="notificationDropdown" class="dropdown-content">
+                    <a href="#">Tình trạng thú cưng</a>
+                    <a href="#">Đã tìm thấy thú cưng </a>
+                    <a href="#">Thời hạn đặt phòng</a>
+                </div>
+                    
+                </i>
+            </li>
             
             <li class="header-secon-content-list"><i class=" fa-regular fa-user" style="color: #777E90; font-size: 20px; "></i></li>
         </ul>
