@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet Connect</title>
-    <link rel="stylesheet" href="./assets/css/Catalog_phong.css">
-    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./Css/Catalog_phong.css">
+    <link rel="stylesheet" href="./Css/base.css">
     <link rel="stylesheet" href="./assets/icon/fontawesome-free-6.7.2-web/css/all.min.css">
 </head>
 <body>
@@ -18,8 +18,15 @@
         <div class="header-fist-content-line-sp"></div>
         <ul class="header-fist-content-list">
         <li class="header-fist-content-list--text">Trang chủ</li>
-        <li class="header-fist-content-list--text">Dịch vụ</li>
-        <li class="header-fist-content-list--text">Về chúng tôi</li>
+        <li>
+            <a href="" class="header-fist-content-list--text">Dịch vụ</a>
+            <ul class="dropdown">
+              <li><a href=""><i class="fa-solid fa-user"></i>Nhận nuôi Pet</a></li>
+              <li><a href=""><i class="fa-solid fa-dog"></i>Tìm/Nhận Pet</a></li>
+              <li><a href="Catalog_phong.html"><i class="fa-solid fa-house"></i>Pet Hotel</a></li>
+            </ul>
+          </li>
+          <li><a href="" class="header-fist-content-list--text">Về chúng tôi</a></li>
         </ul>
         </div>
         <div class="header-secon-content">
@@ -50,7 +57,6 @@
             Bộ lọc</button>
     </div>
     <div class="property-list">
-
 		<div class="property-card">
 			<div class="slider-container">
 		<div class="slider">
@@ -94,7 +100,6 @@
 		</div>
 			</div>
 			</div>
-
 			<div class="property-card">
 				<div class="slider-container">
 			<div class="slider2">
@@ -581,6 +586,6 @@
 	});
   </script>
        
-       <script src="./assets/Slider_catalog.js"></script>
+       <script src="./Slider_catalog.js"></script>
     </body>
 </html>
