@@ -107,8 +107,26 @@ h1 {
     border-radius: 50%;
     object-fit: cover; /* Đảm bảo ảnh không bị méo */
     margin-top: 20px;
-    margin-left: 20px;
+   margin-bottom: 20px;
     
     /* margin: 0 auto; */
     /* margin-top: 10px; */
+}
+.img-left-panel-content{
+    display: flex;
+    justify-content: center;
+}
+.mg-left-panel-content-text-head,
+.mg-left-panel-content-text-role{
+    font-size: 3.4rem;
+    font-weight: medium;
+    
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+.mg-left-panel-content-text-role{
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text-color);
 }
