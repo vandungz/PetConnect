@@ -49,11 +49,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnPlus = document.querySelector(".container-main-content--right-prepayment--pet-number-btn-plus");
     const nightDetailElement = document.getElementById("nightDetail");
     const nightPriceElement = document.getElementById("nightPrice");
-    const cleaningFeeElement = document.getElementById("cleaningFee");
+    const cleaningFeeElement = document.getElementById("serviceFee");
     const discountElement = document.getElementById("discount");
     const totalCostElement = document.getElementById("totalCost");
 
-    let petCount = 1, baseCleaningFee = 20, extraPetFee = 5, pricePerNight = 79;
+    let petCount = 1, baseCleaningFee = 79, extraPetFee = pricePerNight = 79;
 
     function getDateValue(input) {
         if (!input || !input.value) return null;
@@ -72,10 +72,10 @@ document.addEventListener("DOMContentLoaded", function () {
             if (nights >= 3) discount = 15;
         }
 
-        const subtotal = nights * pricePerNight;
+        const subtotal = nights * cleaningFee;
         const finalTotal = subtotal + cleaningFee - discount;
 
-        nightDetailElement.innerText = nights > 0 ? `$${pricePerNight} x ${nights} đêm` : "Chưa chọn ngày";
+        nightDetailElement.innerText = nights > 0 ? `$${cleaningFee} x ${nights} đêm` : "Chưa chọn ngày";
         nightPriceElement.innerText = `$${subtotal}`;
         cleaningFeeElement.innerText = `$${cleaningFee}`;
         discountElement.innerText = discount ? `-$${discount}` : "$0";
@@ -169,3 +169,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+function goToProductPage() {
+    window.location.href = "./index.html"; // Thay đổi đường dẫn nếu cần
+}
