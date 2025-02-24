@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Css/Payment2.css">
+    <link rel="stylesheet" href="./Css/base.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-fist-content">
+            <div class="icon-Pet-Connect"> 
+                <img class="icon-Pet-Connect-img" src="./assets/icon/icon-Pet-Connect2.jpg" alt="">
+                <h1 class="icon-Pet-Connect--text">PETCONNECT</h1>
+            </div>
+        </div>
+    </div>
+
+    <div></div>
+
+    <div class="container-main-content">
+            <div class="container-main-content--left">
+                <div class="left-container-content">
+                    <i class="fa-solid fa-angle-left" style="color: #777E90; font-size: 20px;" onclick="toggleDropdown()"></i>
+                    <h1 class="left-container-title">Xác nhận và thanh toán</h1>
+                </div>
+                    
+                <div class="your-service">
+                    <h2>Dịch vụ của bạn</h2>
+                    <div class="info-service">
+                        <div class="info">
+                          <span class="label">Ngày</span>
+                          <a href="#" class="action">Chỉnh sửa</a>
+                        </div>
+                        <span class="value">24-27 thg 3</span>
+                      </div>
+
+                    <div class="info-service">
+                        <div class="info">
+                          <span class="label">Khách</span>
+                          <a href="#" class="action">Chỉnh sửa</a>
+                        </div>
+                        <span class="value">1 Khách</span>
+                      </div>
+                
+                    <div class="info-KH-left-line"></div>
+
+                    <div class="payment-method">
+                        <div class="payment-method-content">
+                            <span class="label">Thanh toán bằng</span>
+                            <div class=""></div>
+                            <i class="fa-brands fa-cc-visa" style="color: #1434cb; ; font-size: 30px;"></i>
+                        </div>
+                        <div class="card">
+                            <div class="card1">
+                                <i class="fa-solid fa-credit-card" style="font-size: 20px;"></i>
+                                <span>Thẻ tín dụng hoặc thẻ ghi nợ</span>
+                            </div>
+                        </div>
+                        <div class="detail-card">
+                            <input type="text" placeholder="Số thẻ" required>
+                        </div>
+                        <div class="contain">
+                            <div class="left">
+                                <input type="text" class="left" placeholder="Ngày hết hạn" required>
+                            </div>
+                            <div class="right">
+                                <input type="text" class="right" placeholder="Mã CVV" required>
+                            </div>
+                        </div>
+                        <div class="detail-card2">
+                            <input type="text" placeholder="Mã bưu chính" required>
+                        </div>
+                        <div class="dropdown">
+                            <select>
+                                <option disabled selected>Khu vực</option>
+                                <option value="hv">Hòa Vang</option>
+                                <option value="cl">Cẩm Lệ</option>
+                                <option value="hc">Hải Châu</option>
+                                <option value="tk">Thanh Khê</option>
+                                <option value="lc">Liên Chiểu</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down"></i> <!-- Icon mũi tên xuống -->
+                        </div>
+                        
+                    </div>
+                    <div class="info-KH-left-line"></div>
+                    <div class="cancel-term">
+                        <h3>Chính sách hủy</h3>
+                        <div class="cancel-term2">
+                            <p>Bạn được hoàn một phần tiền nếu hủy trước khi nhận phòng. Sau thời gian đó, số tiền hoàn lại sẽ phụ thuộc vào thời điểm bạn hủy.</p>
+                            <a href="#" class="action">Tìm hiểu thêm</a>
+                        </div>
+                    </div>
+                    <div class="info-KH-left-line"></div>
+                    <div class="accept">
+                        <p>Bằng việc chọn nút bên dưới, tôi đồng ý với</p>
+                        <a href="#" class="action">Nội quy của cửa hàng </a>
+                        & <a href="#" class="action">Chính sách đặt lại và hoàn tiền của PetConnect</a>
+                    </div>
+                    <button class="button-accept">Xác nhận và thanh toán</button>
+                </div>
+                </div>
+                                        
+        
+                                 
+            <div class="container-main-content--right-container">
+                <div class="container-main-content--right">
+                        <div class="info-img">
+                            <div class="img-left">
+                                <img src="./assets/img/room1.jpg" alt="">
+                            </div>
+                            <div class="info-right">
+                                <span class="image">Groveland</span>
+                                <span class="address">Nguyễn Văn Linh, Đà Nẵng</span>
+                            </div>
+                        </div>
+                        <div class="info-KH-left-line"></div>
+                        <div class="price" >
+                            <h2>Chi tiết giá</h2>
+                            <div class="info" id="info">
+                                <span class="price-date">đ316.000 * 4 đêm</span>
+                                <span class="total-price">đ1.264.000</span>
+                            </div>
+                            <div class="info" id="info">
+                                <span>Phí dịch vụ</span>
+                                <span class="price">đ316.000</span>
+                            </div>
+                        </div>
+                        <div class="info-KH-left-line"></div>
+                        <div class="totol-money">
+                            <div class="info" id="info">
+                                <span>Tổng(VND)</span>
+                                <span>đ1.264.000000</span>
+                            </div>
+                        </div>
+
+                        
+            </div>
+
+        </div>
+</body>
+</html>

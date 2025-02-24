@@ -1,0 +1,348 @@
+
+
+.header
+{
+    padding-left: 160px;
+    padding-right: 160px;
+    height: 93px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header-fist-content{
+width: 570px;
+height: 52px;
+position: relative;
+margin-top: 20px;
+margin-bottom: 20px;
+display: flex;
+
+}
+.icon-Pet-Connect{
+width: 204px;
+height: 52px;
+display: flex;
+align-items: center;
+gap: 12px;
+background-color: var(--third-color);
+border-radius: 40px;
+cursor: pointer;
+}
+.icon-Pet-Connect-img{
+
+border-radius: 2px;
+border-radius: 50%;
+width: 53px;
+height: 53px;
+margin-top: 1px;
+ 
+
+}
+.icon-Pet-Connect--text{
+font-size: 1.6rem;
+color: var(--black-color);
+font-weight: 600;
+}
+
+.container-main-content{
+margin-top: 60px;
+position: relative;
+display: flex;
+justify-content: space-between;
+} 
+/* left */
+.container-main-content--left{
+    position: relative;
+    width: 50%;
+    margin-left: 100px;
+}
+.left-container-content {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+}
+
+.left-container-content i {
+    margin-right: 20px; /* Khoảng cách giữa biểu tượng và dòng chữ */
+}
+
+.left-container-title {
+    font-size: 20px; /* Kích thước chữ */
+    color: #777E90; /* Màu chữ */
+}
+.your-service {
+    margin-top: 30px;
+    margin-left: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.info-KH-left-line{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 80%;
+  height: 1px;
+  background-color: #ddd;
+}
+
+.label{
+  display: block;
+  font-weight: medium;
+  font-size: 1.6rem;
+  font-weight: bold;
+  height: 21px;
+  color: #222222;
+  
+  
+}
+.value {
+  flex-grow: 1;
+  color: #181212;
+  font-size: 1.4rem;
+}
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.info-service {
+  margin-top: 20px;
+  width: 80%;
+}
+
+
+.action{
+  text-decoration: none;
+  color: black;
+  font-size: 1.3rem;
+  margin-left: 10px;
+  font-weight: bold;
+}
+.action:hover{
+  text-decoration: underline;
+}
+.payment-method-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.payment-method {
+  margin-top: 20px;
+  width: 80%;
+}
+.card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  width: 580px;
+  height: 65px;
+}
+.card1 {
+  display: flex;
+  margin-left: 20px;
+  gap: 40px;
+}
+.detail-card input{
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  border: 1px solid #ccc;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #fff;
+  padding-left: 20px;
+  width: 580px;
+  height: 50px;
+}
+.contain {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-bottom: 20px;
+  width: 580px;
+  height: 50px;
+}
+.contain input {
+  display: flex;
+  flex: 1;
+  border: 1px solid #ccc;
+  justify-content: center;
+  align-items: center;
+  width: 290px;
+  height: 50px;
+  padding-left: 20px;
+}
+.left input{
+  border-bottom-left-radius: 5px;
+}
+.right input{
+    border-bottom-right-radius: 5px;
+  }
+  .detail-card2 {
+      display: flex;
+      align-items: center;
+      font-size: 1.4rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      margin-bottom: 20px;
+      width: 580px;
+      height: 50px;
+  }
+  .detail-card2 input {
+    display: flex;
+    border: 1px solid #ccc;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 580px;
+    height: 50px;
+    padding-left: 20px;
+  }
+  .cancel-term{
+    margin-top: 20px;
+    width: 100%;
+    font-size: 1.6rem;
+    text-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .cancel-term2{
+    margin-top: 20px;
+    width: 80%;
+    font-size: 1.5rem;
+    
+
+    p{
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .action {
+      margin-left: 0;
+      margin-top: 28px;
+    }
+  }
+  .accept{
+    margin-top: 20px;
+    width: 80%;
+    font-size: 1.4rem;
+    line-height: 1.3;
+
+    p{
+      display: inline;
+    }
+    a{
+      display: inline;
+      margin-left: 0;
+    }
+  }
+  
+  .dropdown {
+    position: relative;
+    width: 580px;
+  }
+  
+  .dropdown select {
+    width: 580px;
+    height: 50px;
+    padding: 10px 40px 10px 15px; 
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    appearance: none; 
+    background: transparent;
+  }
+  
+  /* Đặt icon mũi tên xuống */
+  .dropdown i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 18px;
+    pointer-events: none; /* Ngăn không cho click vào icon */
+  }
+  .button-accept{
+    margin-top: 24px;
+    margin-bottom: 24px;
+    background-color:var(--primary-color);
+    color: white;
+    border-radius: 10px;
+    justify-items: center;
+    align-items: center ;
+    border: none;
+    padding: 12px 24px;
+  }
+
+/* right */
+.container-main-content--right{
+    width: 500px;
+    
+    padding-top: 40px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 40px;
+    border: 2px solid #dddd;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    gap: 8px;
+    margin-right: 100px;
+    margin-top: 60px;
+    font-style: 1.5 rem;
+}
+.info-img {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Khoảng cách giữa ảnh và phần text */
+  }
+  
+  /* Khối chứa ảnh bên trái */
+  .img-left img {
+    width: 150px;       /* Chiều rộng ảnh */
+    height: 150px;      /* Chiều cao ảnh */
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+    border-radius: 8px;
+    /* Nếu muốn bo tròn hoàn toàn thì border-radius: 50%; */
+  }
+  
+  /* Khối chứa text bên phải */
+  .info-right {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* Khoảng cách giữa các dòng text */
+    font-size: 1.5rem;
+  }
+  .price{
+    margin-top: 20px;
+    font-size: 1.5rem;
+  }
+  #info.info{
+    margin-top: 20px;
+    font-size: 1.5rem;
+    margin-right: 30px;
+  }
+
+
+
+
+
