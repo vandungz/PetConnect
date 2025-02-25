@@ -49,11 +49,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnPlus = document.querySelector(".container-main-content--right-prepayment--pet-number-btn-plus");
     const nightDetailElement = document.getElementById("nightDetail");
     const nightPriceElement = document.getElementById("nightPrice");
-    const cleaningFeeElement = document.getElementById("serviceFee");
+    const serviceFeeFeeElement = document.getElementById("serviceFee");
+    const cleaningFeeFeeElement = document.getElementById("cleaningFee")
+    
     const discountElement = document.getElementById("discount");
     const totalCostElement = document.getElementById("totalCost");
 
-    let petCount = 1, baseCleaningFee = 79, extraPetFee = pricePerNight = 79;
+    let petCount = 1,  extraPetFee =10 ;pricePerNight =priceKennel = 21.95; cleaningFee=20;
 
     function getDateValue(input) {
         if (!input || !input.value) return null;
@@ -62,7 +64,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function calculateTotal() {
-        const cleaningFee = baseCleaningFee + (petCount - 1) * extraPetFee;
+        
+        pricePerNight=priceKennel*(petCount);
         const checkinDate = getDateValue(checkinInput);
         const checkoutDate = getDateValue(checkoutInput);
         let nights = 0, discount = 0;
@@ -72,12 +75,13 @@ document.addEventListener("DOMContentLoaded", function () {
             if (nights >= 3) discount = 15;
         }
 
-        const subtotal = nights * cleaningFee;
-        const finalTotal = subtotal + cleaningFee - discount;
+        const subtotal = nights * pricePerNight;
+        const finalTotal = subtotal + cleaningFee + extraPetFee - discount;
 
-        nightDetailElement.innerText = nights > 0 ? `$${cleaningFee} x ${nights} đêm` : "Chưa chọn ngày";
+        nightDetailElement.innerText = nights > 0 ? `$${pricePerNight} x ${nights} đêm` : "Chưa chọn ngày";
         nightPriceElement.innerText = `$${subtotal}`;
-        cleaningFeeElement.innerText = `$${cleaningFee}`;
+        cleaningFeeFeeElement.innerText = `$${cleaningFee}`;
+        serviceFeeFeeElement.innerText = `$${extraPetFee}`;
         discountElement.innerText = discount ? `-$${discount}` : "$0";
         totalCostElement.innerText = `$${finalTotal}`;
     }
