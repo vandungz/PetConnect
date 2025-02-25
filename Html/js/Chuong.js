@@ -239,7 +239,7 @@ function goToHotelPage(){
     window.location.href = "./Catalog_phong.html";
 }
 
-document.getElementById('confirmPayment').addEventListener('click', function () {
+document.getElementById('bookRoomBtn').addEventListener('click', function () {
     const checkin = document.getElementById('checkin').value;
     const checkout = document.getElementById('checkout').value;
 
@@ -248,6 +248,6 @@ document.getElementById('confirmPayment').addEventListener('click', function () 
         return;
     }
 
-    // Chuyển hướng đến Payment2.html với tham số trên URL
+    // Chuyển hướng sang Payment2.html kèm tham số
     window.location.href = `Payment2.html?checkin=${encodeURIComponent(checkin)}&checkout=${encodeURIComponent(checkout)}`;
 });
