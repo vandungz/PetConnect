@@ -80,10 +80,11 @@ font-weight: 600;
   z-index: 1;
   margin-top: 10px;
   cursor: pointer;
+  border-radius: 20px;
 }
 
-.header-fist-content-list li:hover .dropdown {
-  display: block; 
+.dropdown.active {
+  display: block;
 }
 
 .header-fist-content-list {

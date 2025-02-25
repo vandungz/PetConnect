@@ -1,5 +1,7 @@
 
-
+body.no-scroll {
+    overflow: hidden; /* Ngăn trang web cuộn */
+}
 .header
 {
     padding-left: 160px;
@@ -8,6 +10,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1000; 
 }
 .header-fist-content{
 width: 570px;
@@ -150,57 +157,63 @@ font-size: 22px;
 }
 .container-img--main{
     position: relative;
-   
+    display: inline-block;
     width: 582px;
     
 }
 
 
-.container-img--main-content{
-    position: absolute;
-    height: 100%;
+.container-img--main-content {
     width: 100%;
+    height: 100%;
+    object-fit: cover; /* Đảm bảo hình ảnh bao phủ toàn bộ container mà không bị méo */
     margin-right: 20px;
     cursor: pointer;
-    border-radius: 20px
-    
+    border-radius: 20px; /* Bo góc cho hình ảnh chính */
 }
+
+.container-img--sup-content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Đảm bảo hình ảnh bao phủ toàn bộ container mà không bị méo */
+    border-radius: 20px; /* Bo góc cho hình ảnh phụ */
+}
+
 .overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 20px;
+    border-radius: 20px; /* Bo góc cho overlay */
     background: rgba(0, 0, 0, 0);
     transition: background 0.3s ease;
     cursor: pointer;
 }
 
-
-
-.container-img--main:hover .overlay{
+.container-img--main:hover .overlay {
     background: rgba(0, 0, 0, 0.1);
-    
 }
-.container-img--sup{
-   
+
+.container-img--sup {
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
     width: 590px;
     cursor: pointer;
 }
-.container-img--sup-over-lay{
+
+.container-img--sup-over-lay {
     position: relative;
     width: 100%;
     height: 261px;
 }
-.container-img--sup-over-lay:hover .overlay{
+
+.container-img--sup-over-lay:hover .overlay {
     background: rgba(0, 0, 0, 0.1);
 }
 .container-img--sup-content{
-    border-radius: 20px;
+   
     width: 100%;
     height: 261px;
 }
@@ -269,7 +282,7 @@ display: flex;
     width: 24px;
     height: 24px;
 }
-image__link-text {
+.image__link-text {
     font-size: 0.75rem;
     font-weight: 700;
     color: black;
@@ -476,9 +489,7 @@ image__link-text {
     height: 1px;
     background-color: #ddd;
 }
-body.no-scroll {
-    overflow: hidden; /* Ngăn trang web cuộn */
-}
+
 
 .cmt-popup-header{
     width: 100%;
@@ -817,7 +828,6 @@ gap: 5px;
     font-size: 1.6rem;
     border-radius: 12px;
     cursor: pointer;
-    
 }
 .container-main-content--right-prepayment-sub{
     width: 100%;
@@ -887,13 +897,97 @@ gap: 5px;
 }
 
 
+.all-images-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-top: 60px; /* Điều chỉnh để không bị che bởi header */
+    padding-bottom: 50px;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
 
+.all-images-container.show {
+    opacity: 1;
+}
 
+.all-images-container header {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background-color: var(--white-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001; /* Đảm bảo header luôn hiển thị trên các phần tử khác */
+}
 
+.all-images-container .close-button {
+    font-size: 1.6rem;
+    color: var(--black-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
 
+.all-images-container .close-button i {
+    margin-right: 8px;
+}
 
+.room-container, .play-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa theo chiều ngang */
+    gap: 10px;
+    padding-left: 150px;
+    padding-right: 150px;
+    margin-left: 200px;
+}
 
+.room-main-image, .play-main-image {
+    width: 750px; /* Chiều rộng của ảnh chính */
+    height: 500px; /* Chiều cao của ảnh chính */
+    object-fit: cover;
+    border-radius: 10px;
+    
+}
 
+.room-sub-container, .play-sub-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Căn giữa các ảnh phụ */
+    gap: 10px;
+}
+
+.room-sub-image, .play-sub-image {
+    width: 370px; /* Chiều rộng của ảnh phụ */
+    height: 250px; /* Chiều cao cố định */
+    object-fit: cover;
+    border-radius: 10px;
+    
+}
+
+h2 {
+    font-size: 2rem;
+    color: var(--black-color);
+    text-align: left; /* Căn chữ sang bên trái */
+    position: relative;
+    right: 620px; /* Cách màn hình trái 90px */
+    top: 25px;
+}
 
 
 .footer{
