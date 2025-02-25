@@ -172,6 +172,24 @@ document.addEventListener("DOMContentLoaded", function () {
             closePopup(event.target);
         }
     });
+
+    var bookButton = document.querySelector(".container-main-content--right-prepayment-button");
+    if (bookButton) {
+    bookButton.addEventListener("click", function() {
+      // Thay thế bằng cách lấy dữ liệu thực tế từ giao diện nếu có,
+      // ví dụ: lấy danh sách chuồng đã chọn và giá dịch vụ từ các input hoặc state của trang.
+      var bookingData = {
+        cages: ["Chuồng A", "Chuồng B"], // Ví dụ danh sách chuồng đã chọn
+        servicePrice: 1000000            // Ví dụ giá dịch vụ (VNĐ)
+      };
+
+      // Lưu dữ liệu đặt chuồng vào sessionStorage dưới dạng JSON
+      sessionStorage.setItem("bookingData", JSON.stringify(bookingData));
+
+      // Chuyển hướng sang trang Payment2.html
+      window.location.href = "Payment2.html";
+    });
+  }
 });
 function goToMenuPage() {
     window.location.href = "./Menu.html"; // Thay đổi đường dẫn nếu cần
