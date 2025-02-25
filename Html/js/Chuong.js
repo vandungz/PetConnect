@@ -176,3 +176,6 @@ document.addEventListener("DOMContentLoaded", function () {
 function goToMenuPage() {
     window.location.href = "./Menu.html"; // Thay đổi đường dẫn nếu cần
 }
+function goToHotelPage(){
+    window.location.href = "./Catalog_phong.html";
+}
