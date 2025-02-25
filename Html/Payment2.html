@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="./Css/Payment2.css">
     <link rel="stylesheet" href="./Css/base.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./js/Payment2.js">
+    <link rel="stylesheet" href="./js/Chuong.js">
 </head>
 <body>
     <div class="header">
@@ -34,15 +36,22 @@
                           <span class="label">Ngày</span>
                           <a href="#" class="action">Chỉnh sửa</a>
                         </div>
-                        <span class="value">24-27 thg 3</span>
+                        <span class="value" id="bookingDates">24-27 thg 3</span>
                       </div>
 
                     <div class="info-service">
                         <div class="info">
+<<<<<<< Updated upstream
                           <span class="label">Thú cưng</span>
                           <a href="#" class="action">Chỉnh sửa</a>
                         </div>
                         <span class="value">1 Thú cưng</span>
+=======
+                          <span class="label">Pets</span>
+                          <a href="#" class="action">Chỉnh sửa</a>
+                        </div>
+                        <span class="value" id="bookingGuests">1 Pet</span>
+>>>>>>> Stashed changes
                       </div>
                 
                     <div class="info-KH-left-line"></div>
@@ -76,10 +85,10 @@
                         <div class="dropdown">
                             <select>
                                 <option disabled selected>Khu vực</option>
-                                <option value="hv">Hòa Vang</option>
-                                <option value="cl">Cẩm Lệ</option>
-                                <option value="hc">Hải Châu</option>
-                                <option value="tk">Thanh Khê</option>
+                                <option value="dn">Đà Nẵng</option>
+                                <option value="hn">Hà Nội</option>
+                                <option value="hcm">Hồ Chí Minh</option>
+                                <option value="ha">Hội An</option>
                                 <option value="lc">Liên Chiểu</option>
                             </select>
                             <i class="fa-solid fa-chevron-down"></i> <!-- Icon mũi tên xuống -->
@@ -113,27 +122,32 @@
                                 <img src="./assets/img/room1.jpg" alt="">
                             </div>
                             <div class="info-right">
-                                <span class="image">Groveland</span>
-                                <span class="address">Nguyễn Văn Linh, Đà Nẵng</span>
+                                <span class="image_title">Groveland</span>
+                                <span class="image_address">Nguyễn Văn Linh, Đà Nẵng</span>
                             </div>
                         </div>
-                        <div class="info-KH-left-line"></div>
-                        <div class="price" >
+                        <div class="info-KH-right-line"></div>
+                        <div class="price" id="priceDetail">
                             <h2>Chi tiết giá</h2>
                             <div class="info" id="info">
-                                <span class="price-date">đ316.000 * 4 đêm</span>
-                                <span class="total-price">đ1.264.000</span>
+                                <span class="price-date" id="priceNights">đ316.000 * 4 đêm</span>
+                                <span class="total-price" id="priceNightsTotal">đ1.264.000</span>
                             </div>
                             <div class="info" id="info">
                                 <span>Phí dịch vụ</span>
-                                <span class="price">đ316.000</span>
+                                <span class="price" id="serviceFeeText">đ316.000</span>
                             </div>
+
+                            <div class="info" id="info">
+                                <span>Giảm giá</span>
+                                <span id="discountText">1234</span>
+                              </div>
                         </div>
-                        <div class="info-KH-left-line"></div>
+                        <div class="info-KH-right-line"></div>
                         <div class="totol-money">
                             <div class="info" id="info">
                                 <span>Tổng(VND)</span>
-                                <span>đ1.264.000000</span>
+                                <span id="finalTotalText">đ1.264.000000</span>
                             </div>
                         </div>
 
@@ -141,5 +155,27 @@
             </div>
 
         </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function(){
+              // Lấy dữ liệu đặt chuồng từ sessionStorage
+              var bookingDataStr = sessionStorage.getItem("bookingData");
+              if (bookingDataStr) {
+                  var bookingData = JSON.parse(bookingDataStr);
+                  var html = "<p><strong>Chuồng đã chọn:</strong> " + bookingData.cages.join(", ") + "</p>";
+                  html += "<p><strong>Giá dịch vụ:</strong> " + bookingData.servicePrice.toLocaleString() + " VNĐ</p>";
+                  document.getElementById("bookingInfo").innerHTML = html;
+              }
+        
+              // Gắn sự kiện vào nút "Đặt phòng" trong container bên phải
+              document.querySelector(".container-main-content--right-prepayment-button").addEventListener("click", function(){
+                  // Lấy thông tin phương thức thanh toán (demo: mặc định là 'credit'; nếu có lựa chọn cụ thể, hãy lấy từ input tương ứng)
+                  var paymentMethod = "credit";
+                  sessionStorage.setItem("paymentMethod", paymentMethod);
+                  // Ở đây bạn có thể gọi API để lưu thông tin đặt phòng theo tài khoản người dùng
+                  alert("Đặt phòng thành công bằng " + paymentMethod + ".\nThông tin đặt chuồng đã được lưu.");
+              });
+            });
+          </script>
 </body>
 </html>
