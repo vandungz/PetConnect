@@ -85,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
         discountElement.innerText = discount ? `-$${discount}` : "$0";
         totalCostElement.innerText = `$${finalTotal}`;
     }
+    
 
     function updatePetCount() {
         petCountElement.innerText = `${petCount} THÚ CƯNG`;
@@ -173,23 +174,63 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    var bookButton = document.querySelector(".container-main-content--right-prepayment-button");
-    if (bookButton) {
-    bookButton.addEventListener("click", function() {
-      // Thay thế bằng cách lấy dữ liệu thực tế từ giao diện nếu có,
-      // ví dụ: lấy danh sách chuồng đã chọn và giá dịch vụ từ các input hoặc state của trang.
-      var bookingData = {
-        cages: ["Chuồng A", "Chuồng B"], // Ví dụ danh sách chuồng đã chọn
-        servicePrice: 1000000            // Ví dụ giá dịch vụ (VNĐ)
-      };
+    
+    if (document.getElementById("confirmPayment")) {
+          document.getElementById("confirmPayment").addEventListener("click", function() {
+              // Lấy dữ liệu từ form
+              const checkin = checkinInput.value;
+      const checkout = checkoutInput.value;
+      // Lấy số thú cưng từ innerText (ví dụ "1 THÚ CƯNG")
+      const petCountStr = petCountElement.innerText;
+      const pets = parseInt(petCountStr.split(" ")[0]);
+      
+      // Với nightDetail, nightPrice, discount đã hiển thị dạng chuỗi có ký hiệu "$" và "đêm"
+      // Lấy tổng tiền từ nightPrice (đã là tổng của số đêm * giá mỗi đêm)
+      const nightPriceStr = nightPriceElement.innerText;
+      const subtotal = parseFloat(nightPriceStr.replace("$", "")) || 0;
+      const discountStr = discountElement.innerText;
+      const discountValue = parseFloat(discountStr.replace(/[-$]/g, "")) || 0;
+      // Giả sử finalTotal được tính từ: subtotal + cleaningFee + extraPetFee - discount
+      const finalTotal = subtotal + cleaningFee + extraPetFee - discountValue;
 
-      // Lưu dữ liệu đặt chuồng vào sessionStorage dưới dạng JSON
-      sessionStorage.setItem("bookingData", JSON.stringify(bookingData));
-
-      // Chuyển hướng sang trang Payment2.html
-      window.location.href = "Payment2.html";
-    });
-  }
+        
+              // Lưu dữ liệu vào localStorage
+              const paymentData = {
+                checkin,
+                checkout,
+                pets,
+                subTotal,
+                discount,
+                finalTotal
+              };
+              localStorage.setItem("paymentData", JSON.stringify(paymentData));
+        
+              // Chuyển hướng sang trang xác nhận thanh toán
+              window.location.href = "Payment2.html";
+            });
+      }
+      else if (document.getElementById("paymentDataDisplay")) {
+        const storedData = localStorage.getItem("paymentData");
+        if (storedData) {
+          const data = JSON.parse(storedData);
+          const checkinDate = new Date(data.checkin);
+          const checkoutDate = new Date(data.checkout);
+          const checkinDay = checkinDate.getDate();
+          const checkoutDay = checkoutDate.getDate();
+          const checkinMonth = checkinDate.getMonth() + 1;
+          const checkoutMonth = checkoutDate.getMonth() + 1;
+          let dateText;
+          if (checkinMonth === checkoutMonth) {
+            dateText = `${checkinDay} - ${checkoutDay} thg ${checkinMonth}`;
+          } else {
+            dateText = `${checkinDay} thg ${checkinMonth} - ${checkoutDay} thg ${checkoutMonth}`;
+          }
+          document.getElementById("bookingDates").innerText = dateText;
+          document.getElementById("subTotalText").innerText = `$${data.subTotal}`;
+          document.getElementById("discountText").innerText = data.discount ? `-$${data.discount}` : "$0";
+          document.getElementById("finalTotalText").innerText = `$${data.finalTotal}`;
+        }
+      }
 });
 function goToMenuPage() {
     window.location.href = "./Menu.html"; // Thay đổi đường dẫn nếu cần
@@ -197,3 +238,16 @@ function goToMenuPage() {
 function goToHotelPage(){
     window.location.href = "./Catalog_phong.html";
 }
+
+document.getElementById('confirmPayment').addEventListener('click', function () {
+    const checkin = document.getElementById('checkin').value;
+    const checkout = document.getElementById('checkout').value;
+
+    if (!checkin || !checkout) {
+        alert("Vui lòng chọn ngày Check-in và Check-out!");
+        return;
+    }
+
+    // Chuyển hướng đến Payment2.html với tham số trên URL
+    window.location.href = `Payment2.html?checkin=${encodeURIComponent(checkin)}&checkout=${encodeURIComponent(checkout)}`;
+});
