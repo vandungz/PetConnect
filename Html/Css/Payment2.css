@@ -143,7 +143,7 @@ justify-content: space-between;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #fff;
-  width: 580px;
+  width: 100%;
   height: 65px;
 }
 .card1 {
@@ -160,39 +160,45 @@ justify-content: space-between;
   border-top-right-radius: 5px;
   background-color: #fff;
   padding-left: 20px;
-  width: 580px;
+  width: 100%;
   height: 50px;
 }
 .contain {
-  justify-content: center;
-  align-items: center;
   display: flex;
-  align-items: center;
   font-size: 1.4rem;
   border: 1px solid #ccc;
   background-color: #fff;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   margin-bottom: 20px;
-  width: 580px;
+  width: 100%;
   height: 50px;
+  gap: 0;
 }
+
+.left, .right {
+  flex: 1; /* Đảm bảo chia đều không gian */
+  display: flex; /* Giúp input nằm gọn trong div */
+}
+
 .contain input {
-  display: flex;
-  flex: 1;
+  flex: 1; /* Input sẽ chiếm toàn bộ không gian của div cha */
   border: 1px solid #ccc;
-  justify-content: center;
-  align-items: center;
-  width: 290px;
+  width: 100%; /* Đảm bảo không bị tràn */
   height: 50px;
   padding-left: 20px;
+  box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước */
 }
-.left input{
+
+.left input {
   border-bottom-left-radius: 5px;
+  border-right: none; /* Tránh bị viền trùng */
 }
-.right input{
-    border-bottom-right-radius: 5px;
-  }
+
+.right input {
+  border-bottom-right-radius: 5px;
+}
+
   .detail-card2 {
       display: flex;
       align-items: center;
@@ -201,7 +207,7 @@ justify-content: space-between;
       border-radius: 5px;
       background-color: #fff;
       margin-bottom: 20px;
-      width: 580px;
+      width: 100%;
       height: 50px;
   }
   .detail-card2 input {
@@ -210,7 +216,7 @@ justify-content: space-between;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    width: 580px;
+    width: 100%;
     height: 50px;
     padding-left: 20px;
   }
@@ -257,11 +263,11 @@ justify-content: space-between;
   
   .dropdown {
     position: relative;
-    width: 580px;
+    width: 100%;
   }
   
   .dropdown select {
-    width: 580px;
+    width: 100%;
     height: 50px;
     padding: 10px 40px 10px 15px; 
     font-size: 16px;
@@ -290,7 +296,14 @@ justify-content: space-between;
     justify-items: center;
     align-items: center ;
     border: none;
-    padding: 12px 24px;
+    padding: 18px 24px;
+    width: 80%;
+    font-size: 1.8rem;
+  }
+
+  .button-accept:hover {
+    opacity: 0.8;
+    cursor: pointer;
   }
 
 /* right */
