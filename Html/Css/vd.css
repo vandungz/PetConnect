@@ -1,0 +1,108 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-fist-content {
+    display: flex;
+    align-items: center;
+}
+
+.icon-Pet-Connect {
+    display: flex;
+    align-items: center;
+}
+
+.icon-Pet-Connect-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.icon-Pet-Connect--text {
+    font-size: 1.6rem;
+    color: var(--black-color);
+    font-weight: 600;
+}
+
+.header-fist-content-line-sp {
+    width: 1px;
+    height: 40px;
+    background-color: #ddd;
+    margin: 0 20px;
+}
+
+.header-fist-content-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header-fist-content-list--text {
+    margin-right: 20px;
+    font-size: 1.4rem;
+    color: #777E90;
+    cursor: pointer;
+}
+
+.header-secon-content {
+    display: flex;
+    align-items: center;
+}
+
+.header-secon-content-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header-secon-content-list-item {
+    position: relative;
+    margin-left: 20px;
+}
+
+.header-secon-content-list-nofi-icon,
+.fa-regular.fa-user {
+    font-size: 20px;
+    color: #777E90;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu li {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+    background-color: #f0f0f0;
+}
+
+/* Hiển thị dropdown khi hover */
+.header-secon-content-list-item:hover .dropdown-menu {
+    display: block;
+}
