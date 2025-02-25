@@ -9,6 +9,8 @@ const cors = require("cors");
 const User = require("./models/User");
 
 const app = express();
+app.use(cors());
+app.use(express.json());
 
 // Cho phép frontend kết nối với backend
 app.use(cors({
@@ -90,14 +92,26 @@ app.get("/auth/google/callback", passport.authenticate("google", { failureRedire
 
 
 // Route hiển thị thông tin user
-app.get("/profile", (req, res) => {
-    if (!req.user) return res.redirect("/");
-    res.json({
-        id: req.user.googleId,
-        name: req.user.name,
-        email: req.user.email,
-        avatar: req.user.avatar
-    });
+app.get("/profile", async (req, res) => {
+    try {
+        const userId = req.query.user; // Lấy userId từ query params
+
+        if (!userId) {
+            return res.status(400).json({ error: "Missing user ID" });
+        }
+
+        const user = await User.findById(userId); // Tìm user trong database
+
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        res.json(user); // Trả về dữ liệu người dùng
+    } catch (error) {
+        console.error("Error fetching user:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+
 });
 
 // Route logout
@@ -134,4 +148,3 @@ app.get("/profile", async (req, res) => {
         res.status(500).json({ error: "Lỗi server" });
     }
 });
-

@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 checkin,
                 checkout,
                 pets,
-                subTotal,
+                subtotal,
                 discount,
                 finalTotal
               };
@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
             dateText = `${checkinDay} thg ${checkinMonth} - ${checkoutDay} thg ${checkoutMonth}`;
           }
           document.getElementById("bookingDates").innerText = dateText;
-          document.getElementById("subTotalText").innerText = `$${data.subTotal}`;
+          document.getElementById("subTotalText").innerText = `$${data.subtotal}`;
           document.getElementById("discountText").innerText = data.discount ? `-$${data.discount}` : "$0";
           document.getElementById("finalTotalText").innerText = `$${data.finalTotal}`;
         }
