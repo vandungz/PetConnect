@@ -169,6 +169,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-function goToProductPage() {
-    window.location.href = "./index.html"; // Thay đổi đường dẫn nếu cần
+function goToMenuPage() {
+    window.location.href = "./Menu.html"; // Thay đổi đường dẫn nếu cần
 }
