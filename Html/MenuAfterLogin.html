@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet" href="./Css/Menu.css" /> <!-- ./assets/css/Menu.css -->
 	<link rel="stylesheet" href="./Css/base.css"> <!--./assets/css/base.css-->
+    <link rel="stylesheet" href="./Css/Dropboxdown.css">
 	<link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.min.css"> <!--./assets/icon/fontawesome-free-6.7.2-web/css/all.min.css-->
-
+  <script src="../Javascript/Dropboxdown.js"></script>
   </head>
 <body>
     <div class="header">
@@ -33,13 +34,23 @@
         </ul>
         </div>
         <div class="header-secon-content">
-        <ul class="header-secon-content">
-            <li class="header-secon-content-list"><i class="header-secon-content-list-nofi-icon fa-regular fa-bell" style="color: #777E90; font-size: 20px;
-            "></i></li>
-            
-            <li class="header-secon-content-list"><i class=" fa-regular fa-user" style="color: #777E90; font-size: 20px; "></i></li>
-        </ul>
-        </div>
+            <ul class="header-secon-content">
+                <li class="header-secon-content-list">
+                    <i class="icon-user fa-regular fa-user" style="color: #777E90; font-size: 20px; " onclick="toggleDropdown()"></i>
+                    <div id="userDropdown" class="dropdown-content">
+                        <ul>
+                          <li><a href="#">Chuyến đi</a></li>
+                          <li><a href="#">Danh sách yêu thích</a></li>
+                          <div class="line"></div>
+                          <li><a href="#">Tài khoản</a></li>
+                          <li><a href="#">Thông báo</a></li>
+                          <li><a href="#">Trung tâm trợ giúp</a></li>
+                          <li><a href="#">Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            </div>
         </div>
         <div class="main-content">
             <div class="main-intro">
