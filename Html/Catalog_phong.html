@@ -6,7 +6,10 @@
     <title>Pet Connect</title>
     <link rel="stylesheet" href="./Css/Catalog_phong.css">
     <link rel="stylesheet" href="./Css/base.css">
-    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/vn.js"></script>
 </head>
 <body>
     <div class="header">
@@ -19,8 +22,8 @@
         <ul class="header-fist-content-list">
         <li class="header-fist-content-list--text">Trang chủ</li>
         <li>
-            <a href="" class="header-fist-content-list--text">Dịch vụ</a>
-            <ul class="dropdown">
+            <a href="#" id="services-link" class="header-fist-content-list--text">Dịch vụ</a>
+            <ul class="dropdown" id="services-dropdown">
               <li><a href=""><i class="fa-solid fa-user"></i>Nhận nuôi Pet</a></li>
               <li><a href=""><i class="fa-solid fa-dog"></i>Tìm/Nhận Pet</a></li>
               <li><a href="Catalog_phong.html"><i class="fa-solid fa-house"></i>Pet Hotel</a></li>
@@ -41,13 +44,62 @@
     <div class="container-search">
         <div class="search-bar">
             <div class="search-options">
-                <li><a href="">Where</a><div class="text-description">Search location</div></li>
+                <li class="location-dropdown">
+                    <a href="javascript:void(0)">Where</a>
+                    <input type="text" class="text-search" placeholder="Chọn địa điểm">
+                    <ul class="dropdown-content">
+                        <li><i class="fa-solid fa-tree"></i>Hà Nội</li>
+                        <li><i class="fa-solid fa-bowl-food"></i>Đà Nẵng</li>
+                        <li><i class="fa-solid fa-hotdog"></i>Hồ Chí Minh</li>
+                        <li><i class="fa-solid fa-bone"></i>Huế</li>
+                    </ul>
+                </li>
+				
                 <div class="vertical-line"></div>
-                <li><a href="">Check-in</a><div class="text-description">Add dates</div></li>
+				<li>
+				<div class="container-main-content--date-time-left">
+					<p class="container-main-content--date-time-head">Check-in</p>
+					<div class="container-main-content--date-time-head-content">
+						<input class="container-main-content--date-time-input"
+							type="date" id="checkin" placeholder="Chọn ngày">
+					</div>
+				</div>
+				</li>
+				<div class="vertical-line"></div>
+                <li>
+				<div class="container-main-content--date-time-right">
+					<p class="container-main-content--date-time-head">Check-out</p>
+					<div class="container-main-content--date-time-head-content">
+						<input class="container-main-content--date-time-input"
+							type="date" id="checkout" placeholder="Chọn ngày">
+					</div>
+				</div>
+                </li>
                 <div class="vertical-line"></div>
-                <li><a href="">Check-out</a><div class="text-description">Add dates</div></li>
-                <div class="vertical-line"></div>
-                <li><a href="">Pets</a><div class="text-description">Add pets</div></li>
+				<li class="pets-dropdown">
+                    <a href="javascript:void(0)">Pets</a>
+                    <div class="text-description">Add pets</div>
+                    <div class="pets-dropdown-content">
+                        <div class="pet-type">
+                            <span class="petWeight">Pets nhỏ (0-10kg)</span>
+                            <button class="decrease">-</button>
+                            <span class="pet-count">0</span>
+                            <button class="increase">+</button>
+                        </div>
+                        <div class="pet-type">
+                            <span class="petWeight">Pets vừa (10-20kg)</span>
+                            <button class="decrease">-</button>
+                            <span class="pet-count">0</span>
+                            <button class="increase">+</button>
+                        </div>
+                        <div class="pet-type">
+                            <span class="petWeight">Pets lớn (20kg+)</span>
+                            <button class="decrease">-</button>
+                            <span class="pet-count">0</span>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                </li>
             </div>
             <button type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
 
@@ -105,16 +157,16 @@
 			<div class="slider2">
 				<div class="list2">
 					<div class="item2">
-						<img src="./assets/img/room8.jpg">
-					</div>
-					<div class="item2">
-						<img src="./assets/img/room9.jpg">
-					</div><div class="item2">
-						<img src="./assets/img/room1.jpg">
-					</div><div class="item2">
-						<img src="./assets/img/play3.jpg">
-					</div><div class="item2">
-						<img src="./assets/img/play4.jpg">
+						<img src="./assets/img/room21.jpg">
+									</div>
+									<div class="item2">
+										<img src="./assets/img/room22.jpg">
+									</div><div class="item2">
+										<img src="./assets/img/room23.jpg">
+									</div><div class="item2">
+										<img src="./assets/img/room24.jpg">
+									</div><div class="item2">
+										<img src="./assets/img/play5.jpg">
 					</div>
 	
 				</div>
@@ -273,16 +325,16 @@
 							<div class="slider6">
 								<div class="list6">
 									<div class="item6">
-										<img src="./assets/img/room21.jpg">
+										<img src="./assets/img/room8.jpg">
 									</div>
 									<div class="item6">
-										<img src="./assets/img/room22.jpg">
+										<img src="./assets/img/room9.jpg">
 									</div><div class="item6">
-										<img src="./assets/img/room23.jpg">
+										<img src="./assets/img/room1.jpg">
 									</div><div class="item6">
-										<img src="./assets/img/room24.jpg">
+										<img src="./assets/img/play3.jpg">
 									</div><div class="item6">
-										<img src="./assets/img/play5.jpg">
+										<img src="./assets/img/play4.jpg">
 									</div>
 					
 								</div>
@@ -493,7 +545,7 @@
         <div class="modal">
 			<div class="filter-container">
 			  <header class="title">
-				<h2 class="filter-title">Bộ lọc</h2>
+				<span class="filter-title">Bộ lọc</span>
 			  </header>
 			  <div class="price-range">
 				<label for="price-range">Khoảng giá</label>
@@ -584,31 +636,94 @@
 	modalContainer.addEventListener('click', function(event) {
 	  event.stopPropagation();
 	});
-  </script>
-       
-       <script src="/Javascript/Slider_catalog.js"></script>
 
+	 // Dropdown functionality
+	 const locationDropdown = document.querySelector('.location-dropdown');
+        const dropdownContent = document.querySelector('.dropdown-content');
+
+        locationDropdown.addEventListener('click', function() {
+            dropdownContent.classList.toggle('show');
+        });
+
+        // Close the dropdown if the user clicks outside of it
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.location-dropdown, .location-dropdown *')) {
+                if (dropdownContent.classList.contains('show')) {
+                    dropdownContent.classList.remove('show');
+                }
+            }
+        });
+
+		  // Pets dropdown functionality
+		  const petsDropdown = document.querySelector('.pets-dropdown');
+    const petsDropdownContent = document.querySelector('.pets-dropdown-content');
+
+    petsDropdown.addEventListener('click', function(event) {
+        closeAllDropdowns();
+        petsDropdownContent.classList.toggle('show');
+        event.stopPropagation();
+    });
+
+    // Close the pets dropdown if the user clicks outside of it
+    window.addEventListener('click', function(event) {
+        if (!event.target.matches('.pets-dropdown, .pets-dropdown *')) {
+            if (petsDropdownContent.classList.contains('show')) {
+                petsDropdownContent.classList.remove('show');
+            }
+        }
+    });
+
+    // Increase and decrease pet count
+    const increaseButtons = document.querySelectorAll('.increase');
+    const decreaseButtons = document.querySelectorAll('.decrease');
+    const petCounts = document.querySelectorAll('.pet-count');
+
+    increaseButtons.forEach((button, index) => {
+        button.addEventListener('click', (event) => {
+            petCounts[index].textContent = parseInt(petCounts[index].textContent) + 1;
+            event.stopPropagation(); // Prevent the event from bubbling up to the window
+        });
+    });
+
+    decreaseButtons.forEach((button, index) => {
+        button.addEventListener('click', (event) => {
+            if (parseInt(petCounts[index].textContent) > 0) {
+                petCounts[index].textContent = parseInt(petCounts[index].textContent) - 1;
+            }
+            event.stopPropagation(); // Prevent the event from bubbling up to the window
+        });
+    });
+
+    // Function to close all dropdowns
+    function closeAllDropdowns() {
+        const allDropdowns = document.querySelectorAll('.dropdown-content, .pets-dropdown-content');
+        allDropdowns.forEach(dropdown => {
+            dropdown.classList.remove('show');
+        });
+    }
+		
+  </script>
+    
+       <script src="/Javascript/Slider_catalog.js"></script>
+	   <script src="/Javascript/calendar-search.js"></script>
+	   ...
 	   <script>
-		// Lấy user ID từ URL
-		const params = new URLSearchParams(window.location.search);
-		const userId = params.get("user");
-	
-		if (userId) {
-			// Gọi API backend để lấy thông tin user
-			fetch(`http://127.0.0.1:3000/profile?user=${userId}`, { credentials: "include" })
-				.then(response => response.json())
-				.then(data => {
-					if (data.id) {
-						console.log("Người dùng đã đăng nhập:", data);
-						document.getElementById("user-info").innerText = `Xin chào, ${data.name}`;
-					} else {
-						console.log("Người dùng chưa đăng nhập");
-					}
-				})
-				.catch(error => console.error("Lỗi khi lấy dữ liệu user:", error));
-		} else {
-			console.log("Không tìm thấy user ID trong URL");
-		}
-	</script>
+		 document.addEventListener('DOMContentLoaded', function() {
+		   const servicesLink = document.getElementById('services-link');
+		   const servicesDropdown = document.getElementById('services-dropdown');
+	   
+		   servicesLink.addEventListener('click', function(event) {
+			 event.preventDefault();
+			 servicesDropdown.classList.toggle('active');
+		   });
+	   
+		   document.addEventListener('click', function(event) {
+			 if (!servicesLink.contains(event.target) && !servicesDropdown.contains(event.target)) {
+			   servicesDropdown.classList.remove('active');
+			 }
+		   });
+		 });
+	   </script>
+	   
     </body>
 </html>

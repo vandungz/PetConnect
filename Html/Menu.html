@@ -22,8 +22,8 @@
         <ul class="header-fist-content-list">
           <li><a href="" class="header-fist-content-list--text">Trang chủ</a></li>
           <li>
-            <a href="" class="header-fist-content-list--text">Dịch vụ</a>
-            <ul class="dropdown">
+            <a href="#" id="services-link" class="header-fist-content-list--text">Dịch vụ</a>
+            <ul class="dropdown" id="services-dropdown">
               <li><a href=""><i class="fa-solid fa-user"></i>Nhận nuôi Pet</a></li>
               <li><a href=""><i class="fa-solid fa-dog"></i>Tìm/Nhận Pet</a></li>
               <li><a href="Catalog_phong.html"><i class="fa-solid fa-house"></i>Pet Hotel</a></li>
@@ -314,5 +314,25 @@
                 </div>
             </div>
             </div>
+            ...
+            ...
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                const servicesLink = document.getElementById('services-link');
+                const servicesDropdown = document.getElementById('services-dropdown');
+            
+                servicesLink.addEventListener('click', function(event) {
+                  event.preventDefault();
+                  servicesDropdown.classList.toggle('active');
+                });
+            
+                document.addEventListener('click', function(event) {
+                  if (!servicesLink.contains(event.target) && !servicesDropdown.contains(event.target)) {
+                    servicesDropdown.classList.remove('active');
+                  }
+                });
+              });
+            </script>
+            ...
 </body>
 </html>
