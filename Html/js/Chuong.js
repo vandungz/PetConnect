@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const discountElement = document.getElementById("discount");
     const totalCostElement = document.getElementById("totalCost");
 
-    let petCount = 1,  extraPetFee =10 ;pricePerNight =priceKennel = 21.95; cleaningFee=20;
+    let petCount = 1,  extraPetFee =10 ;pricePerNight =priceKennel = 21; cleaningFee=20;
 
     function getDateValue(input) {
         if (!input || !input.value) return null;
