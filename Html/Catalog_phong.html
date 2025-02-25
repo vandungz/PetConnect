@@ -6,7 +6,7 @@
     <title>Pet Connect</title>
     <link rel="stylesheet" href="./Css/Catalog_phong.css">
     <link rel="stylesheet" href="./Css/base.css">
-    <link rel="stylesheet" href="./assets/icon/fontawesome-free-6.7.2-web/css/all.min.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.min.css">
 </head>
 <body>
     <div class="header">
@@ -586,6 +586,29 @@
 	});
   </script>
        
-       <script src="./Slider_catalog.js"></script>
+       <script src="/Javascript/Slider_catalog.js"></script>
+
+	   <script>
+		// Lấy user ID từ URL
+		const params = new URLSearchParams(window.location.search);
+		const userId = params.get("user");
+	
+		if (userId) {
+			// Gọi API backend để lấy thông tin user
+			fetch(`http://127.0.0.1:3000/profile?user=${userId}`, { credentials: "include" })
+				.then(response => response.json())
+				.then(data => {
+					if (data.id) {
+						console.log("Người dùng đã đăng nhập:", data);
+						document.getElementById("user-info").innerText = `Xin chào, ${data.name}`;
+					} else {
+						console.log("Người dùng chưa đăng nhập");
+					}
+				})
+				.catch(error => console.error("Lỗi khi lấy dữ liệu user:", error));
+		} else {
+			console.log("Không tìm thấy user ID trong URL");
+		}
+	</script>
     </body>
 </html>

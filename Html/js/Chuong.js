@@ -49,11 +49,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnPlus = document.querySelector(".container-main-content--right-prepayment--pet-number-btn-plus");
     const nightDetailElement = document.getElementById("nightDetail");
     const nightPriceElement = document.getElementById("nightPrice");
-    const cleaningFeeElement = document.getElementById("serviceFee");
+    const serviceFeeFeeElement = document.getElementById("serviceFee");
+    const cleaningFeeFeeElement = document.getElementById("cleaningFee")
+    
     const discountElement = document.getElementById("discount");
     const totalCostElement = document.getElementById("totalCost");
 
-    let petCount = 1, baseCleaningFee = 79, extraPetFee = pricePerNight = 79;
+    let petCount = 1,  extraPetFee =10 ;pricePerNight =priceKennel = 21.95; cleaningFee=20;
 
     function getDateValue(input) {
         if (!input || !input.value) return null;
@@ -62,7 +64,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function calculateTotal() {
-        const cleaningFee = baseCleaningFee + (petCount - 1) * extraPetFee;
+        
+        pricePerNight=priceKennel*(petCount);
         const checkinDate = getDateValue(checkinInput);
         const checkoutDate = getDateValue(checkoutInput);
         let nights = 0, discount = 0;
@@ -72,15 +75,17 @@ document.addEventListener("DOMContentLoaded", function () {
             if (nights >= 3) discount = 15;
         }
 
-        const subtotal = nights * cleaningFee;
-        const finalTotal = subtotal + cleaningFee - discount;
+        const subtotal = nights * pricePerNight;
+        const finalTotal = subtotal + cleaningFee + extraPetFee - discount;
 
-        nightDetailElement.innerText = nights > 0 ? `$${cleaningFee} x ${nights} đêm` : "Chưa chọn ngày";
+        nightDetailElement.innerText = nights > 0 ? `$${pricePerNight} x ${nights} đêm` : "Chưa chọn ngày";
         nightPriceElement.innerText = `$${subtotal}`;
-        cleaningFeeElement.innerText = `$${cleaningFee}`;
+        cleaningFeeFeeElement.innerText = `$${cleaningFee}`;
+        serviceFeeFeeElement.innerText = `$${extraPetFee}`;
         discountElement.innerText = discount ? `-$${discount}` : "$0";
         totalCostElement.innerText = `$${finalTotal}`;
     }
+    
 
     function updatePetCount() {
         petCountElement.innerText = `${petCount} THÚ CƯNG`;
@@ -168,7 +173,65 @@ document.addEventListener("DOMContentLoaded", function () {
             closePopup(event.target);
         }
     });
+
+    
+    if (document.getElementById("confirmPayment")) {
+          document.getElementById("confirmPayment").addEventListener("click", function() {
+              // Lấy dữ liệu từ form
+              const checkin = checkinInput.value;
+      const checkout = checkoutInput.value;
+      // Lấy số thú cưng từ innerText (ví dụ "1 THÚ CƯNG")
+      const petCountStr = petCountElement.innerText;
+      const pets = parseInt(petCountStr.split(" ")[0]);
+      
+      // Với nightDetail, nightPrice, discount đã hiển thị dạng chuỗi có ký hiệu "$" và "đêm"
+      // Lấy tổng tiền từ nightPrice (đã là tổng của số đêm * giá mỗi đêm)
+      const nightPriceStr = nightPriceElement.innerText;
+      const subtotal = parseFloat(nightPriceStr.replace("$", "")) || 0;
+      const discountStr = discountElement.innerText;
+      const discountValue = parseFloat(discountStr.replace(/[-$]/g, "")) || 0;
+      // Giả sử finalTotal được tính từ: subtotal + cleaningFee + extraPetFee - discount
+      const finalTotal = subtotal + cleaningFee + extraPetFee - discountValue;
+
+        
+              // Lưu dữ liệu vào localStorage
+              const paymentData = {
+                checkin,
+                checkout,
+                pets,
+                subTotal,
+                discount,
+                finalTotal
+              };
+              localStorage.setItem("paymentData", JSON.stringify(paymentData));
+        
+              // Chuyển hướng sang trang xác nhận thanh toán
+              window.location.href = "Payment2.html";
+            });
+      }
+      else if (document.getElementById("paymentDataDisplay")) {
+        const storedData = localStorage.getItem("paymentData");
+        if (storedData) {
+          const data = JSON.parse(storedData);
+          const checkinDate = new Date(data.checkin);
+          const checkoutDate = new Date(data.checkout);
+          const checkinDay = checkinDate.getDate();
+          const checkoutDay = checkoutDate.getDate();
+          const checkinMonth = checkinDate.getMonth() + 1;
+          const checkoutMonth = checkoutDate.getMonth() + 1;
+          let dateText;
+          if (checkinMonth === checkoutMonth) {
+            dateText = `${checkinDay} - ${checkoutDay} thg ${checkinMonth}`;
+          } else {
+            dateText = `${checkinDay} thg ${checkinMonth} - ${checkoutDay} thg ${checkoutMonth}`;
+          }
+          document.getElementById("bookingDates").innerText = dateText;
+          document.getElementById("subTotalText").innerText = `$${data.subTotal}`;
+          document.getElementById("discountText").innerText = data.discount ? `-$${data.discount}` : "$0";
+          document.getElementById("finalTotalText").innerText = `$${data.finalTotal}`;
+        }
+      }
 });
-function goToProductPage() {
-    window.location.href = "./index.html"; // Thay đổi đường dẫn nếu cần
+function goToMenuPage() {
+    window.location.href = "./Menu.html"; // Thay đổi đường dẫn nếu cần
 }

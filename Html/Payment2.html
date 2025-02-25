@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="./Css/Payment2.css">
     <link rel="stylesheet" href="./Css/base.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.min.css">
+    
 </head>
+
 <body>
+
     <div class="header">
         <div class="header-fist-content">
             <div class="icon-Pet-Connect"> 
@@ -20,7 +23,7 @@
 
     <div></div>
 
-    <div class="container-main-content">
+    <div class="container-main-content" id="paymentDataDisplay">
             <div class="container-main-content--left">
                 <div class="left-container-content">
                     <i class="fa-solid fa-angle-left" style="color: #777E90; font-size: 20px;" onclick="toggleDropdown()"></i>
@@ -34,15 +37,15 @@
                           <span class="label">Ngày</span>
                           <a href="#" class="action">Chỉnh sửa</a>
                         </div>
-                        <span class="value">24-27 thg 3</span>
+                        <span class="value" id="bookingDates">24-27 thg 3</span>
                       </div>
 
                     <div class="info-service">
                         <div class="info">
-                          <span class="label">Thú cưng</span>
+                          <span class="label">Pets</span>
                           <a href="#" class="action">Chỉnh sửa</a>
                         </div>
-                        <span class="value">1 Thú cưng</span>
+                        <span class="value" id="bookingGuests">1 Pet</span>
                       </div>
                 
                     <div class="info-KH-left-line"></div>
@@ -76,10 +79,10 @@
                         <div class="dropdown">
                             <select>
                                 <option disabled selected>Khu vực</option>
-                                <option value="hv">Hòa Vang</option>
-                                <option value="cl">Cẩm Lệ</option>
-                                <option value="hc">Hải Châu</option>
-                                <option value="tk">Thanh Khê</option>
+                                <option value="dn">Đà Nẵng</option>
+                                <option value="hn">Hà Nội</option>
+                                <option value="hcm">Hồ Chí Minh</option>
+                                <option value="ha">Hội An</option>
                                 <option value="lc">Liên Chiểu</option>
                             </select>
                             <i class="fa-solid fa-chevron-down"></i> <!-- Icon mũi tên xuống -->
@@ -102,7 +105,7 @@
                     </div>
                     <button class="button-accept">Xác nhận và thanh toán</button>
                 </div>
-                </div>
+            </div>
                                         
         
                                  
@@ -113,33 +116,36 @@
                                 <img src="./assets/img/room1.jpg" alt="">
                             </div>
                             <div class="info-right">
-                                <span class="image">Groveland</span>
-                                <span class="address">Nguyễn Văn Linh, Đà Nẵng</span>
+                                <span class="image_title">Groveland</span>
+                                <span class="image_address">Nguyễn Văn Linh, Đà Nẵng</span>
                             </div>
                         </div>
-                        <div class="info-KH-left-line"></div>
-                        <div class="price" >
+                        <div class="info-KH-right-line"></div>
+                        <div class="price" id="priceDetail">
                             <h2>Chi tiết giá</h2>
                             <div class="info" id="info">
-                                <span class="price-date">đ316.000 * 4 đêm</span>
-                                <span class="total-price">đ1.264.000</span>
-                            </div>
-                            <div class="info" id="info">
                                 <span>Phí dịch vụ</span>
-                                <span class="price">đ316.000</span>
+                                <span class="price" id="subTotalText"></span>
                             </div>
+
+                            <div class="info" id="info">
+                                <span>Giảm giá</span>
+                                <span id="discountText"></span>
+                              </div>
                         </div>
-                        <div class="info-KH-left-line"></div>
+                        <div class="info-KH-right-line"></div>
                         <div class="totol-money">
                             <div class="info" id="info">
-                                <span>Tổng(VND)</span>
-                                <span>đ1.264.000000</span>
+                                <span>Tổng(USD)</span>
+                                <span id="finalTotalText"></span>
                             </div>
                         </div>
 
                         
             </div>
 
-        </div>
+    </div>
+
+    <script src="js/Chuong.js"></script>
 </body>
 </html>
