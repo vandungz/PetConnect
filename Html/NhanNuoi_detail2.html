@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Css/base.css">
+    <link rel="stylesheet" href="./Css/style.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./Css/Dropboxdown.css">
+    <link rel="stylesheet" href="./Css/NhanNuoi_detail.css">
+    <title>Pet Connect</title>
+    <script src="../Javascript/Dropboxdown.js" defer></script>
+</head>
+<body>
+    <div class="header">
+        <div class="header-fist-content">
+        <div class="icon-Pet-Connect">
+        <img class="icon-Pet-Connect-img" src="./assets/icon/icon-Pet-Connect2.jpg" alt="">
+        <h1 class="icon-Pet-Connect--text">PETCONNECT</h1>
+        </div>
+        <div class="header-fist-content-line-sp"></div>
+        <ul class="header-fist-content-list">
+        <li class="header-fist-content-list--text">Trang chủ</li>
+        <li class="header-fist-content-list--text">Dịch vụ</li>
+        <li class="header-fist-content-list--text">Về chúng tôi</li>
+        </ul>
+        </div>
+        <div class="header-secon-content">
+            <ul class="header-secon-content">
+                <li class="header-secon-content-list">
+                    <i class="icon-user fa-regular fa-user" style="color: #777E90; font-size: 20px; " onclick="toggleDropdown()"></i>
+                    <div id="userDropdown" class="dropdown-content">
+                        <ul>
+                          <li><a href="#">Chuyến đi</a></li>
+                          <li><a href="#">Danh sách yêu thích</a></li>
+                          <div class="line"></div>
+                          <li><a href="./ThongTinChiTietKH.html">Tài khoản</a></li>
+                          <li><a href="#">Thông báo</a></li>
+                          <li><a href="#">Trung tâm trợ giúp</a></li>
+                          <li><a href="#">Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            </div>
+        </div>
+
+        <div class="tiltle">
+            <h1 class="tiltle-text">TÌM THÚ CƯNG</h1>
+        </div>
+        <!-- phân loại -->
+        <ul class="choose-animal">
+            <li class="animal"><a href="#" class="action">Tất cả</a></li>
+            <li class="animal"><a href="#" class="action">Chó</a></li>
+            <li class="animal"><a href="#" class="action">Mèo</a></li>
+            <li class="animal"><a href="#" class="action">Khác</a></li>
+        </ul>
+           <!--  phân loại -->
+
+            <!--filter-->
+        <div class="filter">
+            <div class="choose-filter">
+                <div class="form-group">
+                    <label class="gender-label">Giới tính</label>
+                    <div></div>
+                    <select id="gender" class="form-control">
+                        <option value>Tất cả</option>
+                        <option value="">Đực</option>
+                        <option value="">Cái</option>
+                        <option value="">Chưa biết</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="choose-filter">
+                <div class="form-group">
+                    <label class="old-label">Độ tuổi</label>
+                    <div></div>
+                    <select id="gender" class="form-control">
+                        <option value>Tất cả</option>
+                        <option value="">Chưa trưởng thành</option>
+                        <option value="">Trưởng thành</option>
+                        <option value="">Già</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="choose-filter">
+                <div class="form-group">
+                    <label class="sterilization-label">Triệt sản</label>
+                    <div></div>
+                    <select id="gender" class="form-control">
+                        <option value>Tất cả</option>
+                        <option value="">Có</option>
+                        <option value="">Không</option>
+                        <option value="">Chưa rõ</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="choose-filter">
+                <div class="form-group">
+                    <label class="color-label">Màu</label>
+                    <div></div>
+                    <select id="gender" class="form-control">
+                        <option value>Tất cả</option>
+                        <option value="">Đen</option>
+                        <option value="">Trắng</option>
+                        <option value="">Vàng</option>
+                        <option value="">Đen trắng</option>
+                        <option value="">Trắng vàng</option>
+                        <option value="">Mướp</option>
+                        <option value="">Tam thể</option>
+                        <option value="">Nhị thể</option>
+                        <option value="">Đồi mồi</option>
+                        <option value="">Xám</option>
+                        <option value="">Xiêm</option>
+                        <option value="">Nâu</option>
+                        <option value="">Nâu vàng</option>
+                        <option value="">Đen vàng</option>
+                        <option value="">Trắng xám</option>
+                        <option value="">Trắng nâu</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="choose-filter">
+                <div class="form-group">
+                    <label class="name-label">Tên</label>
+                    <div></div>
+                    <input type="text" class="name" placeholder=" Tìm kiếm theo tên">
+                </div>
+            </div>
+
+            <div class="choose-filter">
+                <div class="form-group">
+                    <button class="search-btn"><i style="color: white;" class="fa-solid fa-magnifying-glass"></i> Tìm kiếm</button>
+                </div>
+            </div>
+
+
+        </div>
+            <!--filter-->
+
+           <!-- các pet cụ thể -->
+        <div class="property-list">
+            <div class="property-card">
+                <div class="item">
+                        <img src="./assets/img/dog10.jpg">
+                </div>
+                <div class="property-details"> 
+                    <div class="property-species">Chó ta </div>
+                    <div class="property-gender">Đực<span>, </span><span class="old">Trưởng thành</span></div>
+                    <div class="property-name">Báo<span>Chưa rõ</span></div>
+                    <div class="button">
+                        <button class="btn">Nhận nuôi</button>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="property-card">
+                <div class="item">
+                        <img src="./assets/img/dog8.jpg">
+                </div>
+                <div class="property-details"> 
+                    <div class="property-species">Pomeranian lai</div>
+                    <div class="property-gender">Cái<span>, </span><span class="old">Trưởng thành</span></div>
+                    <div class="property-name">Vàng<span>Đã tiêm phòng</span></div>
+                    <div class="button">
+                        <button class="btn">Nhận nuôi</button>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="property-card">
+                <div class="item">
+                        <img src="./assets/img/cat7.jpg">
+                </div>
+                <div class="property-details"> 
+                    <div class="property-species">Mèo anh lông ngắn</div>
+                    <div class="property-gender">Đực<span>, </span><span class="old">Chưa trưởng thành</span></div>
+                    <div class="property-name">TMiu<span>Đã tiêm phòng</span></div>
+                    <div class="button">
+                        <button class="btn">Nhận nuôi</button>
+                    </div>
+                </div>
+            </div>  
+            
+            <div class="property-card">
+                <div class="item">
+                        <img src="./assets/img/cat8.jpg">
+                </div>
+                <div class="property-details"> 
+                    <div class="property-species">Mèo ta lai</div>
+                    <div class="property-gender">Đực<span>, </span><span class="old">Chưa trưởng thành</span></div>
+                    <div class="property-name">Heli<span>Đã tiêm phòng</span></div>
+                    <div class="button">
+                        <button class="btn">Nhận nuôi</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="item">
+                        <img src="./assets/img/cat1.jpg">
+                </div>
+                <div class="property-details"> 
+                    <div class="property-species">Border Collie lai</div>
+                    <div class="property-gender">Cái<span>, </span><span class="old">Trưởng thành</span></div>
+                    <div class="property-name">Moon<span>Đã tiêm phòng</span></div>
+                    <div class="button">
+                        <button class="btn">Nhận nuôi</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="item">
+                        <img src="./assets/img/cat5.jpg">
+                </div>
+                <div class="property-details"> 
+                    <div class="property-species">Mèo mướp</div>
+                    <div class="property-gender">Cái<span>, </span><span class="old">Trưởng thành</span></div>
+                    <div class="property-name">Fami<span>Đã tiêm phòng</span></div>
+                    <div class="button">
+                        <button class="btn">Nhận nuôi</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="item">
+                        <img src="./assets/img/cat6.jpg">
+                </div>
+                <div class="property-details"> 
+                    <div class="property-species">Mèo mướp</div>
+                    <div class="property-gender">Đực<span>, </span><span class="old">Trưởng thành</span></div>
+                    <div class="property-name">Pun<span>Đã tiêm phòng</span></div>
+                    <div class="button">
+                        <button class="btn">Nhận nuôi</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="item">
+                        <img src="./assets/img/dog7.jpg">
+                </div>
+                <div class="property-details"> 
+                    <div class="property-species">Chó ta</div>
+                    <div class="property-gender">Đực<span>, </span><span class="old">Trưởng thành</span></div>
+                    <div class="property-name">Ki<span>Đã tiêm phòng</span></div>
+                    <div class="button">
+                        <button class="btn">Nhận nuôi</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="item">
+                        <img src="./assets/img/cat10.jpg">
+                </div>
+                <div class="property-details"> 
+                    <div class="property-species">Mèo mướp</div>
+                    <div class="property-gender">Cái<span>, </span><span class="old">Trưởng thành</span></div>
+                    <div class="property-name">Kem<span>Chưa rõ</span></div>
+                    <div class="button">
+                        <button class="btn">Nhận nuôi</button>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+            <!-- các pet cụ thể -->
+        <div class="show-button">
+            <button class="show-more-button" onclick="window.location.href = './Payment2.html';">Hiển thị thêm</button>
+          </div>
+
+<div class="footer">
+            <h1 class="footer-header">PetConnect</h1>
+            <div class="footer-content">
+            <div class="footer-fist-content">
+                <ul class="footer-fist-content-list">
+                    <li class="footer-content-list-info--head">Liên hệ với chúng tôi</li>
+                    <li class="footer-content-list-info">petconnect@gmail.com</li>
+                    <li class="footer-content-list-info">+84-2345-6789</li>
+                    <li class="footer-content-list-info">123 Nguyễn Văn Linh, Đà Nẵng, Việt Nam</li>
+                    <li class="footer-content-list-info">
+                        <i class="fa-brands fa-square-facebook " style="font-size: 20px; margin-top: 10px; margin-right: 15px;"></i>
+                        <i class="fa-brands fa-line" style="font-size: 20px; margin-top: 10px; margin-right: 15px;"></i>
+                        <i class="fa-brands fa-square-twitter" style="font-size: 20px; margin-top: 10px; margin-right: 15px;"></i>
+                        <i class="fa-brands fa-square-instagram" style="font-size: 20px; margin-top: 10px; margin-right: 15px;"></i>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-sec-content">
+            <ul class="footer-sec-content-list">
+                <li class="footer-content-list-info--head">Dịch vụ</li>
+                    <li class="footer-content-list-info"><a href="">Khách sạn</a></li>
+                    <li class="footer-content-list-info"><a href="">Nhận nuôi thú cưng</a></li>
+                    <li class="footer-content-list-info"><a href="">Tìm thú cưng lạc</a></li>
+                </li>
+            </ul>
+            </div>
+            <div class="footer-thir-content">
+                <ul class="footer-thir-content-list">
+                    <li class="footer-content-list-info--head">Get the app</li>
+                    <li class="footer-content-list-info"><a href=""><img class="footer-content-list-info-img"  src="./assets/icon/AppStore.png" alt=""></a></li>
+                    <li class="footer-content-list-info"><a href=""><img class="footer-content-list-info-img" src="./assets/icon/GGPlay.png" alt=""></a></li>
+                    
+                </li>
+                </ul>
+            </div>
+            
+            
+            </div>
+            <div class="footer-content-bottom">
+                <div class="footer-content-bottom-fist-content">
+                    <i class="fa-solid fa-globe" style="font-size: 17px; margin-right: 5px;"  ></i>
+                    <p class="footer-content-bottom-fist-content-text" style="font-size: 1.4rem; margin-right: 5px; color: var(--text-color);">VietNam</p>
+                    <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-right: 5px; color: var(--text-color);"></i>
+                </div>
+                <div class="footer-content-bottom-secon-content">
+                    <p class="footer-content-bottom-secon-content-text">Copyright © 2025. All rights reserved.</p>
+                </div>
+            </div>
+            </div>
+    
+</body>
+</html>

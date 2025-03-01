@@ -11,6 +11,8 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
+    border-radius: 10px;
+    background-color: hsl(0, 0%, 100%);
 }
 .info-KH-right-panel {
     width: 100%;
@@ -96,10 +98,7 @@ h1 {
     
     
     
-    /* display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    background-color: lawngreen; */
+ 
 }
 .left-panel img {
     width: 250px;

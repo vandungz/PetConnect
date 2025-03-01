@@ -1,0 +1,345 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  
+  .header{
+      padding-left: 160px;
+      padding-right: 160px;
+      height: 93px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      background-color: #fff;
+      z-index: 1000; 
+  }
+  .header-fist-content{
+  width: 570px;
+  height: 52px;
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  
+  }
+  .icon-Pet-Connect{
+  width: 204px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--third-color);
+  border-radius: 40px;
+  }
+  .icon-Pet-Connect-img{
+  
+  border-radius: 2px;
+  border-radius: 50%;
+  width: 53px;
+  height: 53px;
+  
+   
+  
+  }
+  .icon-Pet-Connect--text{
+  font-size: 1.6rem;
+  color: var(--black-color);
+  font-weight: 600;
+  }
+  
+  .header-fist-content-line-sp {
+    width: 2px;
+    height: 40px;
+    background-color: var(--third-color);
+    margin-left: 32px;
+    margin-top: 5px;
+  }
+  
+  .header-fist-content-line-sp ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .header-fist-content-line-sp li {
+    position: relative; 
+  }
+  
+  .dropdown {
+    display: none;
+    position: absolute; 
+    background-color: #fff; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 20px;
+  }
+  
+  .dropdown.active {
+    display: block;
+  }
+
+  
+  
+  .header-fist-content-list {
+    display: flex;
+    align-items: center;
+  
+  }
+  
+  .dropdown li {
+    margin: 10px; 
+    padding-top:10px; 
+    padding-bottom: 10px;
+  }
+  
+  .dropdown a {
+    color: #333; 
+    font-size: 1.6rem;
+    padding:10px 10px;
+  }
+  .dropdown li:hover {
+    background-color: var(--third-color);
+   
+  }
+  .dropdown i{
+    margin-right: 10px;
+  }
+  .header-fist-content-list--text {
+    margin-left: 32px;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  
+  .header-secon-content{
+  width: 116px;
+  height: 44px;
+  margin-top: 5px;
+  
+  
+  
+  }
+  .header-secon-content{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  .header-secon-content--icon{
+  width: 44px;
+  height: 44px;
+  font-size: 22px;
+  }
+
+  .tiltle{
+    display: flex;
+    justify-content: center;
+    padding-top: 70px;
+    padding-bottom: 50px;
+    font-size: 2.2rem;
+    font-family: sans-serif;
+  }
+
+  .choose-animal{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+    gap: 30px;
+    font-weight: 550;
+  }
+  .choose-animal li{
+    cursor: pointer;
+    padding: 12px 20px;
+    background-color: #fff;
+    border-radius: 30px;
+    border: 1px solid #dddddd;
+  }
+  .choose-animal li a{
+    color: var(--black-color);
+    font-weight: 600;
+    font-size: 2rem;
+  }
+  .choose-animal li:hover{
+    background-color: var(--primary-color);
+    transform: scale(1.1);
+    a{
+      color: white;
+    }
+  }
+
+  .filter{
+    display: grid;
+    grid-gap: 15px 0px;
+    grid-template-columns: repeat(3, 1fr); 
+    padding: 10px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 100px;
+    margin-bottom: 40px;
+  }
+  .choose-filter{
+    border-radius: 10px;
+    display: inline-block;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+  .choose-filter .form-group {
+    width: 400px;
+    label{
+      font-family: sans-serif;
+      font-size: 1.6rem;
+      color: var(--text-color);
+      margin-top: 10px;
+      display: inline-block;
+      margin-bottom: 15px;
+      cursor: default;
+    }
+    select{
+      width: 400px;
+      height: 45px;
+      border-radius: 5px;
+    }
+    input{
+      width: 400px;
+      height: 45px;
+      border-radius: 5px;
+    }
+    button{
+      width: 35%;
+      height: 45px;
+      justify-items: center;
+      align-items: center;
+      margin-top: 40px;
+      border-radius: 30px;
+      background: #0096c7;
+      border: 1px solid #0096c7;
+      color: white;
+    }
+  }
+  
+  .property-list {
+    display: grid;
+    grid-gap: 50px;
+    grid-template-columns: repeat(3, 1fr); 
+    padding: 50px 100px;
+  }
+  
+  .property-card {
+    border-radius: 10px;
+    overflow: hidden;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    margin: 10px 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  
+  }
+  
+  .property-card:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+  }
+  .item{
+    width: 100%;
+    height: 320px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    
+    }
+  
+    .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }  
+  .property-details {
+    padding: 15px 0px;
+    font-size: 15px;
+    width: 100%;
+  }
+  
+  .property-name {
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    display: flex;
+    font-family: sans-serif;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    span{
+      background-color: #f5f5f5;
+      padding: 5px;
+      border-radius: 10px;
+      font-size: 1.4rem;
+      font-weight: normal;
+      margin-left: 210px;
+      color: var(--black-color);
+    }
+  }
+
+  
+  .property-species {
+    font-weight: bold;
+    font-size: 1.8rem;
+    font-family: sans-serif;
+    color: var(--black-color);
+    margin-bottom: 10px;
+  }
+  
+  .property-gender {
+    color: var(--text-color);
+    margin-bottom: 10px;
+  }
+  
+  .property-card .button .btn{
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px; 
+    font-size: 1.5rem; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .property-card .button .btn:hover{
+    background-color: var(--secondary-color);
+  }
+
+  .show-button {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+.show-more-button{
+    background-color:var(--primary-color);
+    color: white;
+    font-weight: bold;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px; 
+    font-size: 1.5rem; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+}
+.show-more-button:hover{
+    background-color: var(--secondary-color);
+}
