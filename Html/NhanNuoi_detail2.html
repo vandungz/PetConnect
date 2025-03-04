@@ -50,7 +50,7 @@
         </div>
         <!-- phân loại -->
         <ul class="choose-animal">
-            <li class="animal"><a href="#" class="action">Tất cả</a></li>
+            <li class="animal"><a href="#" class="action active">Tất cả</a></li>
             <li class="animal"><a href="#" class="action">Chó</a></li>
             <li class="animal"><a href="#" class="action">Mèo</a></li>
             <li class="animal"><a href="#" class="action">Khác</a></li>
@@ -138,12 +138,11 @@
                 </div>
             </div>
 
-
         </div>
             <!--filter-->
 
            <!-- các pet cụ thể -->
-        <div class="property-list">
+           <div class="property-list">
             <div class="property-card">
                 <div class="item">
                         <img src="./assets/img/dog10.jpg">
@@ -179,7 +178,7 @@
                 <div class="property-details"> 
                     <div class="property-species">Mèo anh lông ngắn</div>
                     <div class="property-gender">Đực<span>, </span><span class="old">Chưa trưởng thành</span></div>
-                    <div class="property-name">TMiu<span>Đã tiêm phòng</span></div>
+                    <div class="property-name">Milo<span>Đã tiêm phòng</span></div>
                     <div class="button">
                         <button class="btn">Nhận nuôi</button>
                     </div>
@@ -249,7 +248,7 @@
                 <div class="property-details"> 
                     <div class="property-species">Chó ta</div>
                     <div class="property-gender">Đực<span>, </span><span class="old">Trưởng thành</span></div>
-                    <div class="property-name">Ki<span>Đã tiêm phòng</span></div>
+                    <div class="property-name">Kin<span>Chưa tiêm phòng</span></div>
                     <div class="button">
                         <button class="btn">Nhận nuôi</button>
                     </div>
@@ -271,9 +270,10 @@
             </div>
 
             </div>
+
             <!-- các pet cụ thể -->
         <div class="show-button">
-            <button class="show-more-button" onclick="window.location.href = './Payment2.html';">Hiển thị thêm</button>
+            <button class="show-more-button" onclick="window.location.href = './NhanNuoi_detail2.html';">Hiển thị thêm</button>
           </div>
 
 <div class="footer">
@@ -326,5 +326,72 @@
             </div>
             </div>
     
+<!------------------------------------------------------>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+  // Lấy tất cả các thẻ <a> trong danh sách loài
+  const animalLinks = document.querySelectorAll('.choose-animal .animal a');
+
+  animalLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault(); // Ngăn chặn hành vi mặc định của link
+
+      // Loại bỏ class active khỏi tất cả các link
+      animalLinks.forEach(l => l.classList.remove('active'));
+      // Thêm class active vào link vừa click
+      this.classList.add('active');
+
+      // Lấy giá trị loài được chọn (chuyển về chữ thường và loại bỏ khoảng trắng)
+      const selectedSpecies = this.textContent.trim().toLowerCase();
+
+      // Lấy tất cả các card
+      const petCards = document.querySelectorAll('.property-card');
+
+      petCards.forEach(card => {
+        // Tìm phần hiển thị loài trong card (có class .property-species)
+        const speciesElem = card.querySelector('.property-species');
+        if (speciesElem) {
+          // Lấy text hiển thị của loài trong card
+          const cardSpecies = speciesElem.textContent.trim().toLowerCase();
+
+          // Nếu chọn "tất cả" thì hiển thị tất cả
+          if (selectedSpecies === 'tất cả') {
+            card.style.display = '';
+          }
+          // Nếu chọn "chó": kiểm tra nếu text có chứa "chó"
+          else if (selectedSpecies === 'chó') {
+            if (cardSpecies.includes('chó')) {
+              card.style.display = '';
+            } else {
+              card.style.display = 'none';
+            }
+          }
+          // Nếu chọn "mèo": kiểm tra nếu text có chứa "mèo"
+          else if (selectedSpecies === 'mèo') {
+            if (cardSpecies.includes('mèo')) {
+              card.style.display = '';
+            } else {
+              card.style.display = 'none';
+            }
+          }
+          // Nếu chọn "khác": hiển thị card nếu không chứa "chó" và không chứa "mèo"
+          else if (selectedSpecies === 'khác') {
+            if (!cardSpecies.includes('chó') && !cardSpecies.includes('mèo')) {
+              card.style.display = '';
+            } else {
+              card.style.display = 'none';
+            }
+          }
+        }
+      });
+    });
+  });
+});
+
+</script>
+<!------------------------------------------------------>
+
 </body>
 </html>
+
+

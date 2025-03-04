@@ -361,7 +361,8 @@ font-size: 15px;
     align-items: center;
     padding: 5px;
   }
-input#checkin.container-main-content--date-time-input.flatpickr-input,input#checkout.container-main-content--date-time-input.flatpickr-input{
+input#checkin.container-main-content--date-time-input.flatpickr-input,
+input#checkout.container-main-content--date-time-input.flatpickr-input{
   
     display: flex;
     justify-content: center;
@@ -564,6 +565,8 @@ input#checkin.container-main-content--date-time-input.flatpickr-input,input#chec
     font-weight: bold;
     margin-bottom: 10px;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   
   .property-address {
@@ -679,17 +682,20 @@ input#checkin.container-main-content--date-time-input.flatpickr-input,input#chec
     width: 0 !important;
     display: none;
 }
-.filter-container{
-  background-color: #fff;
-  padding: 20px;
+.filter-container {
+  background-color: var(--white-color);
+  width: 570px;
+  max-height: 80vh;  /* Đảm bảo không vượt quá màn hình */
+  overflow-y: auto;  /* Thêm thuộc tính này để cuộn theo chiều dọc */
+  display: flex;
+  flex-direction: column;
   border-radius: 38px;
-  width: 80%;
-  max-width: 600px;
-  max-height: 80%;
-  overflow-y: auto;
-  position: relative;
   animation: modalFadeIn ease 0.3s;
-  margin: 0; 
+  padding-top: 20px;
+  padding-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0; /* Đặt padding về 0 */
+  margin: 0;
 }
 @keyframes modalFadeIn {
     from{
@@ -703,35 +709,42 @@ input#checkin.container-main-content--date-time-input.flatpickr-input,input#chec
     
 }
 
-.title header{
-
+.filter-title{
   width: 100%;
-  height: 30px;
-  padding: 30px;
-  background-color: var(--white-color);
-}
-.filter-container .title {
+  padding-top: 20px;
+  padding-bottom: 20px;
   position: sticky;
   top: 0;
   background-color: white;
-  padding: 10px;
   border-bottom: 1px solid #ddd;
   z-index: 10;
   margin: 0; 
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center; 
+  
  }
-
+ .filter-title i{
+  font-size: 25px;
+  float: left;
+  cursor: pointer;  
+  padding-left: 50px;
+  padding-top: 6px;
+ }
+.filter-title .title{
+  font-weight: bold;
+  font-size: 25px;
+  padding: 10px;
+  padding-right: 90px;
+  justify-content: center;
+  display: flex;
+ }
 .ver-line{
-    border-bottom: 2px solid #ccc;
-    width: 475px;
-    height: 25px;
-    margin: 0 30px; 
+  border-bottom: 2px solid #ccc;
+  width: 475px;
+  height: 25px;
+  margin: 30px 40px; 
 }
 .price-range {
     margin-bottom: 20px;
-    padding-top: 20px;
+    padding-top: 30px;
     padding-left: 40px;
     padding-right: 40px;
     font-size: 20px;
@@ -747,17 +760,17 @@ input#checkin.container-main-content--date-time-input.flatpickr-input,input#chec
 }
 .price{
     display: flex;
+    justify-content: space-between;
 }
 .minprice {
     padding: 6px 10px;
-    margin-left: 50px;
-    margin-right: 290px;
     border: 1px solid #ccc;
     background: #fff; 
     border-radius: 20px;
     box-sizing: border-box;
     text-align: center;
     width: 70px;
+    margin-left: 50px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); 
 }
 .maxprice{
@@ -771,18 +784,17 @@ input#checkin.container-main-content--date-time-input.flatpickr-input,input#chec
     width: 75px;
     display: flex;
     flex-wrap: wrap; 
-    margin-right: 10px;
+    margin-right: 50px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 .sliderPrice {
-    width: 80%;
-    margin-left: 45px;
-    margin-top: 10px;
+    width: 82%;
+    margin-left: 50px;
+    margin-top: 30px;
 }
 
 .type-selection h3 {
     margin-bottom: 20px;
-    padding-top: 20px;
     padding-left: 40px;
     padding-right: 40px;
     font-size: 20px;
@@ -803,7 +815,6 @@ input#checkin.container-main-content--date-time-input.flatpickr-input,input#chec
 }
 .option {
     padding: 10px;
-    margin-right: 10px;
     border: none;
     cursor: pointer; 
     background-color: transparent; 
@@ -820,7 +831,6 @@ input#checkin.container-main-content--date-time-input.flatpickr-input,input#chec
 }
 .filter-section h3{
     margin-bottom: 20px;
-    padding-top: 20px;
     padding-left: 40px;
     padding-right: 40px;
     font-size: 20px;
@@ -880,14 +890,13 @@ border-color: black;
 }
 
 .action-buttons-container{
-    width: 550px;
+    width: 100%;
     height: 81px;
     margin-top: 20px;
-    margin-bottom: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
     bottom: 0;
-    
+    border-top: 1px solid #ddd;
 }
 .action-buttons-container,
 .filter-title{
@@ -915,20 +924,11 @@ border-color: black;
 .apply-btn {
     background-color: var(--primary-color);
     color: white;
-    margin-left: 210px;
+    margin-left: 250px;
 }
 
 .apply-btn:hover {
     background-color:var(--secondary-color); 
 }
 
-@keyframes filterFaceIn {
-    from{
-        opacity: 0;
-       transform: translateY(-140px);
-    }to{
-        opacity: 1;
-        transform: translateY(0);
 
-    }
-}

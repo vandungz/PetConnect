@@ -11,31 +11,31 @@
     <div class="container">
         <!-- left -->
         <div class="frm_dangNhap">
-            <form action="" class="form_dangNhap">
+            <form class="form_login">
                 <h1 class="title_dangNhap">CHÀO MỪNG BẠN</h1>
                 <h2 class="sub-title_dangNhap">Điền tài khoản của bạn để truy cập PetConnect</h2>
+            
                 <!-- field -->
                 <div class="field">
-                    <label class="label_dangNhap" for="">Tên đăng nhập</label>
-                    <input class="input_dangNhap" type="email" name="" id="" placeholder="Nhập tên đăng nhập của bạn">
+                    <label class="label_dangNhap" for="username">Tên đăng nhập</label>
+                    <input class="input_dangNhap" type="text" id="username" placeholder="Nhập tên đăng nhập của bạn" required>
                 </div>
+            
                 <!-- field -->
                 <div class="field field-password">
                     <div class="password-container">
-                        <label class="label_dangNhap" for="">Mật khẩu</label>
-                        <a href="./quenMatKhau.html" class="forgot_pass">quên mật khẩu</a>
+                        <label class="label_dangNhap" for="password">Mật khẩu</label>
+                        <a href="./quenMatKhau.html" class="forgot_pass">Quên mật khẩu?</a>
                     </div>
-                    <input class="input_dangNhap" type="password" name="" id="" placeholder="Nhập mật khẩu của bạn">
+                    <input class="input_dangNhap" type="password" id="password" placeholder="Nhập mật khẩu của bạn" required>
                 </div>
-                
-
+            
                 <div class="remember">
-                    <input type="checkbox" name="" id="checkbox_remember">
+                    <input type="checkbox" id="checkbox_remember">
                     <label for="checkbox_remember">Lưu tài khoản trong 30 ngày</label>
                 </div>
-                <a href="./verify.html" class="btn_dangNhap">
-                    Đăng Nhập
-                </a>
+            
+                <button type="submit" class="btn_dangNhap">Đăng Nhập</button>
                 <div class="seperate">
                     <div class="line"></div>
                     <div class="text">Hoặc</div>
@@ -80,5 +80,6 @@
             window.location.href = "http://127.0.0.1:3000/auth/google"; // Điều hướng đến server backend
         }
     </script>
+    <script src="./js/login.js"></script>
 </body>
 </html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Css/base.css">
+    <link rel="stylesheet" href="./Css/pet_details.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.css">
+    <link rel="stylesheet" href="./Css/Chuồng.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-fist-content" >
+            <div class="icon-Pet-Connect  " onclick="goToMenuPage()">
+                <div href="./index.html"><img class="icon-Pet-Connect-img" src="./assets/icon/icon-Pet-Connect2.jpg"
+                        alt=""></div>
+
+                <h1 class="icon-Pet-Connect--text">PETCONNECT</h1>
+            </div>
+            <div class="header-fist-content-line-sp"></div>
+            <ul class="header-fist-content-list">
+                <li class="header-fist-content-list--text" onclick="goToMenuPage()">Trang chủ</li>
+                <li class="header-fist-content-list--text">Dịch vụ</li>
+                <li class="header-fist-content-list--text">Về chúng tôi</li>
+            </ul>
+        </div>
+        <div class="header-secon-content">
+            <ul class="header-secon-content">
+                <svg class="header-secon-content-list-nofi-icon" width="40" height="42" viewBox="0 0 40 42" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M14.4478 17.9694C14.7622 15.1403 17.1535 13 20 13V13C22.8465 13 25.2378 15.1403 25.5522 17.9694L25.804 20.2356C25.8072 20.2645 25.8088 20.279 25.8104 20.2933C25.9394 21.4169 26.3051 22.5005 26.8836 23.4725C26.8909 23.4849 26.8984 23.4973 26.9133 23.5222L27.4914 24.4856C28.0159 25.3599 28.2782 25.797 28.2216 26.1559C28.1839 26.3946 28.061 26.6117 27.8757 26.7668C27.5971 27 27.0873 27 26.0678 27H13.9322C12.9127 27 12.4029 27 12.1243 26.7668C11.939 26.6117 11.8161 26.3946 11.7784 26.1559C11.7218 25.797 11.9841 25.3599 12.5086 24.4856L13.0867 23.5222C13.1016 23.4973 13.1091 23.4849 13.1164 23.4725C13.6949 22.5005 14.0606 21.4169 14.1896 20.2933C14.1912 20.279 14.1928 20.2645 14.196 20.2356L14.4478 17.9694Z"
+                        stroke="#777E90" stroke-width="2" />
+                    <path
+                        d="M16 27C16 27.5253 16.1035 28.0454 16.3045 28.5307C16.5055 29.016 16.8001 29.457 17.1716 29.8284C17.543 30.1999 17.984 30.4945 18.4693 30.6955C18.9546 30.8965 19.4747 31 20 31C20.5253 31 21.0454 30.8965 21.5307 30.6955C22.016 30.4945 22.457 30.1999 22.8284 29.8284C23.1999 29.457 23.4945 29.016 23.6955 28.5307C23.8965 28.0454 24 27.5253 24 27"
+                        stroke="#777E90" stroke-width="2" stroke-linecap="round" />
+                    <rect x="18.5" y="0.5" width="19" height="19" rx="9.5" fill="#057AB7" />
+                    <rect x="18.5" y="0.5" width="19" height="19" rx="9.5" stroke="#057AB7" />
+                    <path
+                        d="M24.7756 14V12.858L27.8054 9.88778C28.0952 9.59517 28.3366 9.33523 28.5298 9.10795C28.723 8.88068 28.8679 8.66051 28.9645 8.44744C29.0611 8.23437 29.1094 8.0071 29.1094 7.76562C29.1094 7.49006 29.0469 7.25426 28.9219 7.05824C28.7969 6.85938 28.625 6.70597 28.4062 6.59801C28.1875 6.49006 27.9389 6.43608 27.6605 6.43608C27.3736 6.43608 27.1222 6.49574 26.9062 6.61506C26.6903 6.73153 26.5227 6.89773 26.4034 7.11364C26.2869 7.32955 26.2287 7.58665 26.2287 7.88494H24.7244C24.7244 7.33097 24.8509 6.84943 25.1037 6.44034C25.3565 6.03125 25.7045 5.71449 26.1477 5.49006C26.5938 5.26562 27.1051 5.15341 27.6818 5.15341C28.267 5.15341 28.7813 5.26278 29.2244 5.48153C29.6676 5.70028 30.0114 6 30.2557 6.38068C30.5028 6.76136 30.6264 7.19602 30.6264 7.68466C30.6264 8.01136 30.5639 8.33239 30.4389 8.64773C30.3139 8.96307 30.0938 9.3125 29.7784 9.69602C29.4659 10.0795 29.027 10.544 28.4616 11.0895L26.9574 12.6193V12.679H30.7585V14H24.7756Z"
+                        fill="white" />
+                </svg>
+                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M22 23C18.134 23 15 26.134 15 30V32C15 32.5523 14.5523 33 14 33C13.4477 33 13 32.5523 13 32V30C13 25.0294 17.0294 21 22 21C26.9706 21 31 25.0294 31 30V32C31 32.5523 30.5523 33 30 33C29.4477 33 29 32.5523 29 32V30C29 26.134 25.866 23 22 23Z"
+                        fill="#777E91" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M22 21C24.2091 21 26 19.2091 26 17C26 14.7909 24.2091 13 22 13C19.7909 13 18 14.7909 18 17C18 19.2091 19.7909 21 22 21ZM22 23C25.3137 23 28 20.3137 28 17C28 13.6863 25.3137 11 22 11C18.6863 11 16 13.6863 16 17C16 20.3137 18.6863 23 22 23Z"
+                        fill="#777E91" />
+                </svg>
+                
+
+
+            </ul>
+        </div>
+    </div>
+
+    <!-- Body -->
+    <div class="container">
+        <div id="img" class="container-img">
+            <div class="container-img--main">
+                <img src="./assets/img/room10.jpg" alt="" class="container-img--main-content">
+                <div class="overlay"></div>
+            </div>
+            <div class="container-img--sup">
+                <div class="container-img--sup-over-lay">
+                    <img src="./assets/img/room12.jpg" alt="" class="container-img--sup-content">
+                    <div class="overlay"></div>
+                </div>
+
+                <div class="container-img--sup-over-lay">
+                    <img src="./assets/img/play2.jpg" alt="" class="container-img--sup-content">
+                    <div class="overlay"></div>
+                </div>
+            </div>
+        </div>
+        <div class="container-main-content">
+            <div class="container-main-content--left">
+                <div class="container-main-content--left-info">
+                    <h class="container-main-content--left-info-head">Tuyết</h>
+                    <div class="container-main-content--left-info-content">
+                        <p class="container-main-content--left-info-content-name">Chưa trưởng thành • Chihuahua</p>
+                        <p class="container-main-content--left-info-content-number-of-cages">Đã tiêm phòng</p>
+                        </p>
+                    </div>
+                <div class="container-main-content--left-line"></div>
+                <div class="container-main-content--left-description">
+                    <h class="container-main-content--left-description-header">Tìm hiểu về thú cưng</h>
+                    <p class="container-main-content--left-description-content">Bé bị tai nạn ngoài đường không ai cứu, bác sĩ đi đón về.
+                </div>
+                <div class="container-main-content--left-line"></div>
+                <div class="container-main-content--left-utilities">
+                    <h class="container-main-content--left-utilities-header">Thông tin</h>
+                    <ul class="container-main-content--left-utilities-list">
+                        <div class="container-main-content--left-utilities-list-left-content">
+                            <li class="container-main-content--left-utilities-list-content">
+                                <i class="content-icon check-icon fa-solid fa-circle-check"></i>
+                                <p class="container-main-content--left-utilities-list-content-text content-text">Triệt sản</p>
+                            </li>
+                            <li class="container-main-content--left-utilities-list-content">
+                                <div class="container-main-content--left-utilities-list-content-icon">
+                                    <i class="content-icon question-icon fa-solid fa-circle-question"></i>
+                                </div>
+                                <p class="container-main-content--left-utilities-list-content-text">Tiêm dại</p>
+                            </li>
+                            <li class="container-main-content--left-utilities-list-content">
+                                <div class="container-main-content--left-utilities-list-content-icon">
+                                    <i class="content-icon check-icon fa-solid fa-circle-check"></i>
+                                </div>
+                                <p class="container-main-content--left-utilities-list-content-text">Tiêm phòng bệnh</p>
+                            </li>
+                            <li class="container-main-content--left-utilities-list-content">
+                                <div class="container-main-content--left-utilities-list-content-icon">
+                                    <i class="content-icon check-icon fa-solid fa-circle-check"></i>
+                                </div>
+                                <p class="container-main-content--left-utilities-list-content-text">Đi vệ sinh đúng chỗ</p>
+                            </li>
+                        </div>
+                        <div class="container-main-content--left-utilities-list-content-right-content">
+                            <li class="container-main-content--left-utilities-list-content">
+                                <div class="container-main-content--left-utilities-list-content-icon">
+                                    <i class="content-icon check-icon fa-solid fa-circle-check"></i>
+                                </div>
+                                <p class="container-main-content--left-utilities-list-content-text">Thân thiện với người</p>
+                            </li>
+                            <li class="container-main-content--left-utilities-list-content">
+                                <div class="container-main-content--left-utilities-list-content-icon">
+                                    <i class="content-icon check-icon fa-solid fa-circle-check"></i>
+                                </div>
+                                <p class="container-main-content--left-utilities-list-content-text">Thân thiện với chó
+                                </p>
+                            </li>
+                            <li class="container-main-content--left-utilities-list-content">
+                                <div class="container-main-content--left-utilities-list-content-icon">
+                                    <i class="content-icon question-icon fa-solid fa-circle-question"></i>
+                                </div>
+                                <p class="container-main-content--left-utilities-list-content-text">Thân thiện với mèo</p>
+                            </li>
+                            <li class="container-main-content--left-utilities-list-content">
+                                <div class="container-main-content--left-utilities-list-content-icon">
+                                    <i class="content-icon question-icon fa-solid fa-circle-question"></i>
+                                </div>
+                                <p class="container-main-content--left-utilities-list-content-text">Chế độ ăn riêng</p>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+                </div>
+                
+                <div class="container-main-content--left-line"></div>
+                <div class="container-main-content--left-description">
+                    <h class="container-main-content--left-description-header">Điều kiện nhận nuôi</h>
+                    <p class="container-main-content--left-description-content condition-text">
+                        Trước khi quyết định nhận nuôi bé chó hay mèo nào, bạn hãy tự hỏi bản thân rằng mình đã sẵn sàng để 
+                        chịu trách nhiệm cả đời cho bé chưa, cả về tài chính, nơi ở cũng như tinh thần. 
+                        Việc nhận nuôi cần được sự đồng thuận lớn từ bản thân bạn cũng như gia đình và những người liên 
+                        quan. Xin cân nhắc kỹ trước khi liên hệ với PetConnect về việc nhận nuôi.
+                    </p>
+
+                    <ul class="container-main-content--left-utilities-list">
+                        <div class="container-main-content--left-utilities-list-left-content">
+                            <li class="container-main-content--left-utilities-list-content">
+                                <i class="content-icon fa-solid fa-paw"></i>
+                                <p class="container-main-content--left-utilities-list-content-text content-text">Tài chính tự chủ và ổn định</p>
+                            </li>
+                            <li class="container-main-content--left-utilities-list-content">
+                                <div class="container-main-content--left-utilities-list-content-icon">
+                                    <i class="content-icon fa-solid fa-paw"></i>
+                                </div>
+                                <p class="container-main-content--left-utilities-list-content-text">Chỗ ở cố định, ưu tiên ở các thành phố lớn</p>
+                            </li>
+                            <li class="container-main-content--left-utilities-list-content">
+                                <div class="container-main-content--left-utilities-list-content-icon">
+                                    <i class="content-icon fa-solid fa-paw"></i>
+                                </div>
+                                <p class="container-main-content--left-utilities-list-content-text">Cam kết tiêm phòng và triệt sản</p>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+
+            </div>
+
+
+            <div class="container-main-content--right-container">
+                <div class="container-main-content--right">
+                    <div class="container-img--right">
+                        <img src="./assets/img/room10.jpg" alt="" class="container-img--right-content">
+                    </div>
+                    <div class="container-main-content--right-prepayment">
+                        <div class="container-main-content--right-prepayment-infos">
+                            <h class="container-main-content--left-info-head">Tuyết</h>
+                            <p class="container-main-content--left-info-content-name">Chưa trưởng thành • Chihuahua</p>
+                            <p class="container-main-content--left-info-content-number-of-cages">Đã tiêm phòng</p>
+                        </div>
+
+                        <!-- <a href="./Payment2.html" class="container-main-content--right-prepayment-button">Đặt phòng</a> -->
+                        <button id="bookRoomBtn" class="container-main-content--right-prepayment-button" onclick="window.location.href = './Payment2.html';">Đặt phòng</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        
+        
+        <div class="container-main-content--left-line"></div>
+        <div class="container-content--bottom">
+            <h class="container-content--bottom-header">Nơi đón bé</h>
+            <div class="container-content--bottom-location">Nguyễn Văn Linh, Đà Nẵng</div>
+            <div class="container-content--bottom-map">
+                
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d834.9813193861813!2d108.21128155166568!3d16.060051227426026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219b5d1b05c31%3A0x35f47fae71e82cca!2zMTU1QyDEkC4gTmd1eeG7hW4gVsSDbiBMaW5oLCBWxKluaCBUcnVuZywgVGhhbmggS2jDqiwgxJDDoCBO4bq1bmcgNTUwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1740452492149!5m2!1svi!2s" width="600" height="450"
+                style="border:0;width: 100%; border: 1px solid var(--secondary-color);border-radius:4px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <h1 class="footer-header">PetConnect</h1>
+        <div class="footer-content">
+            <div class="footer-fist-content">
+                <ul class="footer-fist-content-list">
+                    <li class="footer-content-list-info--head">Liên hệ với chúng tôi</li>
+                    <li class="footer-content-list-info">petconnect@gmail.com</li>
+                    <li class="footer-content-list-info">+84-2345-6789</li>
+                    <li class="footer-content-list-info">123 Nguyễn Văn Linh, Đà Nẵng, Việt Nam</li>
+                    <li class="footer-content-list-info">
+                        <i class="fa-brands fa-square-facebook "
+                            style="font-size: 20px; margin-top: 10px; margin-right: 15px;"></i>
+                        <i class="fa-brands fa-line" style="font-size: 20px; margin-top: 10px; margin-right: 15px;"></i>
+                        <i class="fa-brands fa-square-twitter"
+                            style="font-size: 20px; margin-top: 10px; margin-right: 15px;"></i>
+                        <i class="fa-brands fa-square-instagram"
+                            style="font-size: 20px; margin-top: 10px; margin-right: 15px;"></i>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-sec-content">
+                <ul class="footer-sec-content-list">
+                    <li class="footer-content-list-info--head">Dịch vụ</li>
+                    <li class="footer-content-list-info " onclick="goToHotelPage()" style="cursor: pointer ;"><div>Khách sạn</div></li>
+                    <li class="footer-content-list-info"><a href="">Nhận nuôi thú cưng</a></li>
+                    <li class="footer-content-list-info"><a href="">Tìm thú cưng lạc</a></li>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-thir-content">
+                <ul class="footer-thir-content-list">
+                    <li class="footer-content-list-info--head">Get the app</li>
+                    <li class="footer-content-list-info"><a href=""><img class="footer-content-list-info-img"
+                                src="./assets/icon/AppStore.png" alt=""></a></li>
+                    <li class="footer-content-list-info"><a href=""><img class="footer-content-list-info-img"
+                                src="./assets/icon/GGPlay.png" alt=""></a></li>
+
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+        <div class="footer-content-bottom">
+            <div class="footer-content-bottom-fist-content">
+                <i class="fa-solid fa-globe" style="font-size: 17px; margin-right: 10px;"></i>
+                <p class="footer-content-bottom-fist-content-text"
+                    style="font-size: 1.4rem; margin-right: 5px; color: var(--text-color);">VietNam</p>
+                <i class="fa-solid fa-chevron-down"
+                    style="font-size: 10px; margin-right: 5px; color: var(--text-color);"></i>
+            </div>
+            <div class="footer-content-bottom-secon-content">
+                <p class="footer-content-bottom-secon-content-text">Copyright © 2025. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/pet_details.js"></script>
+</html>

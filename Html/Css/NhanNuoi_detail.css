@@ -288,6 +288,8 @@
       border-radius: 10px;
       font-size: 1.4rem;
       font-weight: normal;
+      width: 120px;
+      text-align: center;
       margin-left: 210px;
       color: var(--black-color);
     }

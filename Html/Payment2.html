@@ -50,7 +50,7 @@
                           <span class="label">Pets</span>
                           <a href="#" class="action">Chỉnh sửa</a>
                         </div>
-                        <span class="value" id="bookingGuests">1 Pet</span>
+                        <span class="value" id="bookingGuests"></span>
                       </div>
                 
                     <div class="info-KH-left-line"></div>
@@ -121,8 +121,9 @@
                                 <img src="./assets/img/room1.jpg" alt="">
                             </div>
                             <div class="info-right">
-                                <span class="image_title">Groveland</span>
-                                <span class="image_address">Nguyễn Văn Linh, Đà Nẵng</span>
+                                <span class="image_title" id="room-name-display"></span>
+                                <span class="image_address" id="basic-info-display"></span>
+                                <span class="image_address" id="address-display"></span>
                             </div>
                         </div>
                         <div class="info-KH-right-line"></div>
@@ -150,6 +151,8 @@
             </div>
 
     </div>
+
+    <script src="./js/Payment2.js"></script>
 
     <script>
         // Lấy chuỗi truy vấn từ URL

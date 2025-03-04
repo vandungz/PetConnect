@@ -11,28 +11,42 @@
     <div class="container">
         <!-- left -->
         <div class="frm_dangKi">
-            <form action="" class="form_dangKi">
+            <form id="registerForm" class="form_dangKi">
                 <h1 class="title_dangKi">Hãy bắt đầu</h1>
-                <!-- field -->
+            
+                <!-- Tên người dùng -->
                 <div class="field">
-                    <label class="label_dangKi" for="">Tên người dùng</label>
-                    <input class="input_dangKi" type="text" name="" id="" placeholder="Nhập tên người dùng" re>
+                    <label class="label_dangKi" for="username">Tên người dùng</label>
+                    <input class="input_dangKi" type="text" name="username" id="username" placeholder="Nhập tên người dùng" required>
                 </div>
-                <!-- field -->
+            
+                <!-- Mật khẩu -->
                 <div class="field field-password">
-                    <div class="password-container">
-                        <label class="label_dangKi" for="">Mật khẩu đăng kí</label>
-                    </div>
-                    <input class="input_dangKi" type="password" name="" id="" placeholder="Nhập mật khẩu" required>
+                    <label class="label_dangKi" for="password">Mật khẩu đăng ký</label>
+                    <input class="input_dangKi" type="password" name="password" id="password" placeholder="Nhập mật khẩu" required>
                 </div>
-
+            
+                <!-- Nhập lại mật khẩu -->
                 <div class="field field-password">
-                    <div class="password-againagain-container">
-                        <label class="label_dangKi" for="">Nhập lại mật khẩu</label>
-                    </div>
-                    <input class="input_dangKi" type="password" name="" id="" placeholder="Nhập lại mật khẩu" required>
+                    <label class="label_dangKi" for="confirmPassword">Nhập lại mật khẩu</label>
+                    <input class="input_dangKi" type="password" name="confirmPassword" id="confirmPassword" placeholder="Nhập lại mật khẩu" required>
+                    <p id="passwordError" style="color: red; display: none;">Mật khẩu không khớp!</p>
                 </div>
-
+            
+                <!-- Email -->
+                <div class="field">
+                    <label class="label_dangKi" for="email">Email</label>
+                    <input class="input_dangKi" type="email" name="email" id="email" placeholder="Nhập Email" required>
+                </div>
+            
+                <!-- Số điện thoại -->
+                <div class="field">
+                    <label class="label_dangKi" for="phoneNumber">Số điện thoại</label>
+                    <input class="input_dangKi" type="tel" name="phoneNumber" id="phoneNumber" placeholder="Nhập số điện thoại" required>
+                </div>
+            
+           
+            
                 <div class="terms">
                     <input type="checkbox" name="" id="checkbox_terms">
                     <label for="checkbox_terms">Lưu tài khoản trong 30 ngày
@@ -40,9 +54,8 @@
                     </label>
                 </div>
 
-                <a href="./verify.html" class="btn_dangKi">
-                    Đăng Kí
-                </a>
+               <!-- Nút Đăng Ký -->
+               <button type="submit" class="btn_dangKi">Đăng Ký</button>
 
                 <div class="seperate">
                     <div class="line"></div>
@@ -82,5 +95,6 @@
             <img src="./assets/img/logopet.png" alt="">
         </div>
     </div>
+    <script src="./js/register.js"></script>
 </body>
 </html>

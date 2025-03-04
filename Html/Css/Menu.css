@@ -302,27 +302,32 @@ section .card .image img {
   border-radius: 20px 20px 0 0;
 
 }
+/*slider pet*/
 
-.card .name-profession {
-  flex-direction: column;
-  margin-top: 15px;
+.name-profession{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 15px;
 }
 .name-profession .name {
   font-size: 20px;
   font-weight: 600;
-  padding-left: 15px;
-  padding-right: 130px;
 }
 .name-profession i{
-  margin:0px 10px;
   font-size: 18px;
 }
+
+
 .name-detail{
-  padding-left: 15px;
-  padding-top: 15px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 .name-detail .petType{
-  padding-right: 50px;
   font-size: 15px;
 }
 .name-detail .vacin{

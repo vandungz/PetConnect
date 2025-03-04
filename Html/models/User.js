@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema({
-    googleId: { type: String, required: true, unique: true },
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    avatar: { type: String },
-    phone: { type: String }
-});
+const userSchema = new mongoose.Schema({
+    googleId: String,
+    name: String,
+    email: String,
+    avatar: String,
+    phone: String,
+    password: String
+}, { collection: "users" });  // Đảm bảo tên đúng với MongoDB
 
-const User = mongoose.model("User", UserSchema);
-module.exports = User;
+module.exports = mongoose.model("User", userSchema);
