@@ -396,4 +396,3 @@ document.querySelectorAll('.buttons button,.buttons2 button2,.buttons3 button3,.
 function goToMenuPage() {
   window.location.href = "./Menu.html"; // Thay đổi đường dẫn nếu cần
 }
-

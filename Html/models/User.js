@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-    googleId: String,
-    name: String,
+    googleId: { type: String, default: null }, // Đảm bảo không bị unique
+    username: String, // Thay vì 'name'
     email: String,
     avatar: String,
-    phone: String,
+    phoneNumber: String, // Thay vì 'phone'
     password: String
 }, { collection: "users" });  // Đảm bảo tên đúng với MongoDB
 
