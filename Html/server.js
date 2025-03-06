@@ -1,3 +1,9 @@
+require("dotenv").config();  // Đảm bảo dòng này đứng đầu tiên
+
+
+
+
+
 const express = require("express");
 const MongoStore = require("connect-mongo");
 const mongoose = require("mongoose");
@@ -9,7 +15,7 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const path = require("path");
 
 
-require("dotenv").config();
+
 
 const User = require("./models/User");
 const Hotel = require("./models/Hotel");
@@ -181,28 +187,21 @@ app.post("/register", async (req, res) => {
 
 
 app.post("/login", async (req, res) => {
-    try {
-        const { username, password } = req.body;
+    const { email, password } = req.body;
 
-        if (!username || !password) {
-            return res.status(400).json({ message: "Vui lòng nhập tên đăng nhập và mật khẩu" });
-        }
-
-        const user = await User.findOne({ username });
-        if (!user) {
-            return res.status(401).json({ message: "Tên đăng nhập hoặc mật khẩu không đúng" });
-        }
-
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
-            return res.status(401).json({ message: "Tên đăng nhập hoặc mật khẩu không đúng" });
-        }
-
-        res.json({ message: "Đăng nhập thành công!", user });
-    } catch (err) {
-        console.error("❌ Lỗi server:", err);
-        res.status(500).json({ message: "Lỗi server", error: err });
+    // Tìm người dùng theo email
+    const user = await User.findOne({ username: req.body.username });
+    if (!user) {
+        return res.status(400).json({ message: "Tài khoản không tồn tại" });
     }
+
+    // So sánh mật khẩu đã nhập với mật khẩu trong database
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+        return res.status(400).json({ message: "Tên đăng nhập hoặc mật khẩu không đúng" });
+    }
+
+    res.json({ message: "Đăng nhập thành công!" });
 });
 app.listen(3000, () => {
     console.log("✅ Server đang chạy trên http://127.0.0.1:3000");
@@ -210,4 +209,4 @@ app.listen(3000, () => {
 
 
 // ===================
-// AP
+
