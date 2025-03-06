@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/vn.js"></script>
-    <link rel="stylesheet" href="./js/Chuong.js">
+    <link rel="stylesheet" href="./js/Chuồng.js">
 
 
     <title>Chuồng</title>
@@ -28,7 +28,14 @@
             <div class="header-fist-content-line-sp"></div>
             <ul class="header-fist-content-list">
                 <li class="header-fist-content-list--text" onclick="goToMenuPage()">Trang chủ</li>
-                <li class="header-fist-content-list--text">Dịch vụ</li>
+                <li>
+                    <a href="#" id="services-link" class="header-fist-content-list--text">Dịch vụ</a>
+                    <ul class="dropdown" id="services-dropdown">
+                      <li><a href="Catalog_nhanNuoi.html"><i class="fa-solid fa-user"></i>Nhận nuôi Pet</a></li>
+                      <li><a href=""><i class="fa-solid fa-dog"></i>Tìm/Nhận Pet</a></li>
+                      <li><a href="Catalog_phong.html"><i class="fa-solid fa-house"></i>Pet Hotel</a></li>
+                    </ul>
+                  </li>
                 <li class="header-fist-content-list--text">Về chúng tôi</li>
             </ul>
         </div>
@@ -115,8 +122,8 @@
                     <div class="container-main-content--left-info-content">
                         <p class="container-main-content--left-info-content-name">Đơn • Chuồng nhựa • Chó (8 - 10kg)</p>
                         <p class="container-main-content--left-info-content-number-of-cages">Còn 8 chuồng</p>
-                        <p class="container-main-content--left-info-content-descri">Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. Nisl cursus tellus eget fringilla eget. Diam eu est id ut leo.
+                        <p class="container-main-content--left-info-content-descri">Một không gian được thiết kế đặc biệt
+                             để đáp ứng nhu cầu sinh hoạt, vui chơi và nghỉ ngơi của thú cưng.
                         </p>
                         <div class="container-main-content--left-info-content-review">
                             <div class="container-main-content--left-info-content-review-icon"><svg width="24"
@@ -1141,7 +1148,7 @@
                         </div>
 
                         <!-- <a href="./Payment2.html" class="container-main-content--right-prepayment-button">Đặt phòng</a> -->
-                         <button id="bookRoomBtn" class="container-main-content--right-prepayment-button" onclick="window.location.href = `./Payment2.html?bookingId=${data._id}`;">Đặt phòng</button> 
+                         <button id="bookRoomBtn" class="container-main-content--right-prepayment-button" onclick="window.location.href = './Payment2.html';">Đặt phòng</button> 
                         
                         <div class="container-main-content--right-prepayment-sub">
                             <p>Bạn chưa cần trả tiền ngay</p>
@@ -1256,7 +1263,20 @@
             </div>
         </div>
     </div>
+    <!-- Popup (lightbox) ẩn, để hiển thị ảnh to toàn màn hình -->
+    <div id="lightbox" class="lightbox" style="display: none;">
+        <button class="lightbox-close">&times;</button>
+        
+        <div class="lightbox-wrapper">
+          <img class="lightbox-image" src="" alt="Image" />
+          <div class="lightbox-counter">1/5</div>
+          <button class="lightbox-prev"><i class="fa-solid fa-angle-left"></i></button>
+          <button class="lightbox-next"><i class="fa-solid fa-angle-right"></i></button>
+        </div>
+      </div>
+  
     <script src="./js/Chuong.js"></script>
+   
 </body>
 
 </html>

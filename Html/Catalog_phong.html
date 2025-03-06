@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/vn.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/date-fns@2.23.0/dist/date-fns.min.js"></script>
+
 </head>
 <body>
     <div class="header">
@@ -50,7 +52,7 @@
                     <ul class="dropdown-content">
                         <li><i class="fa-solid fa-tree"></i>Hà Nội</li>
                         <li><i class="fa-solid fa-bowl-food"></i>Đà Nẵng</li>
-                        <li><i class="fa-solid fa-hotdog"></i>Hồ Chí Minh</li>
+                        <li><i class="fa-solid fa-hotdog"></i>TPHCM</li>
                         <li><i class="fa-solid fa-bone"></i>Huế</li>
                     </ul>
                 </li>
@@ -101,7 +103,7 @@
                     </div>
                 </li>
             </div>
-            <button type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+			<button type="button" id="searchButton"><i class="fa-solid fa-magnifying-glass"></i></button>
 
         </div>
         
@@ -109,8 +111,20 @@
             Bộ lọc nâng cao</button>
     </div>
     <div class="property-list">
-		<div class="property-card">
-			<div class="slider-container">
+		<div class="property-card" 
+		data-room-name="Groveland" 
+		data-room-type="Đơn" 
+		data-material="Chuồng gỗ" 
+		data-pet-type="Mèo" 
+		data-weight="Nhỏ (0 - 10kg)" 
+		data-amenities='[
+		{"id": 1, "name": "Chế độ ăn uống theo yêu cầu"},
+		{"id": 3, "name": "Dẫn đi dạo buổi chiều"},
+		{"id": 5, "name": "Điều hòa nhiệt độ"},
+		{"id": 7, "name": "Thay tã cho vật con"}
+		]' 
+		onclick="goToRoomDetails(this)">			
+		<div class="slider-container">
 		<div class="slider">
 			<div class="list">
 				<div class="item">
@@ -148,13 +162,22 @@
 				<p class="room-name">Groveland</p>
 				<p>★4.94</p></div>
 			<div class="property-address">Nguyễn Văn Linh, Đà Nẵng</div>
-			<div class="property-date">Oct 23-30</div>
+			<div class="property-date">Mar 23-30 2025</div>
 			<div class="property-price">$21.29 đêm</div>
 		</div>
 			</div>
 			</div>
-			<div class="property-card">
-				<div class="slider-container">
+			<div class="property-card" 
+			data-room-name="Capitalist Crew" data-room-type="Đơn" data-material="Chuồng gỗ" data-pet-type="Mèo" data-weight="Vừa (10 - 20kg)"
+			data-amenities='[
+			{"id": 2, "name": "Tắm rửa"},
+			{"id": 3, "name": "Dẫn đi dạo buổi chiều"},
+			{"id": 5, "name": "Điều hòa nhiệt độ"},
+			{"id": 6, "name": "Sấy lông sau khi tắm"},
+			{"id": 8, "name": "Giặt mới áo"},
+			{"id": 10, "name": "Gần công viên công cộng"}	]' 
+			onclick="goToRoomDetails(this)">				
+			<div class="slider-container">
 			<div class="slider2">
 				<div class="list2">
 					<div class="item2">
@@ -192,26 +215,32 @@
 					<p class="room-name">Capitalist Crew</p>
 					<p>★4.99</p></div>
 				<div class="property-address">Phan Thanh, Đà Nẵng</div>
-				<div class="property-date">Sep 10-15</div>
+				<div class="property-date">Apr 10-15 2025</div>
 				<div class="property-price">$20.60 đêm</div>
 			</div>
 				</div>
 				</div>
-				<div class="property-card">
-					<div class="slider-container">
+				<div class="property-card" 
+				data-room-name="Business Preachers" data-room-type="Chung" data-material="Chuồng gỗ" data-pet-type="Chó" data-weight="Lớn (20kg+)" 
+				data-amenities='[
+				{"id": 11, "name": "Camera giám sát 24/7"},
+				{"id": 12, "name": "Bình chữa cháy"}					
+				]' 
+				onclick="goToRoomDetails(this)">					
+				<div class="slider-container">
 				<div class="slider3">
 					<div class="list3">
 						<div class="item3">
-							<img src="./assets/img/room13.jpg">
+							<img src="./assets/img/room30.jpg">
 						</div>
 						<div class="item3">
-							<img src="./assets/img/room14.jpg">
+							<img src="./assets/img/room31.jpg">
 						</div><div class="item3">
-							<img src="./assets/img/room15.jpg">
+							<img src="./assets/img/room32.jpg">
 						</div><div class="item3">
-							<img src="./assets/img/room16.jpg">
+							<img src="./assets/img/room33.jpg">
 						</div><div class="item3">
-							<img src="./assets/img/room17.jpg">
+							<img src="./assets/img/room34.jpg">
 						</div>
 		
 					</div>
@@ -236,13 +265,22 @@
 						<p class="room-name">Business Preachers</p>
 						<p>★4.92</p></div>
 					<div class="property-address">Đống Đa, Hà Nội</div>
-					<div class="property-date">Aug 3-16</div>
+					<div class="property-date">Aug 3-16 2025</div>
 					<div class="property-price">$22.00 đêm</div>
 				</div>
 					</div>
 					</div>
-					<div class="property-card">
-						<div class="slider-container">
+					<div class="property-card" 
+					data-room-name="Toronto Drakes" data-room-type="Đơn" data-material="Chuồng inox" data-pet-type="Chó" data-weight="Vừa (10 - 20kg)" 
+					data-amenities='[
+					{"id": 1, "name": "Chế độ ăn uống theo yêu cầu"},
+					{"id": 2, "name": "Tắm rửa"},
+					{"id": 8, "name": "Giặt mới áo"},
+					{"id": 9, "name": "Khu vui chơi rộng rãi"},
+					{"id": 10, "name": "Gần công viên công cộng"}					
+					]' 
+					onclick="goToRoomDetails(this)">						
+					<div class="slider-container">
 					<div class="slider4">
 						<div class="list4">
 							<div class="item4">
@@ -280,13 +318,23 @@
 							<p class="room-name">Toronto Drakes</p>
 							<p>★4.96</p></div>
 						<div class="property-address">Trường Chinh, TPHCM</div>
-						<div class="property-date">Oct 15-20</div>
+						<div class="property-date">Mar 15-20 2025</div>
 						<div class="property-price">$19.56 đêm</div>
 					</div>
 						</div>
 						</div>
-						<div class="property-card">
-							<div class="slider-container">
+						<div class="property-card" 
+						data-room-name="Retrievers" data-room-type="Đơn" data-material="Chuồng gỗ" data-pet-type="Mèo" data-weight="Nhỏ (0 - 10kg)"
+						data-amenities='[
+							
+						{"id": 2, "name": "Tắm rửa"},
+						{"id": 3, "name": "Dẫn đi dạo buổi chiều"},
+						{"id": 6, "name": "Sấy lông sau khi tắm"},
+						{"id": 8, "name": "Giặt mới áo"},
+						{"id": 10, "name": "Gần công viên công cộng"}
+						]' 
+						onclick="goToRoomDetails(this)">							
+						<div class="slider-container">
 						<div class="slider5">
 							<div class="list5">
 								<div class="item5">
@@ -324,12 +372,17 @@
 								<p class="room-name">Retrievers</p>
 								<p>★4.98</p></div>
 							<div class="property-address">Hải Phòng, Đà Nẵng</div>
-							<div class="property-date">Nov 3-10</div>
-							<div class="property-price">$22.89 đêm</div>
+							<div class="property-date">Jun 3-10 2025</div>
+							<div class="property-price">$15.89 đêm</div>
 						</div>
 							</div>
 							</div>
-							<div class="property-card">
+							<div class="property-card" data-room-name="Bearcats" data-room-type="Đơn" data-material="Chuồng nhựa" data-pet-type="Chó" data-weight="Vừa (10 - 20kg)" data-amenities='[
+							{"id": 4, "name": "Hệ thống sưởi"},
+							{"id": 10, "name": "Gần công viên công cộng"},
+							{"id": 11, "name": "Camera giám sát 24/7"},
+							{"id": 12, "name": "Bình chữa cháy"}						]'
+						 onclick="goToRoomDetails(this)">
 								<div class="slider-container">
 							<div class="slider6">
 								<div class="list6">
@@ -368,13 +421,23 @@
 									<p class="room-name">Bearcats</p>
 									<p>★4.99</p></div>
 								<div class="property-address">Trần Cao Vân, Huế</div>
-								<div class="property-date">Nov 9-19</div>
-								<div class="property-price">$22.45 đêm</div>
+								<div class="property-date">Nov 9-19 2025</div>
+								<div class="property-price">$15.45 đêm</div>
 							</div>
 								</div>
 								</div>
-								<div class="property-card">
-									<div class="slider-container">
+								<div class="property-card" 
+								data-room-name="Golden Eagles" data-room-type="Đơn" data-material="Chuồng gỗ" data-pet-type="Mèo" data-weight="Lớn (20kg+)" 
+								data-amenities='[
+								{"id": 2, "name": "Tắm rửa"},
+								{"id": 3, "name": "Dẫn đi dạo buổi chiều"},
+								{"id": 5, "name": "Điều hòa nhiệt độ"},
+								{"id": 6, "name": "Sấy lông sau khi tắm"},
+								{"id": 10, "name": "Gần công viên công cộng"},
+								{"id": 12, "name": "Bình chữa cháy"}									
+								]' 
+								onclick="goToRoomDetails(this)">									
+								<div class="slider-container">
 								<div class="slider7">
 									<div class="list7">
 										<div class="item7">
@@ -412,26 +475,36 @@
 										<p class="room-name">Golden Eagles</p>
 										<p>★4.91</p></div>
 									<div class="property-address">Hàng Gốm, Hà Nội</div>
-									<div class="property-date">Dec 10-30</div>
+									<div class="property-date">May 10-30 2025</div>
 									<div class="property-price">$19.84 đêm</div>
 								</div>
 									</div>
 									</div>
-									<div class="property-card">
-										<div class="slider-container">
+									<div class="property-card" 
+									data-room-name="Grasshoppers" data-room-type="Đơn" data-material="Chuồng gỗ" data-pet-type="Mèo" data-weight="Nhỏ (0-10kg)"
+									data-amenities='[
+										
+									{"id": 1, "name": "Chế độ ăn uống theo yêu cầu"},
+									{"id": 2, "name": "Tắm rửa"},
+									{"id": 7, "name": "Thay tã cho vật con"},
+									{"id": 9, "name": "Khu vui chơi rộng rãi"},
+									{"id": 10, "name": "Gần công viên công cộng"},
+									{"id": 12, "name": "Bình chữa cháy"}									]' 
+									onclick="goToRoomDetails(this)">										
+									<div class="slider-container">
 									<div class="slider8">
 										<div class="list8">
 											<div class="item8">
-												<img src="./assets/img/room30.jpg">
+												<img src="./assets/img/room13.jpg">
 											</div>
 											<div class="item8">
-												<img src="./assets/img/room31.jpg">
+												<img src="./assets/img/room14.jpg">
 											</div><div class="item8">
-												<img src="./assets/img/room32.jpg">
+												<img src="./assets/img/room15.jpg">
 											</div><div class="item8">
-												<img src="./assets/img/room33.jpg">
+												<img src="./assets/img/room16.jpg">
 											</div><div class="item8">
-												<img src="./assets/img/room34.jpg">
+												<img src="./assets/img/room17.jpg">
 											</div>
 							
 										</div>
@@ -456,12 +529,19 @@
 											<p class="room-name">Grasshoppers</p>
 											<p>★4.93</p></div>
 										<div class="property-address">Lê Đình Lý, TPHCM</div>
-										<div class="property-date">Dec 1-15</div>
-										<div class="property-price">$18.00 đêm</div>
+										<div class="property-date">Apr 3-10 2025</div>
+										<div class="property-price">$10.00 đêm</div>
 									</div>
 										</div>
 										</div>
-										<div class="property-card">
+										<div class="property-card" data-room-name="Basket Hounds" 
+										data-room-type="Đơn" data-material="Chuồng gỗ" 
+										data-pet-type="Mèo" data-weight="Vừa (10 - 20kg)"
+										data-amenities='[
+										{"id": 7, "name": "Thay tã cho vật con"},
+										{"id": 9, "name": "Khu vui chơi rộng rãi"},
+										{"id": 12, "name": "Bình chữa cháy"}		]' 
+										onclick="goToRoomDetails(this)">
 											<div class="slider-container">
 										<div class="slider9">
 											<div class="list9">
@@ -500,11 +580,12 @@
 												<p class="room-name">Basket Hounds</p>
 												<p>★4.94</p></div>
 											<div class="property-address">Điện Biên Phủ, TPHCM</div>
-											<div class="property-date">Sep 18-29</div>
-											<div class="property-price">$22.80 đêm</div>
+											<div class="property-date">Mar 18-29 2025</div>
+											<div class="property-price">$11.80 đêm</div>
 										</div>
 											</div>
-											</div>									
+											</div>		
+															
 		</div>
     <div class="show-button">
         <button class="show-more-button">Hiển thị thêm</button>
@@ -528,10 +609,10 @@
 			  <span>₫ 80,000</span>
 			</div>
 			<div class="maxprice">
-			  <span>₫ 500,000+</span>
+			  <span>₫ 600,000+</span>
 			</div>
 		  </div>
-		  <input type="range" min="80000" max="500000" step="1000" value="80000" id="price-range" class="sliderPrice">
+		  <input type="range" min="80000" max="600000" step="1000" value="600000" id="price-range" class="sliderPrice">
 		  <div class="ver-line"></div>
 		  <div class="type-selection">
 			<h3>Loại chuồng ở</h3>
@@ -545,44 +626,44 @@
 		  <div class="ver-line"></div>
 		  <div class="filter-section">
 			<h3>Tiện nghi</h3>
-			<div class="subsection">
+			<div class="amenity-filter">
 			  <h4>Các dịch vụ thiết yếu</h4>
-			  <div class="amenities-list">
-				<button class="ftbtn"><i class="fa-solid fa-utensils"></i> Ăn uống</button>
-				<button class="ftbtn"><i class="fa-solid fa-shower"></i> Tắm rửa</button>
-				<button class="ftbtn"><i class="fa-solid fa-paw"></i> Đi dạo</button>
-				<button class="ftbtn"><i class="fa-solid fa-temperature-three-quarters"></i> Hệ thống sưởi</button>
-				<button class="ftbtn"><i class="fa-regular fa-snowflake"></i> Điều hòa nhiệt độ</button>
-				<button class="ftbtn"><i class="fa-solid fa-sun"></i> Sấy lông</button>
+			  <div class="features-list">
+				<button type="button" class="amenity-btn" data-id="1"><i class="fa-solid fa-utensils"></i>Chế độ ăn uống theo yêu cầu</button>
+				<button type="button" class="amenity-btn" data-id="2"><i class="fa-solid fa-shower"></i>Tắm rửa</button>
+				<button type="button" class="amenity-btn" data-id="3"><i class="fa-solid fa-paw"></i>Dẫn đi dạo buổi chiều</button>
+				<button type="button" class="amenity-btn" data-id="4"><i class="fa-solid fa-temperature-three-quarters"></i>Hệ thống sưởi</button>
+				<button type="button" class="amenity-btn" data-id="5"><i class="fa-regular fa-snowflake"></i>Điều hòa nhiệt độ</button>
+				<button type="button" class="amenity-btn" data-id="6"><i class="fa-solid fa-sun"></i>Sấy lông sau khi tắm</button>
+
 			  </div>
 			</div>
-			<div class="subsection">
+			<div class="amenity-filter">
 			  <h4>Đặc điểm</h4>
 			  <div class="features-list">
-				<button class="ftbtn"><i class="fa-solid fa-dog"></i> Thay tã</button>
-				<button class="ftbtn"><i class="fa-solid fa-soap"></i> Giặt mới áo</button>
-				<button class="ftbtn"><i class="fa-solid fa-bowl-food"></i> Ăn xế bằng súp thưởng</button>
+				<button type="button" class="amenity-btn" data-id="7"><i class="fa-solid fa-dog"></i>Thay tã cho vật con</button>
+				<button type="button" class="amenity-btn" data-id="8"><i class="fa-solid fa-soap"></i>Giặt mới áo</button>
 			  </div>
 			</div>
-			<div class="location">
+			<div class="amenity-filter">
 			  <h5>Vị trí</h5>
 			  <div class="features-list">
-				<button class="ftbtn"><i class="fa-solid fa-horse"></i> Có sân chơi</button>
-				<button class="ftbtn"><i class="fa-solid fa-gamepad"></i> Gần công viên công cộng</button>
+				<button type="button" class="amenity-btn" data-id="9"><i class="fa-solid fa-horse"></i>Khu vui chơi rộng rãi</button>
+				<button type="button" class="amenity-btn" data-id="10"><i class="fa-solid fa-gamepad"></i>Gần công viên công cộng</button>
 			  </div>
 			</div>
-			<div class="safety">
+			<div class="amenity-filter">
 			  <h6>An toàn</h6>
 			  <div class="features-list">
-				<button class="ftbtn"><i class="fa-solid fa-house"></i> Giám sát qua đêm</button>
-				<button class="ftbtn"><i class="fa-solid fa-fire-extinguisher"></i> Bình chữa cháy</button>
+				<button type="button" class="amenity-btn" data-id="11"><i class="fa-solid fa-house"></i>Camera giám sát 24/7</button>
+				<button type="button" class="amenity-btn" data-id="12"><i class="fa-solid fa-fire-extinguisher"></i>Bình chữa cháy</button>
 			  </div>
 			</div>
 		  </div>
 		  <div class="action-buttons-container">
 			<div class="action-buttons">
 			  <button class="clear-btn">Xóa tất cả</button>
-			  <button class="apply-btn">Hiển thị 292 chuồng</button>
+			  <button class="apply-btn">Hiển thị ... chuồng</button>
 			</div>
 		  </div>
 		</div>
@@ -638,26 +719,7 @@
         </div>
        
 <script>
-	 const filterBtn = document.querySelector('.js-ftbtn');
-  const modal = document.querySelector('.modal');
-  const modalContainer = document.querySelector('.filter-container');
-  const closeBtn = document.querySelector('.fa-xmark');
-
-  function showFilter() {
-    modal.classList.add('open');
-  }
-
-  function hideFilter() {
-    modal.classList.remove('open');
-  }
-
-  filterBtn.addEventListener('click', showFilter);
-  modal.addEventListener('click', hideFilter);
-  modalContainer.addEventListener('click', function(event) {
-    event.stopPropagation();
-  });
-
-  closeBtn.addEventListener('click', hideFilter);
+	
 
   // Dropdown functionality
   const locationDropdown = document.querySelector('.location-dropdown');
@@ -700,21 +762,7 @@
     const decreaseButtons = document.querySelectorAll('.decrease');
     const petCounts = document.querySelectorAll('.pet-count');
 
-    increaseButtons.forEach((button, index) => {
-        button.addEventListener('click', (event) => {
-            petCounts[index].textContent = parseInt(petCounts[index].textContent) + 1;
-            event.stopPropagation(); // Prevent the event from bubbling up to the window
-        });
-    });
-
-    decreaseButtons.forEach((button, index) => {
-        button.addEventListener('click', (event) => {
-            if (parseInt(petCounts[index].textContent) > 0) {
-                petCounts[index].textContent = parseInt(petCounts[index].textContent) - 1;
-            }
-            event.stopPropagation(); // Prevent the event from bubbling up to the window
-        });
-    });
+   
 
     // Function to close all dropdowns
     function closeAllDropdowns() {
@@ -728,12 +776,7 @@
        
        <script src="/Javascript/Slider_catalog.js"></script>
 	   <script src="/Javascript/calendar-search.js"></script>
-
-		
-
-    
-       <script src="/Javascript/Slider_catalog.js"></script>
-	   <script src="/Javascript/calendar-search.js"></script>
+  	   <script src="/Javascript/be_search_filter.js"></script>	
 	   <script>
 		 document.addEventListener('DOMContentLoaded', function() {
 		   const servicesLink = document.getElementById('services-link');
@@ -751,16 +794,54 @@
 		   });
 		 });
 	   </script>
-	   <script>
+	  <script>
 		document.addEventListener('DOMContentLoaded', function() {
-    const favIcons = document.querySelectorAll('.fav-icon');
+			const favIcons = document.querySelectorAll('.fav-icon');
+			const filterButtons = document.querySelectorAll('.ftbtn');
+	
+			favIcons.forEach(icon => {
+				icon.addEventListener('click', function() {
+					this.classList.toggle('active');
+				});
+			});
+	
+			filterButtons.forEach(button => {
+				button.addEventListener('click', function() {
+					this.classList.toggle('selected');
+				});
+			});
+		});
+	</script>
+<script>
+    function goToRoomDetails(card) {
+		const roomName = card.getAttribute('data-room-name');
+        const roomType = card.getAttribute('data-room-type');
+        const material = card.getAttribute('data-material');
+        const petType = card.getAttribute('data-pet-type');
+        const weight = card.getAttribute('data-weight');
+        const amenities = card.getAttribute('data-amenities');
+		const amenitiesData = card.getAttribute('data-amenities'); // chuỗi JSON
+		localStorage.setItem('selectedAmenities', amenitiesData);
+        // Store data in localStorage
+		const imgTags = card.querySelectorAll('.slider img');
+  const imageArray = [...imgTags].map(img => img.src);
 
-    favIcons.forEach(icon => {
-        icon.addEventListener('click', function() {
-            this.classList.toggle('active');
-        });
-    });
-});
-	   </script>
+  // Lưu mảng ảnh vào localStorage
+  localStorage.setItem('selectedRoomImages', JSON.stringify(imageArray));
+        localStorage.setItem('roomName', roomName);
+        localStorage.setItem('roomType', roomType);
+        localStorage.setItem('material', material);
+        localStorage.setItem('petType', petType);
+        localStorage.setItem('weight', weight);
+        localStorage.setItem('amenities', amenities);
+
+        // Redirect to room details page
+        window.location.href = 'chuong_details.html';
+    }
+</script>
+
+
     </body>
 </html>
+
+				

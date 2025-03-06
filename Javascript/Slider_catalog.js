@@ -369,7 +369,7 @@ document.querySelectorAll('.property-card').forEach(card => {
 
 
 
-document.querySelectorAll('.buttons button,.buttons2 button2,.buttons3 button3,.buttons4 button4,.buttons5 button5,.buttons6 button6,.buttons7 button7,.buttons8 button8,.buttons9 button9, .fav-icon').forEach(button => {
+document.querySelectorAll('.buttons ,.buttons2,.buttons3 ,.buttons4 ,.buttons5 ,.buttons6 ,.buttons7 ,.buttons8 ,.buttons9 , .fav-icon').forEach(button => {
   button.addEventListener('click', function(event) {
       event.stopPropagation();
   });

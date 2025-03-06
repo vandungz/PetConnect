@@ -23,9 +23,9 @@
         <ul class="header-fist-content-list">
           <li><a href="" class="header-fist-content-list--text">Trang chủ</a></li>
           <li>
-            <a href="" class="header-fist-content-list--text">Dịch vụ</a>
-            <ul class="dropdown">
-              <li><a href=""><i class="fa-solid fa-user"></i>Nhận nuôi Pet</a></li>
+            <a href="#" id="services-link" class="header-fist-content-list--text">Dịch vụ</a>
+            <ul class="dropdown" id="services-dropdown">
+              <li><a href="Catalog_nhanNuoi.html"><i class="fa-solid fa-user"></i>Nhận nuôi Pet</a></li>
               <li><a href=""><i class="fa-solid fa-dog"></i>Tìm/Nhận Pet</a></li>
               <li><a href="Catalog_phong.html"><i class="fa-solid fa-house"></i>Pet Hotel</a></li>
             </ul>
@@ -76,7 +76,7 @@
               <img src="./assets/img/adoptPet.jpg" alt="Pet Adoption">
               <h2>NHẬN NUÔI PET</h2>
               <p>Chung tay chăm sóc, hãy đón ngay những em pet siêu đáng yêu, khỏe mạnh về nhà nhé!</p>
-              <a href="">Tìm hiểu thêm</a>
+              <a href="Catalog_nhanNuoi.html">Tìm hiểu thêm</a>
             </div>
             <div class="service-box">
               <img src="./assets/img/missingDog.jpg" alt="Lost Pet Search">
@@ -273,7 +273,7 @@
             });
           </script>
           <div class="aDopt">
-            <a href="" class="btn-adopt">NHẬN NUÔI</a>
+            <a href="Catalog_nhanNuoi.html" class="btn-adopt">NHẬN NUÔI</a>
           </div>
 
           <div class="footer">
@@ -325,5 +325,23 @@
                 </div>
             </div>
             </div>
+            
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                const servicesLink = document.getElementById('services-link');
+                const servicesDropdown = document.getElementById('services-dropdown');
+            
+                servicesLink.addEventListener('click', function(event) {
+                  event.preventDefault();
+                  servicesDropdown.classList.toggle('active');
+                });
+            
+                document.addEventListener('click', function(event) {
+                  if (!servicesLink.contains(event.target) && !servicesDropdown.contains(event.target)) {
+                    servicesDropdown.classList.remove('active');
+                  }
+                });
+              });
+            </script>
 </body>
 </html>

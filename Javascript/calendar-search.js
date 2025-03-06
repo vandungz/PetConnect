@@ -40,9 +40,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelector(".container-main-content--date-time-left").addEventListener("click", () => document.querySelector("#checkin").click());
     document.querySelector(".container-main-content--date-time-right").addEventListener("click", () => document.querySelector("#checkout").click());
-
-    // Xử lý tính toán chi phí
-    const checkinInput = document.getElementById("checkin");
-    const checkoutInput = document.getElementById("checkout");
-
 });

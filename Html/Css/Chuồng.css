@@ -1,99 +1,152 @@
-
-body.no-scroll {
-    overflow: hidden; /* Ngăn trang web cuộn */
-}
-.header
-{
-    padding-left: 160px;
-    padding-right: 160px;
-    height: 93px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  
+  .header{
+      padding-left: 160px;
+      padding-right: 160px;
+      height: 93px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      background-color: #fff;
+      z-index: 1000; 
+  }
+  .header-fist-content{
+  width: 570px;
+  height: 52px;
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  
+  }
+  .icon-Pet-Connect{
+  width: 204px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--third-color);
+  border-radius: 40px;
+  }
+  .icon-Pet-Connect-img{
+  
+  border-radius: 2px;
+  border-radius: 50%;
+  width: 53px;
+  height: 53px;
+  
    
-    top: 0;
-    background-color: #fff;
-    z-index: 1000; 
-}
-.header-fist-content{
-width: 570px;
-height: 52px;
-position: relative;
-margin-top: 20px;
-margin-bottom: 20px;
-display: flex;
-
-}
-.icon-Pet-Connect{
-width: 204px;
-height: 52px;
-display: flex;
-align-items: center;
-gap: 12px;
-background-color: var(--third-color);
-border-radius: 40px;
-cursor: pointer;
-}
-.icon-Pet-Connect-img{
-
-border-radius: 2px;
-border-radius: 50%;
-width: 53px;
-height: 53px;
-margin-top: 1px;
- 
-
-}
-.icon-Pet-Connect--text{
-font-size: 1.6rem;
-color: var(--black-color);
-font-weight: 600;
-}
-.header-fist-content-line-sp{
-width: 2px;
-height: 40px;
-background-color: var(--third-color);
-margin-left: 32px;
-margin-top: 5px;
-
-}
-.header-fist-content-list{
-display: flex;
-align-items: center;
-}
-.header-fist-content-list--text{
-margin-left: 32px;
-font-size: 1.6rem;
-color: var(--text-color);
-font-weight: 500;
-cursor: pointer;
-}
-.header-secon-content{
-width: 116px;
-height: 44px;
-margin-top: 5px;
-
-
-
-}
-.header-secon-content{
+  
+  }
+  .icon-Pet-Connect--text{
+  font-size: 1.6rem;
+  color: var(--black-color);
+  font-weight: 600;
+  }
+  
+  .header-fist-content-line-sp {
+    width: 2px;
+    height: 40px;
+    background-color: var(--third-color);
+    margin-left: 32px;
+    margin-top: 5px;
+  }
+  
+  .header-fist-content-line-sp ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-}
-.header-secon-content--icon{
-width: 44px;
-height: 44px;
-
-font-size: 22px;
-
-}
-.header-secon-content-list-nofi-icon{
-    position: relative;
+  }
+  
+  .header-fist-content-line-sp li {
+    position: relative; 
+  }
+  
+  .dropdown {
+    display: none;
+    position: absolute; 
+    background-color: #fff; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin-top: 10px;
     cursor: pointer;
-}
+    border-radius: 20px;
+  }
+  
+  .dropdown.active {
+    display: block;
+  }
+  
+  
+  
+  .header-fist-content-list {
+    display: flex;
+    align-items: center;
+  
+  }
+  
+  .dropdown li {
+    margin: 10px; 
+    padding-top:10px; 
+    padding-bottom: 10px;
+  }
+  
+  .dropdown a {
+    color: #333; 
+    font-size: 1.6rem;
+    padding:10px 10px;
+  }
+  .dropdown li:hover {
+    background-color: var(--third-color);
+   
+  }
+  .dropdown i{
+    margin-right: 10px;
+  }
+  .header-fist-content-list--text {
+    margin-left: 32px;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  
+  .header-secon-content{
+  width: 116px;
+  height: 44px;
+  margin-top: 5px;
+  
+  
+  
+  }
+  .header-secon-content{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+  }
+  .header-secon-content--icon{
+  width: 44px;
+  height: 44px;
+  
+  font-size: 22px;
+  
+  }
+  .header-secon-content-list-nofi-icon{
+      position: relative;
+      cursor: pointer;
+  }
 .header--sub-scroll{
     padding-left: 160px;
     padding-right: 160px;
@@ -371,14 +424,23 @@ display: flex;
 .container-main-content--left-utilities-list-content{
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
     margin-bottom: 15px;
+    margin-right: 20px;
 }
 .container-main-content--left-utilities-list-content-text{
     font-size: 1.8rem;
     color: var(--black-color);
     font-weight: 600;
 }
+.container-main-content--left-utilities-list-content-icon {
+    font-size: 18px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+  
+
 .container-main-content--left-utilities-list-left-content{
     margin-right: 50px;
 }
@@ -1046,3 +1108,72 @@ h2 {
     color: var(--text-color);
     padding-right: 50px;
 }
+.lightbox {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    background: black;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+  }
+  #lightbox.show {
+    display: flex;
+    opacity: 1;
+  }
+  .lightbox-wrapper {
+    position: relative;
+  }
+  .lightbox-image {
+    width: 900px;
+    height: 700px;
+    object-fit: cover;
+    display: block;
+    padding: 100px;
+  }
+  .lightbox-counter {
+    position: absolute;
+    bottom: 10px; 
+    color: #fff;
+    font-size: 17px;
+    top: 8%;
+    left: 49%;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 40px; 
+    left: 5%;
+    background: none; 
+    border: none;
+    font-size: 40px; 
+    color: #fff;
+    cursor: pointer;
+  }
+  .lightbox-prev, .lightbox-next {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    background: rgba(0,0,0,0.3);
+    color: #fff; 
+    border: #fff 2px solid;
+    border-radius: 50%;
+    width: 40px; 
+    height: 40px;
+    font-size: 17px;
+    cursor: pointer;
+    padding: 8px;
+  }
+  .lightbox-prev { 
+    left: 0; 
+}
+  .lightbox-next { 
+    right: 0; 
+}
+  .lightbox-image {
+    transition: opacity 0.4s ease-in-out;
+    opacity: 1;
+  }
