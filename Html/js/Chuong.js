@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 function goToMenuPage() {
-  window.location.href = "./Menu.html";
+  window.location.href = "./MenuAfterLogin.html";
 }
 document.addEventListener('DOMContentLoaded', function () {
   const servicesLink = document.getElementById('services-link');
