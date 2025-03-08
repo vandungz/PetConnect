@@ -1,31 +1,27 @@
-document.addEventListener("DOMContentLoaded", async () => {
-    // Lấy userId từ URL
-    const params = new URLSearchParams(window.location.search);
-    const userId = params.get("user");
+document.addEventListener("DOMContentLoaded", async function () {
+    let urlParams = new URLSearchParams(window.location.search);
+    let userId = urlParams.get("user") || sessionStorage.getItem("userId");
 
     if (!userId) {
-        alert("Không tìm thấy userId!");
+        alert("Không tìm thấy tài khoản!");
+        window.location.href = "dangNhap.html";
         return;
     }
 
     try {
-        // Gửi request đến server để lấy thông tin người dùng
-        const response = await fetch(`http://127.0.0.1:3000/profile?user=${userId}`);
+        const response = await fetch(`http://127.0.0.1:3000/profile?id=${userId}`);
         const user = await response.json();
 
-        if (response.status !== 200) {
-            alert("Lỗi: " + (user.error || "Không lấy được thông tin người dùng"));
+        if (user.message) {
+            alert("Lỗi: " + user.message);
             return;
         }
 
-        // Hiển thị thông tin người dùng lên trang HTML
-        document.getElementById("user-avatar").src = user.avatar || "default-avatar.png";
-        document.getElementById("user-name").textContent = user.name || "Chưa có tên";
-        document.getElementById("user-email").textContent = user.email || "Chưa có email";
-        document.getElementById("user-phone").textContent = user.phone || "Chưa có số điện thoại";
-
+        document.getElementById("username").textContent = user.username;
+        document.getElementById("email").textContent = user.email;
+        document.getElementById("phoneNumber").textContent = user.phoneNumber;
+        document.getElementById("avatar").src = user.avatar;
     } catch (error) {
-        console.error("Lỗi khi lấy dữ liệu:", error);
-        alert("Không thể tải dữ liệu người dùng.");
+        console.error("❌ Lỗi khi lấy thông tin người dùng:", error);
     }
 });

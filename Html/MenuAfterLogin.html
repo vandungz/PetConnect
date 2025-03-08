@@ -42,10 +42,11 @@
                           <li><a href="#">Chuyến đi</a></li>
                           <li><a href="#">Danh sách yêu thích</a></li>
                           <div class="line"></div>
-                          <li><a href="./ThongTinChiTietKH.html">Tài khoản</a></li>
+                          <li ><a href="#" id="accountButton">Tài khoản</a>
+                          </li>
                           <li><a href="#">Thông báo</a></li>
                           <li><a href="#">Trung tâm trợ giúp</a></li>
-                          <li><a href="#">Đăng xuất</a></li>
+                          <li><a onclick="logout()" >Đăng xuất</a></li>
                         </ul>
                     </div>
                 </li>
@@ -327,6 +328,24 @@
             </div>
             
             <script>
+              // Hàm lấy giá trị tham số từ URL
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+// Lấy userId từ URL và lưu vào sessionStorage
+const userId = getQueryParam("user");
+if (userId) {
+    sessionStorage.setItem("userId", userId);
+    console.log("✅ Đã lưu userId vào sessionStorage:", userId);
+} else {
+    console.warn("⚠ Không tìm thấy userId trên URL!");
+}
+
+// Kiểm tra sessionStorage sau khi lưu
+console.log("📢 sessionStorage userId:", sessionStorage.getItem("userId"));
+
               document.addEventListener('DOMContentLoaded', function() {
                 const servicesLink = document.getElementById('services-link');
                 const servicesDropdown = document.getElementById('services-dropdown');
@@ -342,6 +361,36 @@
                   }
                 });
               });
+              document.addEventListener("DOMContentLoaded", function () {
+            const accountButton = document.querySelector("#accountButton");
+
+            if (accountButton) {
+                accountButton.addEventListener("click", function () {
+                    const userId = sessionStorage.getItem("userId");
+
+                    if (userId) {
+                        window.location.href = `ThongTinChiTietKH.html?user=${userId}`;
+                    } else {
+                        alert("Bạn chưa đăng nhập!");
+                        window.location.href = "dangNhap.html";
+                    }
+                });
+            }
+        });
+
+// ✅ Thêm hàm logout
+window.logout = function () {
+    fetch("http://127.0.0.1:3000/logout", {
+        method: "GET",
+        credentials: "include"
+    })
+    .then(() => {
+        sessionStorage.clear(); // Xóa toàn bộ sessionStorage để tránh lưu tài khoản cũ
+        window.location.href = "dangNhap.html";
+    })
+    .catch(err => console.error("❌ Lỗi khi đăng xuất:", err));
+};
+        
             </script>
 </body>
 </html>
