@@ -262,3 +262,57 @@ app.get("/logout", (req, res) => {
 app.listen(PORT, () => {
     console.log(`✅ Server đang chạy trên http://127.0.0.1:${PORT}`);
 });
+
+
+// --- Endpoint tạo URL thanh toán VNPay ---
+const { VNPay, VnpLocale, dateFormat } = require('vnpay');
+
+app.post("/api/vnpay", async (req, res) => {
+  try {
+    const { bookingId } = req.body;
+    if (!bookingId) {
+      return res.status(400).json({ error: "Missing bookingId" });
+    }
+
+    // Lấy thông tin booking
+    const bookingData = await Hotel.findById(bookingId);
+    if (!bookingData) return res.status(404).json({ error: "Không tìm thấy booking" });
+
+    // Tính tiền
+    const amount = bookingData.subtotal - bookingData.discount;
+
+    // Khởi tạo VNPay
+    const vnpay = new VNPay({
+      tmnCode: 'H8CTIAI6',
+      secureSecret: 'RF1XTXWL9996OCLW6MY2GFAT4V7KUXQL',
+      vnpayHost: 'https://sandbox.vnpayment.vn',
+      testMode: true,
+      hashAlgorithm: 'SHA512'
+    });
+
+    // Tính ngày giờ
+    const now = new Date();
+    const tomorrow = new Date();
+    tomorrow.setDate(now.getDate() + 1);
+
+    // Tạo URL thanh toán
+    const vnpayUrl = await vnpay.buildPaymentUrl({
+      vnp_Amount: amount,
+      vnp_IpAddr: req.ip || '127.0.0.1',
+      vnp_TxnRef: bookingId,
+      vnp_OrderInfo: `Thanh toán đơn phòng ${bookingData.roomName}`,
+      vnp_OrderType: 'billpayment',
+      vnp_ReturnUrl: 'http://127.0.0.1:3000/api/hotel/vnpay-return',
+      vnp_Locale: VnpLocale.VN,
+      vnp_CreateDate: dateFormat(now, 'yyyyMMddHHmmss'),
+      vnp_ExpireDate: dateFormat(tomorrow, 'yyyyMMddHHmmss'),
+    });
+
+    // Trả về cho client
+    return res.status(200).json({ vnpayUrl });
+  } catch (error) {
+    console.error("Error in VNPay endpoint:", error);
+    return res.status(500).json({ error: error.message });
+  }
+});
+

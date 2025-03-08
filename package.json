@@ -20,6 +20,7 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "connect-mongo": "^5.1.0",
+    "axios": "^1.8.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
@@ -28,5 +29,10 @@
     "nodemailer": "^6.10.0",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0"
+    "mongoose": "^8.11.0",
+    "nodemailer": "^6.10.0",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "vnpay": "^2.1.0"
   }
 }

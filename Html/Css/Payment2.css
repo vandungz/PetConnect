@@ -138,7 +138,7 @@ justify-content: space-between;
 .card {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 1.4rem;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -148,9 +148,28 @@ justify-content: space-between;
 }
 .card1 {
   display: flex;
-  margin-left: 20px;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.card-type {
+  display: flex;
+  align-items: center;
   gap: 40px;
 }
+
+.card1 input {
+  display: flex;
+  color: aqua;
+}
+
+.card img {
+  width: 20px;
+  height: 20px;
+}
+
 .detail-card input{
   display: flex;
   align-items: center;
@@ -230,6 +249,32 @@ justify-content: space-between;
     align-items: center;
     flex-direction: column;
   }
+
+  /* Ẩn radio gốc */
+.radio-payment input[type="radio"] {
+  display: none;
+}
+
+/* Style mặc định cho .card1 */
+.radio-payment .card1 {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0 16px; /* tuỳ ý */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 65px;
+  cursor: pointer;
+}
+
+/* Khi radio được check, thẻ .card1 ngay sau nó sẽ đổi màu */
+.radio-payment input[type="radio"]:checked + .card1 {
+  background-color: var(--third-color);
+  border: 1px solid var(--primary-color);
+}
+
+
   .cancel-term2{
     margin-top: 20px;
     width: 80%;
@@ -359,14 +404,60 @@ justify-content: space-between;
     gap: 4px; /* Khoảng cách giữa các dòng text */
     font-size: 1.5rem;
   }
+
+  #room-name-display {
+    font-size: 3.2rem;
+    font-weight: 600;
+    color: var(--black-color);
+    margin-bottom: 12px;
+  }
+
+  #basic-info-display {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--black-color);
+  }
+
+  #addres-display {
+    font-size: 1.6rem;
+    color: var(--text-color);
+  }
+
   .price{
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+  }
+
+  #subTotalText {
+    font-size: 1.8rem;
+  }
+
+  #discountText {
+    font-size: 1.8rem;
+    color: #28a745;
   }
   
+  #finalTotalText {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
   #info.info{
     margin-top: 26px;
     font-size: 1.5rem;
     margin-right: 30px;
+  }
+
+  .date-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .Date-line {
+    margin: 0 4px;
+    width: 10px;
+    height: 2px;
+    background-color: var(--black-color);
   }
 
   /* =========== RESPONSIVE =========== */

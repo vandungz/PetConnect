@@ -204,6 +204,16 @@ document.addEventListener("DOMContentLoaded", function () {
         return null;
       }
 
+        const bookRoomBtn = document.getElementById("bookRoomBtn");
+        bookRoomBtn.addEventListener("click", async function () {
+          const data = await sendBookingData();
+          if (data && data._id) {
+            // Lưu vào localStorage để đảm bảo dữ liệu không bị mất qua reload
+            localStorage.setItem("bookingId", data._id);
+            window.location.href = `./Payment2.html?bookingId=${data._id}`;
+          } else {
+            console.error("Không có bookingId trả về từ server.");
+          }
 
     });
 });
@@ -525,3 +535,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+});

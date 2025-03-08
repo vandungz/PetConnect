@@ -37,11 +37,10 @@
                           <span class="label">Ngày</span>
                           <a href="#" class="action">Chỉnh sửa</a>
                         </div>
-                        <span class="value" id="bookingDates">
-                        <div id="checkinDate"></div>
-                        <p class="Date-line">-</p>
-                        <div id="checkoutDate"></div>
-                        
+                        <span class="value date-container" id="bookingDates">
+                            <div id="checkinDate"></div>
+                            <p class="Date-line"></p>
+                            <div id="checkoutDate"></div>
                         </span>
                       </div>
 
@@ -58,49 +57,30 @@
                     <div class="payment-method">
                         <div class="payment-method-content">
                             <span class="label">Thanh toán bằng</span>
-                            <div class=""></div>
-                            <i class="fa-brands fa-cc-visa" style="color: #1434cb; ; font-size: 30px;"></i>
                         </div>
-                        <div class="card">
-                            <div class="card1">
-                                <i class="fa-solid fa-credit-card" style="font-size: 20px;"></i>
-                                <span>Thẻ tín dụng hoặc thẻ ghi nợ</span>
-                            </div>
-                        </div>
-                        <div class="detail-card">
-                            <input type="text" placeholder="Số thẻ" required>
-                        </div>
-                        <div class="contain">
-                            <div class="left">
-                                <input type="text" class="left" placeholder="Ngày hết hạn" required>
-                            </div>
-                            <div class="right">
-                                <input type="text" class="right" placeholder="Mã CVV" required>
-                            </div>
-                        </div>
-                        <div class="detail-card2">
-                            <input type="text" placeholder="Mã bưu chính" required>
-                        </div>
-                        <div class="dropdown">
-                            <select>
-                                <option disabled selected>Khu vực</option>
-                                <option value="dn">Đà Nẵng</option>
-                                <option value="hn">Hà Nội</option>
-                                <option value="hcm">Hồ Chí Minh</option>
-                                <option value="ha">Hội An</option>
-                                <option value="lc">Liên Chiểu</option>
-                            </select>
-                            <i class="fa-solid fa-chevron-down"></i> <!-- Icon mũi tên xuống -->
-                        </div>
-                        
-                    </div>
-                    <div class="info-KH-left-line"></div>
-                    <div class="cancel-term">
-                        <h3>Chính sách hủy</h3>
-                        <div class="cancel-term2">
-                            <p>Bạn được hoàn một phần tiền nếu hủy trước khi nhận phòng. Sau thời gian đó, số tiền hoàn lại sẽ phụ thuộc vào thời điểm bạn hủy.</p>
-                            <a href="#" class="action">Tìm hiểu thêm</a>
-                        </div>
+                        <ul class="radio-payment">
+                            <li class="card cashPayment">
+                              <!-- Đưa input lên trước -->
+                              <input type="radio" name="payment" value="Cash Payment" id="cash-payment" hidden>
+                              <!-- Sau đó mới đến label -->
+                              <label class="card1" for="cash-payment">
+                                <div class="card-type">
+                                  <i class="fa-solid fa-credit-card" style="font-size: 20px;"></i>
+                                  <span>Trả bằng tiền mặt</span>
+                                </div>
+                              </label>
+                            </li>
+                          
+                            <li class="card vnpayPayment">
+                              <input type="radio" name="payment" value="VNPay Payment" id="vnpay-payment" hidden>
+                              <label class="card1" for="vnpay-payment">
+                                <div class="card-type">
+                                  <img src="./assets/icon/momo_icon_square_pinkbg_RGB.png" alt="">
+                                  <span>Thanh toán bằng VNPay</span>
+                                </div>
+                              </label>
+                            </li>
+                          </ul>
                     </div>
                     <div class="info-KH-left-line"></div>
                     <div class="accept">
@@ -167,6 +147,23 @@
     document.getElementById('checkinDate').innerText = checkin ? ` ${checkin}` : "Không có thông tin ngày Check-in.";
     document.getElementById('checkoutDate').innerText = checkout ? ` ${checkout}` : "Không có thông tin ngày Check-out.";
 
+    document.addEventListener("DOMContentLoaded", function() {
+    // Lấy phần tử bao quanh các radio
+    const radioContainer = document.querySelector('.radio-payment');
+    // Lấy tất cả radio bên trong .radio-payment
+    const radios = document.querySelectorAll('.radio-payment input[type="radio"]');
+
+    // Lắng nghe sự kiện click toàn trang
+    document.addEventListener('click', function(event) {
+        // Kiểm tra xem click có nằm ngoài .radio-payment không
+        if (!radioContainer.contains(event.target)) {
+        // Nếu ngoài, thì uncheck tất cả radio
+        radios.forEach(radio => {
+            radio.checked = false;
+        });
+        }
+    });
+    });
     </script>
     
 </body>
