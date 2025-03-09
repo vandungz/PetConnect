@@ -83,12 +83,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const subtotal = nights * pricePerNight;
     const finalTotal = subtotal + cleaningFee + extraPetFee - discount;
 
-    nightDetailElement.innerText = nights > 0 ? `$${pricePerNight} x ${nights} đêm` : "Chưa chọn ngày";
-    nightPriceElement.innerText = `$${subtotal}`;
-    cleaningFeeFeeElement.innerText = `$${cleaningFee}`;
-    serviceFeeFeeElement.innerText = `$${extraPetFee}`;
-    discountElement.innerText = discount ? `-$${discount}` : "$0";
-    totalCostElement.innerText = `$${finalTotal}`;
+    nightDetailElement.innerText = nights > 0 ? `$${pricePerNight.toFixed(2)} x ${nights} đêm` : "Chưa chọn ngày";
+    nightPriceElement.innerText = `$${subtotal.toFixed(2)}`;
+    cleaningFeeFeeElement.innerText = `$${cleaningFee.toFixed(2)}`;
+    serviceFeeFeeElement.innerText = `$${extraPetFee.toFixed(2)}`;
+    discountElement.innerText = discount ? `-$${discount.toFixed(2)}` : "$0";
+    totalCostElement.innerText = `$${finalTotal.toFixed(2)}`;
   }
 
   function updatePetCount() {
