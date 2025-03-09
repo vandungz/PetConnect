@@ -10,6 +10,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.getElementById("phone-Number").textContent = data.phoneNumber;
             document.getElementById("address").textContent = data.address;
             document.getElementById("email").textContent = data.email;
+
+            // Hiển thị ảnh đại diện
+            const avatarElement = document.getElementById("avatar");
+            if (avatarElement) {
+                avatarElement.src = data.avatar;
+            }
         } else {
             console.error("Lỗi:", data.message);
         }

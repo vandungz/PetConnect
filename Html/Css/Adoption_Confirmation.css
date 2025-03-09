@@ -82,7 +82,7 @@ font-weight: 600;
 .container-head-left-content-right-avata-img{
     width: 75px;
     height: 75px;
-    
+    border-radius: 50%;
 }
 .container-pet-info{
     width: 100%;

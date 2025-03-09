@@ -335,12 +335,14 @@ app.get("/api/currentUser", async (req, res) => {
             phoneNumber: user.phoneNumber || "Chưa có số điện thoại",
             address: user.address || "Chưa cập nhật địa chỉ",
             email: user.email || "Chưa có email",
+            avatar: user.avatar || "/default-avatar.png" // Avatar mặc định nếu chưa có
         });
     } catch (error) {
         console.error("❌ Lỗi lấy thông tin người dùng:", error);
         res.status(500).json({ message: "Lỗi máy chủ!" });
     }
 });
+
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
