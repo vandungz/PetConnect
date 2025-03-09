@@ -17,10 +17,19 @@ document.addEventListener("DOMContentLoaded", async function () {
             return;
         }
 
+        if(!user.fullName) {
+            document.getElementById("user-fullname").textContent = user.username;
+        } else {
+            document.getElementById("user-fullname").textContent = user.fullName;
+        }
         document.getElementById("username").textContent = user.username;
         document.getElementById("email").textContent = user.email;
         document.getElementById("phoneNumber").textContent = user.phoneNumber;
-        document.getElementById("avatar").src = user.avatar;
+        if (user.avatar !== "./assets/img/avaDefault.jpg") {
+            document.getElementById("avatar").src = user.avatar;
+        } else {
+            document.getElementById("avatar").src = "./assets/img/avaDefault.jpg";
+        }
     } catch (error) {
         console.error("❌ Lỗi khi lấy thông tin người dùng:", error);
     }

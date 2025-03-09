@@ -12,24 +12,26 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
+    height: 100vh;
+    /* overflow: hidden; */
 }
 
 .form_dangKi {
     width: 100%;
-    height: 100%;
     max-width: 466px;
-    max-height: 583px;
+    height: 100%;
 }
 
 form h1 {
     font-size: 3.2rem;
     font-weight: medium;
     height: 48px;
+    margin-top: 24px;
 }
 
 
 .field {
-    margin-top: 48px;
+    margin-top: 32px;
 }
 
 .field label {
@@ -69,27 +71,6 @@ input ::placeholder {
     color: var(--secondary-color);
 }
 
-.terms {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 20px;
-}
-
-.terms a {
-    text-decoration: underline;
-}
-
-.terms input {
-    width: 12px;
-    height: 12px;
-}
-
-.terms label {
-    font-weight: medium;
-    font-size: 1.2rem;
-}
-
 .btn_dangKi {
     display: flex;
     margin-top: 20px;
@@ -106,7 +87,7 @@ input ::placeholder {
 }
 
 .seperate {
-    margin-top: 36px;
+    margin-top: 24px;
     display: flex;
     align-items: center;
     gap: 3px;
@@ -125,7 +106,7 @@ input ::placeholder {
 }
 
 .sign-in-with-social {
-    margin-top: 88px;
+    margin-top: 24px;
     display: flex;
     gap: 23px;
     width: 100%;

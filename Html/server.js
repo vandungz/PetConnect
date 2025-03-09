@@ -12,19 +12,30 @@ const path = require("path");
 
 const User = require("./models/User");
 const Hotel = require("./models/Hotel");
+const Booking = require("./models/Booking");
 
 const app = express();
 const PORT = 3000;
 
 // Kết nối MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/Pet_Connect-web", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-.then(() => console.log("✅ Kết nối MongoDB thành công"))
-.catch(err => console.error("❌ Lỗi kết nối MongoDB:", err));
+// mongoose.connect("mongodb://127.0.0.1:27017/Pet_Connect-web", {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// })
+// .then(() => console.log("✅ Kết nối MongoDB thành công"))
+// .catch(err => console.error("❌ Lỗi kết nối MongoDB:", err));
 
-mongoose.connection.on("connected", () => console.log("📌 Đang sử dụng database:", mongoose.connection.name));
+// mongoose.connection.on("connected", () => console.log("📌 Đang sử dụng database:", mongoose.connection.name));
+
+// Kết nối MongoDB Atlas từ .env
+const mongoURI = process.env.MONGO_URI;
+
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("✅ Kết nối MongoDB Atlas thành công"))
+.catch((err) => console.error("❌ Lỗi kết nối MongoDB Atlas:", err));
 
 // Middleware
 app.use(cors({
@@ -33,6 +44,66 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+function parseDDMMYYYY(str) {
+    // str dạng "12/03/2025" => [ "12", "03", "2025" ]
+    const [day, month, year] = str.split("/");
+    return new Date(`${year}-${month}-${day}`); // => "2025-03-12"
+}
+
+// Tạo mới một booking
+app.post("/api/hotel", async (req, res) => {
+    try {
+        console.log("req.body:", req.body); // In ra để kiểm tra
+        
+        const { roomName, basicInfo, address, checkin, checkout, pet, subtotal, discount } = req.body;
+  
+        // Parse chuỗi checkin/checkout
+        const checkinDate = parseDDMMYYYY(checkin);
+        const checkoutDate = parseDDMMYYYY(checkout);
+
+        // Kiểm tra có phải Invalid Date không
+        if (isNaN(checkinDate) || isNaN(checkoutDate)) {
+            return res.status(400).json({ error: "Ngày không hợp lệ (dd/mm/yyyy)!" });
+        }
+
+        const newBooking = new Booking({
+            roomName,
+            basicInfo,
+            address,
+            checkin: checkinDate,
+            checkout: checkoutDate,
+            pet,
+            subtotal,
+            discount
+        });
+
+        await newBooking.save();
+        // Trả về booking đã lưu
+        return res.status(201).json(newBooking);
+    }   catch (error) {
+        console.error("Lỗi khi lưu booking:", error);
+        return res.status(500).json({ error: "Lỗi server khi lưu booking" });
+    }
+});
+
+// Lấy booking theo ID
+app.get("/api/hotel/:id", async (req, res) => {
+    try {
+      const bookingId = req.params.id;
+      const booking = await Booking.findById(bookingId);
+  
+      if (!booking) {
+        return res.status(404).json({ error: "Không tìm thấy booking" });
+      }
+  
+      return res.json(booking);
+    } catch (error) {
+      console.error("Lỗi khi lấy booking:", error);
+      return res.status(500).json({ error: "Lỗi server khi lấy booking" });
+    }
+});
+
 // Phục vụ file tĩnh từ thư mục "Html"
 app.use(express.static(path.join(__dirname, "Html")));
 
@@ -48,7 +119,8 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-        mongoUrl: "mongodb://127.0.0.1:27017/Pet_Connect-web",
+        // mongoUrl: "mongodb://127.0.0.1:27017/Pet_Connect-web",
+        mongoUrl: process.env.MONGO_URI, // URI Atlas của bạn
         collectionName: "sessions"
     }),
     cookie: { secure: false, httpOnly: true, maxAge: 1000 * 60 * 60 * 24 } // 1 ngày
@@ -100,7 +172,7 @@ async (accessToken, refreshToken, profile, done) => {
                 googleId: profile.id,
                 username: profile.displayName || profile.emails[0].value.split("@")[0], // Tạo username từ email nếu không có
                 email: profile.emails?.[0]?.value || "No Email",
-                avatar: profile.photos?.[0]?.value || "",
+                avatar: profile.photos?.[0]?.value || "./assets/img/avaDefault.jpg",
                 phoneNumber: null,
                 password: null
             });
@@ -155,8 +227,9 @@ app.get("/profile", async (req, res) => {
         res.json({
             username: user.username || "Tài khoản Google",
             email: user.email,
+            fullName: user.fullName || user.username || "Người dùng chưa cập nhật họ tên",
             phoneNumber: user.phoneNumber || "Không có số điện thoại",
-            avatar: user.avatar || "default-avatar.png"
+            avatar: user.avatar || "./assets/img/avaDefault.jpg"
         });
     } catch (error) {
         console.error("Lỗi lấy thông tin người dùng:", error);
@@ -183,10 +256,10 @@ app.get("/api/getUserId", async (req, res) => {
 // =============================
 app.post("/register", async (req, res) => {
     try {
-        const { username, email, password, phoneNumber } = req.body;
-        console.log("🔍 Dữ liệu nhận từ client:", { username, email, password, phoneNumber });
+        const { fullName, username, email, password, phoneNumber } = req.body;
+        console.log("🔍 Dữ liệu nhận từ client:", { fullName, username, email, password, phoneNumber });
 
-        if (!username || !email || !password || !phoneNumber) {
+        if (!fullName || !username || !email || !password || !phoneNumber) {
             return res.status(400).json({ message: "Vui lòng nhập đầy đủ thông tin!" });
         }
 
@@ -202,7 +275,7 @@ app.post("/register", async (req, res) => {
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = new User({ username, email, password: hashedPassword, phoneNumber });
+        const newUser = new User({fullName, username, email, password: hashedPassword, phoneNumber });
 
         await newUser.save();
         console.log("✅ Đăng ký thành công, userId:", newUser._id);
@@ -275,11 +348,11 @@ app.post("/api/vnpay", async (req, res) => {
     }
 
     // Lấy thông tin booking
-    const bookingData = await Hotel.findById(bookingId);
+    const bookingData = await Booking.findById(bookingId);
     if (!bookingData) return res.status(404).json({ error: "Không tìm thấy booking" });
 
     // Tính tiền
-    const amount = bookingData.subtotal - bookingData.discount;
+    const amount = (bookingData.subtotal - bookingData.discount) * 25000;
 
     // Khởi tạo VNPay
     const vnpay = new VNPay({
