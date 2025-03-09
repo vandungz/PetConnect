@@ -44,29 +44,32 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelector(".container-main-content--right-prepayment--date-time-right")
     .addEventListener("click", () => document.querySelector("#checkout").click());
 
-  // ---------------------------
-  // Phần tính toán chi phí và cập nhật hiển thị
-  const checkinInput = document.getElementById("checkin");
-  const checkoutInput = document.getElementById("checkout");
-  const petCountElement = document.querySelector(".container-main-content--right-prepayment--pet-content");
-  const btnMinus = document.querySelector(".container-main-content--right-prepayment--pet-number-btn-minus");
-  const btnPlus = document.querySelector(".container-main-content--right-prepayment--pet-number-btn-plus");
-  const nightDetailElement = document.getElementById("nightDetail");
-  const nightPriceElement = document.getElementById("nightPrice");
-  const serviceFeeFeeElement = document.getElementById("serviceFee");
-  const cleaningFeeFeeElement = document.getElementById("cleaningFee");
-  const discountElement = document.getElementById("discount");
-  const totalCostElement = document.getElementById("totalCost");
+    const checkinInput = document.getElementById("checkin");
+    const checkoutInput = document.getElementById("checkout");
+    const petCountElement = document.querySelector(".container-main-content--right-prepayment--pet-content");
+    const btnMinus = document.querySelector(".container-main-content--right-prepayment--pet-number-btn-minus");
+    const btnPlus = document.querySelector(".container-main-content--right-prepayment--pet-number-btn-plus");
+    const nightDetailElement = document.getElementById("nightDetail");
+    const nightPriceElement = document.getElementById("nightPrice");
+    const serviceFeeFeeElement = document.getElementById("serviceFee");
+    const cleaningFeeFeeElement = document.getElementById("cleaningFee");
+    const discountElement = document.getElementById("discount");
+    const totalCostElement = document.getElementById("totalCost");
+  let priceKennel = 21; // Giá mặc định
+  const storedPrice = localStorage.getItem("price");
+  priceKennel = parseFloat(storedPrice.replace(/[^0-9.]/g, ''));
+  let petCount = 1, extraPetFee = 10, pricePerNight = 21, cleaningFee = 20;
 
-  let petCount = 1, extraPetFee = 10, pricePerNight = 21, priceKennel = 21, cleaningFee = 20;
-
+  // Hàm chuyển đổi giá trị input ngày
   function getDateValue(input) {
     if (!input || !input.value) return null;
     const [day, month, year] = input.value.split("/");
     return new Date(`${year}-${month}-${day}`);
   }
 
+  // Hàm tính toán tổng chi phí
   function calculateTotal() {
+    // Tính pricePerNight dựa trên số lượng thú cưng và giá của phòng (priceKennel)
     pricePerNight = priceKennel * petCount;
     const checkinDate = getDateValue(checkinInput);
     const checkoutDate = getDateValue(checkoutInput);
@@ -188,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const subtotal = nightPrice + cleaningFee + serviceFee;
 
       const bookingData = { roomName, basicInfo, address, checkin, checkout, pet, subtotal, discount };
-
+      console.log("bookingData:", bookingData);
       try {
         const response = await fetch("http://127.0.0.1:3000/api/hotel", {
           method: "POST",
@@ -204,19 +207,19 @@ document.addEventListener("DOMContentLoaded", function () {
         return null;
       }
 
-        const bookRoomBtn = document.getElementById("bookRoomBtn");
-        bookRoomBtn.addEventListener("click", async function () {
-          const data = await sendBookingData();
-          if (data && data._id) {
-            // Lưu vào localStorage để đảm bảo dữ liệu không bị mất qua reload
-            localStorage.setItem("bookingId", data._id);
-            window.location.href = `./Payment2.html?bookingId=${data._id}`;
-          } else {
-            console.error("Không có bookingId trả về từ server.");
-          }
-
+      const bookRoomBtn = document.getElementById("bookRoomBtn");
+      bookRoomBtn.addEventListener("click", async function () {
+        const data = await sendBookingData();
+        if (data && data._id) {
+          // Lưu vào localStorage để đảm bảo dữ liệu không bị mất qua reload
+          localStorage.setItem("bookingId", data._id);
+          window.location.href = `./Payment2.html?bookingId=${data._id}`;
+        } else {
+          console.error("Không có bookingId trả về từ server.");
+        }
     });
 });
+
 function goToMenuPage() {
   window.location.href = "./MenuAfterLogin.html";
 }
@@ -235,11 +238,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+});
 document.addEventListener('DOMContentLoaded', function () {
   // Function to update room details
-  function updateRoomDetails(roomName, roomType, material, petType, weight) {
+  function updateRoomDetails(roomName, roomType, material, petType, weight, judgement, price, address) {
     document.querySelector('.container-main-content--left-info-head').textContent = roomName;
     document.querySelector('.container-main-content--left-info-content-name').textContent = `${roomType} • ${material} • ${petType} • ${weight}`;
+    document.querySelector('.container-content--bottom-location').textContent=address;
+    document.querySelector('.container-main-content--left-info-content-review-fist-number').textContent = judgement;
+    document.getElementById("pricePerNight").textContent = `${price}`;
+     
   }
 
   // Check if room details are stored in localStorage
@@ -248,10 +256,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const material = localStorage.getItem('material');
   const petType = localStorage.getItem('petType');
   const weight = localStorage.getItem('weight');
+  const judgement = localStorage.getItem('judgement');
+  const price = localStorage.getItem('price');
+  const address = localStorage.getItem('address');
 
-  if (roomName && roomType && material && petType && weight) {
+  if (roomName && roomType && material && petType && weight && judgement && price && address) {
     // Update room details with the data from localStorage
-    updateRoomDetails(roomName, roomType, material, petType, weight);
+    updateRoomDetails(roomName, roomType, material, petType, weight, judgement, price, address);
 
     // Clear localStorage
     localStorage.removeItem('roomName');
@@ -535,4 +546,3 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-});
