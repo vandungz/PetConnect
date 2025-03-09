@@ -106,7 +106,7 @@ h1 {
     border-radius: 50%;
     object-fit: cover; /* Đảm bảo ảnh không bị méo */
     margin-top: 20px;
-   margin-bottom: 20px;
+    margin-bottom: 20px;
     
     /* margin: 0 auto; */
     /* margin-top: 10px; */

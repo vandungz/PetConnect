@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const subtotal = nightPrice + cleaningFee + serviceFee;
 
       const bookingData = { roomName, basicInfo, address, checkin, checkout, pet, subtotal, discount };
-
+      console.log("bookingData:", bookingData);
       try {
         const response = await fetch("http://127.0.0.1:3000/api/hotel", {
           method: "POST",
@@ -204,19 +204,19 @@ document.addEventListener("DOMContentLoaded", function () {
         return null;
       }
 
-        const bookRoomBtn = document.getElementById("bookRoomBtn");
-        bookRoomBtn.addEventListener("click", async function () {
-          const data = await sendBookingData();
-          if (data && data._id) {
-            // Lưu vào localStorage để đảm bảo dữ liệu không bị mất qua reload
-            localStorage.setItem("bookingId", data._id);
-            window.location.href = `./Payment2.html?bookingId=${data._id}`;
-          } else {
-            console.error("Không có bookingId trả về từ server.");
-          }
-
+      const bookRoomBtn = document.getElementById("bookRoomBtn");
+      bookRoomBtn.addEventListener("click", async function () {
+        const data = await sendBookingData();
+        if (data && data._id) {
+          // Lưu vào localStorage để đảm bảo dữ liệu không bị mất qua reload
+          localStorage.setItem("bookingId", data._id);
+          window.location.href = `./Payment2.html?bookingId=${data._id}`;
+        } else {
+          console.error("Không có bookingId trả về từ server.");
+        }
     });
 });
+
 function goToMenuPage() {
   window.location.href = "./MenuAfterLogin.html";
 }
