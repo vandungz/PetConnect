@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelector(".container-main-content--right-prepayment--date-time-right")
     .addEventListener("click", () => document.querySelector("#checkout").click());
 
+    
     const checkinInput = document.getElementById("checkin");
     const checkoutInput = document.getElementById("checkout");
     const petCountElement = document.querySelector(".container-main-content--right-prepayment--pet-content");
@@ -55,10 +56,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const cleaningFeeFeeElement = document.getElementById("cleaningFee");
     const discountElement = document.getElementById("discount");
     const totalCostElement = document.getElementById("totalCost");
-  let priceKennel = 21; // Giá mặc định
-  const storedPrice = localStorage.getItem("price");
-  priceKennel = parseFloat(storedPrice.replace(/[^0-9.]/g, ''));
-  let petCount = 1, extraPetFee = 10, pricePerNight = 21, cleaningFee = 20;
+    let priceKennel = 21; // Giá mặc định
+    const storedPrice = localStorage.getItem("price");
+    priceKennel = parseFloat(storedPrice.replace(/[^0-9.]/g, ''));
+    let petCount = 1, extraPetFee = 10, pricePerNight = 21, cleaningFee = 20;
 
   // Hàm chuyển đổi giá trị input ngày
   function getDateValue(input) {

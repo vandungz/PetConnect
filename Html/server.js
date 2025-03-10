@@ -375,7 +375,7 @@ app.post("/api/vnpay", async (req, res) => {
       vnp_TxnRef: bookingId,
       vnp_OrderInfo: `Thanh toán đơn phòng ${bookingData.roomName}`,
       vnp_OrderType: 'billpayment',
-      vnp_ReturnUrl: 'http://127.0.0.1:3000/api/hotel/vnpay-return',
+      vnp_ReturnUrl: 'http://127.0.0.1:5500/Html/checked_payment.html',
       vnp_Locale: VnpLocale.VN,
       vnp_CreateDate: dateFormat(now, 'yyyyMMddHHmmss'),
       vnp_ExpireDate: dateFormat(tomorrow, 'yyyyMMddHHmmss'),
