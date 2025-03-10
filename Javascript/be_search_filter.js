@@ -193,9 +193,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hàm kiểm tra phòng có phù hợp không dựa trên các tiêu chí đã chọn
 function isRoomMatch(card, selectedPrice, selectedRoomType, selectedAmenities) {
     // Kiểm tra giá
-    const priceText = card.querySelector('.property-price').textContent;
-    const priceVND = parseFloat(priceText.replace(/[^\d]/g, ''));
-    
+const priceText = card.querySelector('.property-price').textContent;
+const priceVND = parseFloat(priceText.replace(/[^\d]/g, ''));
+
     const matchesPrice = priceVND <= selectedPrice;
   
     // Kiểm tra loại chuồng (giả sử lưu ở thuộc tính data-material)

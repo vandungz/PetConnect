@@ -77,18 +77,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (checkinDate && checkoutDate) {
       nights = Math.max(1, Math.round((checkoutDate - checkinDate) / (1000 * 60 * 60 * 24)));
-      if (nights >= 3) discount = 15;
+      if (nights >= 3) discount = 150.000;
     }
 
     const subtotal = nights * pricePerNight;
     const finalTotal = subtotal + cleaningFee + extraPetFee - discount;
 
-    nightDetailElement.innerText = nights > 0 ? `${pricePerNight.toFixed(2)} x ${nights} đêm` : "Chưa chọn ngày";
-    nightPriceElement.innerText = `₫${subtotal.toFixed(2)}`;
-    cleaningFeeFeeElement.innerText = `₫${cleaningFee.toFixed(2)}`;
-    serviceFeeFeeElement.innerText = `₫${extraPetFee.toFixed(2)}`;
-    discountElement.innerText = discount ? `-₫${discount.toFixed(2)}` : "₫0";
-    totalCostElement.innerText = `₫${finalTotal.toFixed(2)}`;
+    nightDetailElement.innerText = nights > 0 ? `${pricePerNight.toFixed(3)} x ${nights} đêm` : "Chưa chọn ngày";
+    nightPriceElement.innerText = `₫${subtotal.toFixed(3)}`;
+    cleaningFeeFeeElement.innerText = `₫${cleaningFee.toFixed(3)}`;
+    serviceFeeFeeElement.innerText = `₫${extraPetFee.toFixed(3)}`;
+    discountElement.innerText = discount ? `-₫${discount.toFixed(3)}` : "₫0.000";
+    totalCostElement.innerText = `₫${finalTotal.toFixed(3)}`;
   }
 
   function updatePetCount() {
