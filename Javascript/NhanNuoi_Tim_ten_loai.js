@@ -21,48 +21,39 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     function renderPets(data) {
-      const container = document.getElementById('petList');
-      container.innerHTML = '';
-      data.forEach(pet => {
-        const petCard = document.createElement('div');
-        petCard.classList.add('property-card');
-        petCard.innerHTML = `
-          <div class="item">
-            <img src="${pet.hinh}" alt="${pet.ten}">
-          </div>
-          <div class="property-details"> 
-            <div class="property-species">${pet.giong}</div>
-            <div class="property-gender">${pet.gioiTinh}, ${pet.doTuoi}</div>
-            <div class="property-name">${pet.ten} <span class="trangThai">${pet.trangThai}</span></div>
-            <button class="btn">Nhận nuôi</button>
-          </div>
-        `;
-        container.appendChild(petCard);
+    const container = document.getElementById('petList');
+    container.innerHTML = '';
+    data.forEach(pet => {
+      const petCard = document.createElement('div');
+      petCard.classList.add('property-card');
+      petCard.innerHTML = `
+        <div class="item">
+          <img src="${pet.hinh}" alt="${pet.ten}">
+        </div>
+        <div class="property-details"> 
+          <div class="property-species">${pet.giong}</div>
+          <div class="property-gender">${pet.gioiTinh}, ${pet.doTuoi}</div>
+          <div class="property-name">${pet.ten} <span class="trangThai">${pet.trangThai}</span></div>
+          <button class="btn">Nhận nuôi</button>
+        </div>
+      `;
+      // Lắng nghe sự kiện click cho nút "Nhận nuôi"
+      petCard.querySelector('.btn').addEventListener('click', () => {
+        // Lưu thông tin của con vật vào localStorage
+        localStorage.setItem('petName', pet.ten);
+        localStorage.setItem('gender', pet.gioiTinh + ', '+ pet.doTuoi);
+        localStorage.setItem('vaccin', pet.trangThai);
+        localStorage.setItem('petImage', pet.hinh);
+        localStorage.setItem('speciesName', pet.giong);
+        // Chuyển hướng sang trang chi tiết
+        window.location.href = "pet_details.html";
       });
-    }
-
-    function filterPets() {
-      const nameInput = document.getElementById('nameInput').value.toLowerCase().trim();
-      const selectedSpecies = document.querySelector('.choose-animal .active')?.textContent.trim().toLowerCase() || 'tất cả';
-      
-      const filtered = petData.filter(pet => {
-        const matchSpecies = selectedSpecies === 'tất cả' || pet.loai.toLowerCase() === selectedSpecies;
-        const matchName = !nameInput || pet.ten.toLowerCase().includes(nameInput);
-        return matchSpecies && matchName;
-      });
-
-      renderPets(filtered);
-    }
-
-    document.getElementById('btnSearch').addEventListener('click', filterPets);
-    document.querySelectorAll('.choose-animal .animal a').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelectorAll('.choose-animal .animal a').forEach(l => l.classList.remove('active'));
-        this.classList.add('active');
-        filterPets();
-      });
+      container.appendChild(petCard);
     });
+  }
 
-    renderPets(petData);
-  });
+  // Gọi hàm renderPets để hiển thị danh sách thú cưng ban đầu
+  renderPets(petData);
+
+  // Các xử lý sự kiện khác (lọc, tìm kiếm, thay đổi tab...) nếu có
+});

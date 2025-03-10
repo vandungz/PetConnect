@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+/*document.addEventListener("DOMContentLoaded", function() {
   const containerImg = document.querySelector(".container-img");
   const rightContent = document.querySelector(".container-main-content--right");
 
@@ -21,4 +21,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Bắt đầu quan sát container-img
   observer.observe(containerImg);
+});*/
+document.addEventListener('DOMContentLoaded', function() {
+  const petName = localStorage.getItem('petName');
+  const gender = localStorage.getItem('gender');
+  const vaccin = localStorage.getItem('vaccin');
+  const petImage = localStorage.getItem('petImage');
+  const speciesName = localStorage.getItem('speciesName');
+  const petAge = localStorage.getItem('petAge');
+
+  
+  document.getElementById('species-name').textContent = speciesName;
+  document.getElementById('pet-name').textContent = petName;
+  document.getElementById('pet-gender').textContent = gender;
+  document.getElementById('pet-vaccin').textContent = vaccin;
+  document.getElementById('pet-image').src = petImage;
+  document.getElementById('pet-name-2').textContent = petName;
+  document.getElementById('pet-gender-2').textContent = gender;
+  document.getElementById('pet-vaccin-2').textContent = vaccin;
+  document.getElementById('pet-image-2').src = petImage;
+  
 });

@@ -24,6 +24,33 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error("Lỗi khi lấy thông tin user:", error);
     }
 });
+function loadPetDetailsFromLocalStorage() {
+    // Lấy thông tin từ localStorage
+    const petName = localStorage.getItem('petName');
+    const gender = localStorage.getItem('gender');       // đã bao gồm giới tính và độ tuổi
+    const vaccin = localStorage.getItem('vaccin');
+    const petImage = localStorage.getItem('petImage');
+    // const speciesName = localStorage.getItem('speciesName'); // Nếu cần dùng
+  
+    // Cập nhật thông tin lên các phần tử HTML trong Adoption_Confirmation.html
+    // Giả sử các phần tử có id: "petName", "petStatus1", "petStatus2", "petImageAdoption"
+    document.getElementById("petName").textContent = petName || "Chưa có tên";
+    document.getElementById("petStatus1").textContent = vaccin || "Chưa có thông tin";
+    document.getElementById("petStatus2").textContent = gender || "Chưa có thông tin";
+  
+    // Cập nhật ảnh thú cưng nếu có
+    const petImgEl = document.getElementById("petImageAdoption");
+    if (petImgEl && petImage) {
+      petImgEl.src = petImage;
+    }
+  }
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    // Gọi hàm để load thông tin thú cưng từ localStorage
+    loadPetDetailsFromLocalStorage();
+  
+    // Các đoạn mã khác đã có (ví dụ, lấy thông tin user từ API) vẫn ở đây
+  });
 document.getElementById("adoptButton").addEventListener("click", async function () {
     // 1. Lấy thông tin người nhận nuôi
     const adopterName = document.getElementById("name").innerText;

@@ -61,28 +61,19 @@
     <div class="container">
         <div id="img" class="container-img">
             <div class="container-img--main">
-                <img src="./assets/img/room10.jpg" alt="" class="container-img--main-content">
+                <img id="pet-image" alt="" class="container-img--main-content">
                 <div class="overlay"></div>
             </div>
-            <div class="container-img--sup">
-                <div class="container-img--sup-over-lay">
-                    <img src="./assets/img/room12.jpg" alt="" class="container-img--sup-content">
-                    <div class="overlay"></div>
-                </div>
-
-                <div class="container-img--sup-over-lay">
-                    <img src="./assets/img/play2.jpg" alt="" class="container-img--sup-content">
-                    <div class="overlay"></div>
-                </div>
-            </div>
+            
         </div>
         <div class="container-main-content">
             <div class="container-main-content--left">
                 <div class="container-main-content--left-info">
-                    <h class="container-main-content--left-info-head">Tuyết</h>
+                    <h id="species-name" class="container-main-content--left-info-head"></h>
                     <div class="container-main-content--left-info-content">
-                        <p class="container-main-content--left-info-content-name">Chưa trưởng thành • Chihuahua</p>
-                        <p class="container-main-content--left-info-content-number-of-cages">Đã tiêm phòng</p>
+                        <p id="pet-name" class="container-main-content--left-info-content-name"></p>
+                        <p id="pet-gender" class="container-main-content--left-info-content-name"></p>
+                        <p id="pet-vaccin" class="container-main-content--left-info-content-number-of-cages"></p>
                         </p>
                     </div>
                 <div class="container-main-content--left-line"></div>
@@ -184,20 +175,20 @@
             </div>
 
 
-            <div class="container-main-content--right-container">
-                <div class="container-main-content--right">
+            <div class="container-main-content--right-container ">
+                <div class="container-main-content--right visible">
                     <div class="container-img--right">
-                        <img src="./assets/img/room10.jpg" alt="" class="container-img--right-content">
+                        <img id="pet-image-2" alt="" class="container-img--right-content">
                     </div>
                     <div class="container-main-content--right-prepayment">
                         <div class="container-main-content--right-prepayment-infos">
-                            <h class="container-main-content--left-info-head">Tuyết</h>
-                            <p class="container-main-content--left-info-content-name">Chưa trưởng thành • Chihuahua</p>
-                            <p class="container-main-content--left-info-content-number-of-cages">Đã tiêm phòng</p>
+                            <h id="pet-name-2" class="container-main-content--left-info-head"></h>
+                            <p id="pet-gender-2" class="container-main-content--left-info-content-name"></p>
+                            <p id="pet-vaccin-2" class="container-main-content--left-info-content-number-of-cages"></p>
                         </div>
 
                         <!-- <a href="./Payment2.html" class="container-main-content--right-prepayment-button">Đặt phòng</a> -->
-                        <button id="bookRoomBtn" class="container-main-content--right-prepayment-button" onclick="window.location.href = './Adoption_Confirmation.html'">Đặt phòng</button>
+                        <button id="bookRoomBtn" class="container-main-content--right-prepayment-button" onclick="window.location.href = './Adoption_Confirmation.html'">Nhận Nuôi</button>
                     </div>
                 </div>
             </div>
