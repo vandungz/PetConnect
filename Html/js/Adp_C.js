@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
     try {
         const response = await fetch("http://127.0.0.1:3000/api/currentUser", {
+            method: "GET",
             credentials: "include", // Để gửi cookie session
         });
 
@@ -36,7 +37,7 @@ document.getElementById("adoptButton").addEventListener("click", function () {
     }
 
     // Gửi yêu cầu đến server
-    fetch("http://localhost:3000/send-email", {
+    fetch("http://127.0.0.1:3000/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ to: email, name, phone, address })

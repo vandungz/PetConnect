@@ -312,8 +312,15 @@ app.post("/login", async (req, res) => {
             return res.status(400).json({ message: "⚠️ Sai tên đăng nhập hoặc mật khẩu!" });
         }
 
-        console.log("✅ Đăng nhập thành công, userId:", user._id);
-        res.json({ userId: user._id });
+        // Thiết lập session cho người dùng
+        req.login(user, (err) => {
+            if (err) {
+                console.error("❌ Lỗi khi đăng nhập:", err);
+                return res.status(500).json({ message: "❌ Lỗi máy chủ!" });
+            }
+            console.log("✅ Đăng nhập thành công, userId:", user._id);
+            return res.json({ userId: user._id });
+        });
     } catch (error) {
         console.error("❌ Lỗi khi đăng nhập:", error);
         res.status(500).json({ message: "❌ Lỗi máy chủ!" });
