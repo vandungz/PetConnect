@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
+
 const passport = require("passport");
 const session = require("express-session");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
@@ -374,6 +375,38 @@ app.post("/send-email", async (req, res) => {
         
     } catch (error) {
         res.json({ success: false, message: "Lỗi khi gửi email", error });
+    }
+});
+const adoptionSchema = new mongoose.Schema({
+    petName: { type: String, required: true },
+    status1: { type: String, default: "Chưa có thông tin" },
+    status2:{ type: String, default: "Chưa có thông tin" },
+    adoption: { type: String, default: "Chưa nhận nuôi" },
+    adopter: {
+        name: String,
+        phone: String,
+        address: String,
+        email: String,
+    },
+    createdAt: { type: Date, default: Date.now }
+});
+const Adoption = mongoose.model("Adoption", adoptionSchema);
+app.post("/api/adopt", async (req, res) => {
+    try {
+        // req.body sẽ chứa petName, status, adopter {...}
+        const newAdoption = new Adoption(req.body);
+        await newAdoption.save();
+
+        return res.status(201).json({
+            success: true,
+            message: "Đã lưu yêu cầu nhận nuôi thành công!"
+        });
+    } catch (error) {
+        console.error("❌ Lỗi khi lưu adoption:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Lỗi server khi lưu adoption"
+        });
     }
 });
 app.get("/logout", (req, res) => {
