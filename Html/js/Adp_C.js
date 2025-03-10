@@ -68,12 +68,14 @@ document.getElementById("adoptButton").addEventListener("click", async function 
     // Hoặc bạn có thể tách giới tính, độ tuổi, v.v. nếu muốn
     const status1 = document.getElementById("petStatus1").innerText || "Chưa có ";
     const status2 = document.getElementById("petStatus2").innerText || "Chưa có ";
+    
     // 3. Gửi yêu cầu lên server để lưu vào DB (adoptions)
     const adoptionData = {
         petName: petName,
         status1: status1 , 
         status2: status2,
         adoption:"Đã được nhận nuôi", // Hoặc "Đã nhận nuôi" tùy bạn
+        imageUrl: localStorage.getItem("petImage"),
         adopter: {
             name: adopterName,
             phone: phone,

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="./Css/style.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.css">
     <link rel="stylesheet" href="./Css/ThongBao.css">
+    <link rel="stylesheet" href="./Css/Dropboxdown.css">
+    <script src="../Javascript/Dropboxdown.js"></script>
     <title>Pet Connect</title>
     <script src="../Javascript/ThongBao.js" defer></script>
 </head>
@@ -25,31 +27,24 @@
         </ul>
         </div>
         <div class="header-secon-content">
-        <ul class="header-secon-content">
-            <li class="header-secon-content-list">
-                <i class="header-secon-content-list-nofi-icon fa-regular fa-bell" style="color: #777E90; font-size: 20px;" onclick="toggleDropdown()"></i>
-                
-                <div id="notificationDropdown" class="dropdown-content">
-                    <a href="#">Tình trạng thú cưng</a>
-                    <a href="#">Đã tìm thấy thú cưng </a>
-                    <a href="#">Thời hạn đặt phòng</a>
-                </div>
-                    
-                
-            </li>
-            
-            <li class="header-secon-content-list">
-                <i class=" fa-regular fa-user" style="color: #777E90; font-size: 20px; ">
-                    <div id="Icon-info-" class="dropdown-content">
-                        <a href="#">Chuyến đi</a>
-                        <a href="#">Danh sách yêu thích </a>
-                        <a href="#">Tài khoản</a>
-                        <a href="#">tài khoản</a>
-                        <a href="#">tài khoản</a>
+            <ul class="header-secon-content">
+                <li class="header-secon-content-list">
+                    <i class="icon-user fa-regular fa-user" style="color: #777E90; font-size: 20px; " onclick="toggleDropdown()"></i>
+                    <div id="userDropdown" class="dropdown-content">
+                        <ul>
+                          <li><a href="#">Chuyến đi</a></li>
+                          <li><a href="#">Danh sách yêu thích</a></li>
+                          <div class="line"></div>
+                          <li ><a href="#" id="accountButton">Tài khoản</a>
+                          </li>
+                          <li><a href="#">Thông báo</a></li>
+                          <li><a href="#">Trung tâm trợ giúp</a></li>
+                          <li><a onclick="logout()" >Đăng xuất</a></li>
+                        </ul>
                     </div>
-                </i></li>
-        </ul>
-        </div>
+                </li>
+            </ul>
+            </div>
         </div>
 <div class="footer">
             <h1 class="footer-header">PetConnect</h1>

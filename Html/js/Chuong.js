@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelector(".container-main-content--right-prepayment--date-time-right")
     .addEventListener("click", () => document.querySelector("#checkout").click());
 
+    
     const checkinInput = document.getElementById("checkin");
     const checkoutInput = document.getElementById("checkout");
     const petCountElement = document.querySelector(".container-main-content--right-prepayment--pet-content");

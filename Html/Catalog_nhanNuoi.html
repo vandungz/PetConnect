@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./Css/base.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="./Css/Dropboxdown.css">
+    <script src="../Javascript/Dropboxdown.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/vn.js"></script>
 </head>
@@ -33,14 +35,25 @@
         </ul>
         </div>
         <div class="header-secon-content">
-        <ul class="header-secon-content">
-            
-            
-            <li class="header-secon-content-list"><i class=" fa-regular fa-user" style="color: #777E90; font-size: 20px; "></i></li>
-        </ul>
+            <ul class="header-secon-content">
+                <li class="header-secon-content-list">
+                    <i class="icon-user fa-regular fa-user" style="color: #777E90; font-size: 20px; " onclick="toggleDropdown()"></i>
+                    <div id="userDropdown" class="dropdown-content">
+                        <ul>
+                          <li><a href="#">Chuyến đi</a></li>
+                          <li><a href="#">Danh sách yêu thích</a></li>
+                          <div class="line"></div>
+                          <li ><a href="#" id="accountButton">Tài khoản</a>
+                          </li>
+                          <li><a href="#">Thông báo</a></li>
+                          <li><a href="#">Trung tâm trợ giúp</a></li>
+                          <li><a onclick="logout()" >Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            </div>
         </div>
-        </div>
-
 
 
         <div class="main_content">

@@ -240,17 +240,15 @@ app.get("/profile", async (req, res) => {
 });
 app.get("/api/getUserId", async (req, res) => {
     try {
-        // Lấy thông tin user từ request (JWT hoặc session)
-        const userId = req.user ? req.user._id : null; 
-
+        // Giả sử userId được lưu trong session hoặc token
+        const userId = req.session?.userId || req.headers["user-id"];
         if (!userId) {
-            return res.status(401).json({ message: "Người dùng chưa đăng nhập!" });
+            return res.status(404).json({ message: "Không tìm thấy userId" });
         }
-
         res.json({ userId });
     } catch (error) {
-        console.error("❌ Lỗi khi lấy userId từ database:", error);
-        res.status(500).json({ message: "❌ Lỗi máy chủ!" });
+        console.error("Lỗi khi lấy userId:", error);
+        res.status(500).json({ message: "Lỗi server" });
     }
 });
 // =============================
@@ -382,19 +380,29 @@ const adoptionSchema = new mongoose.Schema({
     status1: { type: String, default: "Chưa có thông tin" },
     status2:{ type: String, default: "Chưa có thông tin" },
     adoption: { type: String, default: "Chưa nhận nuôi" },
+    imageUrl: String,
     adopter: {
         name: String,
         phone: String,
         address: String,
         email: String,
     },
+    adopterId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     createdAt: { type: Date, default: Date.now }
 });
 const Adoption = mongoose.model("Adoption", adoptionSchema);
 app.post("/api/adopt", async (req, res) => {
     try {
-        // req.body sẽ chứa petName, status, adopter {...}
-        const newAdoption = new Adoption(req.body);
+        // Kiểm tra người dùng đã đăng nhập hay chưa
+        if (!req.user) {
+            return res.status(401).json({ message: "Bạn chưa đăng nhập!" });
+        }
+        
+        // Lấy dữ liệu nhận nuôi từ body và thêm userID
+        const adoptionData = req.body;
+        adoptionData.adopterId = req.user._id; // Lưu userID từ session
+
+        const newAdoption = new Adoption(adoptionData);
         await newAdoption.save();
 
         return res.status(201).json({
@@ -409,29 +417,24 @@ app.post("/api/adopt", async (req, res) => {
         });
     }
 });
-const Pet = mongoose.model("Pet", new mongoose.Schema({
-    petName: String,
-    status1: String,
-    status2: String,
-    adoption: String,
-    imageUrl: String,
-    adopterId: String, // Lưu ID của người nhận nuôi
-}));
+
 
 // API lấy danh sách thú cưng đã nhận nuôi theo userId
 app.get("/api/adoptedPets/:userId", async (req, res) => {
     try {
-        const userId = req.params.userId;
-        const adoptedPets = await Pet.find({ adopterId: userId });
-
-        if (adoptedPets.length === 0) {
-            return res.status(404).json({ message: "Không có thú cưng nào được nhận nuôi." });
+        const { userId } = req.params;
+        console.log("userId nhận từ request:", userId); // Debug
+        if (!mongoose.Types.ObjectId.isValid(userId)) {
+            return res.status(400).json({ message: "userId không hợp lệ" });
         }
 
+        const adoptedPets = await Adoption.find({ adopterId: userId });
+
+        console.log("Danh sách thú cưng tìm thấy:", adoptedPets); // Debug
         res.json(adoptedPets);
     } catch (error) {
-        console.error("Lỗi server:", error);
-        res.status(500).json({ error: "Lỗi server" });
+        console.error("Lỗi khi lấy danh sách thú cưng đã nhận nuôi:", error);
+        res.status(500).json({ message: "Lỗi server" });
     }
 });
 app.get("/logout", (req, res) => {
@@ -490,7 +493,7 @@ app.post("/api/vnpay", async (req, res) => {
       vnp_TxnRef: bookingId,
       vnp_OrderInfo: `Thanh toán đơn phòng ${bookingData.roomName}`,
       vnp_OrderType: 'billpayment',
-      vnp_ReturnUrl: 'http://127.0.0.1:3000/api/hotel/vnpay-return',
+      vnp_ReturnUrl: 'http://127.0.0.1:5500/Html/checked_payment.html',
       vnp_Locale: VnpLocale.VN,
       vnp_CreateDate: dateFormat(now, 'yyyyMMddHHmmss'),
       vnp_ExpireDate: dateFormat(tomorrow, 'yyyyMMddHHmmss'),
