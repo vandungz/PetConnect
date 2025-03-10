@@ -11,6 +11,11 @@
     margin-bottom: 20px;
     margin-top: 40px;
 }
+.container-main-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
 .content-icon {
     font-size: 2.2rem;

@@ -59,10 +59,16 @@
             <h2>Những thú cưng đang tìm chủ</h2>
             <p>Những thú cưng có thể bị lạc cần đi tìm chủ của mình, cho đến những thú cưng bị bỏ rơi cần sự giúp đỡ của những chủ mới.</p>
             <div class="learn-more-container" style="display: flex;">
-                <div  class="learn-more" onclick="goToNhanNuoi()">See More<i class="fa-solid fa-arrow-right"></i></div>
+                <div  class="learn-more" onclick="window.location.href = './NhanNuoi_Tim_ten_loai.html'">See More<i class="fa-solid fa-arrow-right"></i></div>
             </div>        
             <div class="pet-grid">
-                <div class="pet-card">
+                <div class="pet-card"
+                data-species-name="Mèo rừng Châu Phi"
+                data-pet-name="Anya"
+                data-gender="Cái, Trưởng thành"
+                data-vaccin="Đã tiêm phòng"
+                data-pet-image="./assets/img/meoRung.jpg"
+                >
                     <img src="./assets/img/meoRung.jpg" alt="Mèo rừng Châu Phi">
                     <h3>Mèo rừng Châu Phi</h3>
                     <p class="gender">Cái, Trưởng thành</p>
@@ -70,10 +76,17 @@
                         <p class="namePet">Anya</p>
                         <p class="vaccin">Đã tiêm phòng</p>
                     </div>
-                    <button class="inquiry-btn" onclick="window.location.href = './pet_details.html'">Nhận nuôi</button>
+                    <button class="inquiry-btn" onclick="goToPetDetails(this)">Nhận nuôi</button>
                 </div>
         
-                <div class="pet-card">
+                <div class="pet-card"
+                data-species-name="Border Collie"
+                data-pet-name="Cáo"
+                data-gender="Cái, Trưởng thành"
+                data-vaccin="Đã tiêm phòng"
+                data-pet-image="./assets/img/borderCollie.jpg"
+                
+                >
                     <img src="./assets/img/borderCollie.jpg" alt="Perum kencana asri">
                     <h3>Border Collie</h3>
                     <p class="gender">Đực, Trưởng thành</p>
@@ -81,10 +94,17 @@
                         <p class="namePet">Cáo</p>
                         <p class="vaccin">Đã tiêm phòng</p>
                     </div>
-                    <button class="inquiry-btn">Nhận nuôi</button>
+                    <button class="inquiry-btn"onclick="goToPetDetails(this)">Nhận nuôi</button>
                 </div>
         
-                <div class="pet-card">
+                <div class="pet-card"
+                data-species-name="Chó cỏ"
+                data-pet-name="Tuyết"
+                data-gender="Đực, Trưởng thành"
+                data-vaccin="Đã tiêm phòng"
+                data-pet-image="./assets/img/choCo.jpg"
+                
+                >
                     <img src="./assets/img/choCo.jpg" alt="Perum rakjel elit">
                     <h3>Chó cỏ</h3>
                     <p class="gender">Đực, Trưởng thành</p>
@@ -92,7 +112,7 @@
                         <p class="namePet">Tuyết</p>
                         <p class="vaccin">Đã tiêm phòng</p>
                     </div>
-                    <button class="inquiry-btn">Nhận nuôi</button>
+                    <button class="inquiry-btn" onclick="goToPetDetails(this)">Nhận nuôi</button>
                 </div>
             </div>
         </div>
@@ -184,9 +204,21 @@
                     }
                   });
                 });
-                goToNhanNuoi = () => {
-                    window.location.href = "./NhanNuoi_Tim_ten_loai.html";
-                }
+                function goToPetDetails(btn) {
+                 const card = btn.closest('.pet-card');
+                 const speciesName = card.getAttribute('data-species-name');
+                 const petName = card.getAttribute('data-pet-name');
+                 const gender = card.getAttribute('data-gender');
+                 const vaccin = card.getAttribute('data-vaccin');
+                 const petImage = card.getAttribute('data-pet-image');
+                 localStorage.setItem('speciesName', speciesName);
+                 localStorage.setItem('petName', petName);
+                 localStorage.setItem('gender', gender);
+                 localStorage.setItem('vaccin', vaccin);
+                 localStorage.setItem('petImage', petImage);
+                 window.location.href = './pet_details.html';
+}
+  
               </script>
 </body>
 </html>

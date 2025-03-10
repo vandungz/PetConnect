@@ -70,7 +70,7 @@ font-weight: 600;
 }
 .container-head-left-content-title{
     font-size: 3.6rem;
-    color: #777E90;
+    color: var(--primary-color);
     font-weight: 600;
     display: flex;
     align-items: center;
