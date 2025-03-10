@@ -409,6 +409,31 @@ app.post("/api/adopt", async (req, res) => {
         });
     }
 });
+const Pet = mongoose.model("Pet", new mongoose.Schema({
+    petName: String,
+    status1: String,
+    status2: String,
+    adoption: String,
+    imageUrl: String,
+    adopterId: String, // Lưu ID của người nhận nuôi
+}));
+
+// API lấy danh sách thú cưng đã nhận nuôi theo userId
+app.get("/api/adoptedPets/:userId", async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        const adoptedPets = await Pet.find({ adopterId: userId });
+
+        if (adoptedPets.length === 0) {
+            return res.status(404).json({ message: "Không có thú cưng nào được nhận nuôi." });
+        }
+
+        res.json(adoptedPets);
+    } catch (error) {
+        console.error("Lỗi server:", error);
+        res.status(500).json({ error: "Lỗi server" });
+    }
+});
 app.get("/logout", (req, res) => {
     req.session.destroy(err => {
         if (err) {
