@@ -56,10 +56,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const cleaningFeeFeeElement = document.getElementById("cleaningFee");
     const discountElement = document.getElementById("discount");
     const totalCostElement = document.getElementById("totalCost");
-    let priceKennel = 21; // Giá mặc định
-    const storedPrice = localStorage.getItem("price");
-    priceKennel = parseFloat(storedPrice.replace(/[^0-9.]/g, ''));
-    let petCount = 1, extraPetFee = 10, pricePerNight = 21, cleaningFee = 20;
+  let priceKennel = 460.000; // Giá mặc định
+  const storedPrice = localStorage.getItem("price");
+  priceKennel = parseFloat(storedPrice.replace(/[^0-9.]/g, ''));
+  let petCount = 1, extraPetFee = 150.000, pricePerNight = 230.000, cleaningFee = 260.000;
 
   // Hàm chuyển đổi giá trị input ngày
   function getDateValue(input) {
@@ -78,18 +78,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (checkinDate && checkoutDate) {
       nights = Math.max(1, Math.round((checkoutDate - checkinDate) / (1000 * 60 * 60 * 24)));
-      if (nights >= 3) discount = 15;
+      if (nights >= 3) discount = 150.000;
     }
 
     const subtotal = nights * pricePerNight;
     const finalTotal = subtotal + cleaningFee + extraPetFee - discount;
 
-    nightDetailElement.innerText = nights > 0 ? `$${pricePerNight} x ${nights} đêm` : "Chưa chọn ngày";
-    nightPriceElement.innerText = `$${subtotal}`;
-    cleaningFeeFeeElement.innerText = `$${cleaningFee}`;
-    serviceFeeFeeElement.innerText = `$${extraPetFee}`;
-    discountElement.innerText = discount ? `-$${discount}` : "$0";
-    totalCostElement.innerText = `$${finalTotal}`;
+    nightDetailElement.innerText = nights > 0 ? `${pricePerNight.toFixed(3)} x ${nights} đêm` : "Chưa chọn ngày";
+    nightPriceElement.innerText = `₫${subtotal.toFixed(3)}`;
+    cleaningFeeFeeElement.innerText = `₫${cleaningFee.toFixed(3)}`;
+    serviceFeeFeeElement.innerText = `₫${extraPetFee.toFixed(3)}`;
+    discountElement.innerText = discount ? `-₫${discount.toFixed(3)}` : "₫0.000";
+    totalCostElement.innerText = `₫${finalTotal.toFixed(3)}`;
   }
 
   function updatePetCount() {

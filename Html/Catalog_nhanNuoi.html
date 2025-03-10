@@ -59,7 +59,7 @@
             <h2>Những thú cưng đang tìm chủ</h2>
             <p>Những thú cưng có thể bị lạc cần đi tìm chủ của mình, cho đến những thú cưng bị bỏ rơi cần sự giúp đỡ của những chủ mới.</p>
             <div class="learn-more-container" style="display: flex;">
-                <a href="" class="learn-more">Learn More<i class="fa-solid fa-arrow-right"></i></a>
+                <div  class="learn-more" onclick="goToNhanNuoi()">See More<i class="fa-solid fa-arrow-right"></i></div>
             </div>        
             <div class="pet-grid">
                 <div class="pet-card">
@@ -70,7 +70,7 @@
                         <p class="namePet">Anya</p>
                         <p class="vaccin">Đã tiêm phòng</p>
                     </div>
-                    <button class="inquiry-btn">Nhận nuôi</button>
+                    <button class="inquiry-btn" onclick="window.location.href = './pet_details.html'">Nhận nuôi</button>
                 </div>
         
                 <div class="pet-card">
@@ -184,6 +184,9 @@
                     }
                   });
                 });
+                goToNhanNuoi = () => {
+                    window.location.href = "./NhanNuoi_Tim_ten_loai.html";
+                }
               </script>
 </body>
 </html>

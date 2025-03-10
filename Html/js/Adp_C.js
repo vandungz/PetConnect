@@ -1,43 +1,95 @@
-async function fetchUserData() {
+document.addEventListener("DOMContentLoaded", async () => {
     try {
-        let response = await fetch("http://localhost:5000/users"); // Gọi API lấy dữ liệu
-        let users = await response.json();
+        const response = await fetch("http://127.0.0.1:3000/api/currentUser", {
+            method: "GET",
+            credentials: "include", // Để gửi cookie session
+        });
 
-        if (users.length > 0) {  // Chỉ lấy 1 user đầu tiên
-            let user = users[0];
-            document.getElementById("name").textContent = user.name;
-            document.getElementById("phone-Number").textContent = user.phonenumber;
-            document.getElementById("address").textContent = user.address;
-            document.getElementById("email").textContent = user.email;
-            document.getElementById("avatar").src = user.avatar; 
+        const data = await response.json();
+        if (response.ok) {
+            document.getElementById("name").textContent = data.fullName;
+            document.getElementById("phone-Number").textContent = data.phoneNumber;
+            document.getElementById("address").textContent = data.address;
+            document.getElementById("email").textContent = data.email;
+
+            // Hiển thị ảnh đại diện
+            const avatarElement = document.getElementById("avatar");
+            if (avatarElement) {
+                avatarElement.src = data.avatar;
+            }
         } else {
-            console.log("Không có dữ liệu user!");
+            console.error("Lỗi:", data.message);
         }
     } catch (error) {
-        console.error("Lỗi tải dữ liệu:", error);
+        console.error("Lỗi khi lấy thông tin user:", error);
     }
-}
-
-fetchUserData();
+});
 document.getElementById("adoptButton").addEventListener("click", async function () {
-    const userEmail = document.getElementById("email").textContent;
-    const userName = document.getElementById("name").textContent;
-    const petName = "Milo"; // Thay bằng tên thú cưng thực tế
+    // 1. Lấy thông tin người nhận nuôi
+    const adopterName = document.getElementById("name").innerText;
+    const phone = document.getElementById("phone-Number").innerText;
+    const address = document.getElementById("address").innerText;
+    const email = document.getElementById("email").innerText.trim(); // Loại bỏ khoảng trắng
 
-    if (!userEmail) {
-        alert("Không tìm thấy email của bạn!");
+    if (!email) {
+        alert("Không tìm thấy email!");
         return;
     }
 
-    const response = await fetch("http://localhost:5000/adopt", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userEmail, userName, petName })
-    });
+    // 2. Lấy thông tin thú cưng (ở HTML)
+    const petName = document.getElementById("petName").innerText || "Chưa có tên";
+    // Hoặc bạn có thể tách giới tính, độ tuổi, v.v. nếu muốn
+    const status1 = document.getElementById("petStatus1").innerText || "Chưa có ";
+    const status2 = document.getElementById("petStatus2").innerText || "Chưa có ";
+    // 3. Gửi yêu cầu lên server để lưu vào DB (adoptions)
+    const adoptionData = {
+        petName: petName,
+        status1: status1 , 
+        status2: status2,
+        adoption:"Đã được nhận nuôi", // Hoặc "Đã nhận nuôi" tùy bạn
+        adopter: {
+            name: adopterName,
+            phone: phone,
+            address: address,
+            email: email
+        }
+    };
 
-    const result = await response.json();
-    alert(result.message);
+    try {
+        const adoptResponse = await fetch("http://127.0.0.1:3000/api/adopt", {
+            method: "POST",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(adoptionData)
+        });
+
+        const adoptResult = await adoptResponse.json();
+        if (!adoptResponse.ok) {
+            alert("Lỗi khi tạo yêu cầu nhận nuôi: " + adoptResult.message);
+            return;
+        }
+
+        // 4. Nếu lưu DB thành công, gọi tiếp API gửi email
+        const mailResponse = await fetch("http://127.0.0.1:3000/send-email", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ to: email, name: adopterName, phone, address })
+        });
+
+        const mailResult = await mailResponse.json();
+        if (mailResponse.ok && mailResult.success) {
+            alert("Email xác nhận đã được gửi và yêu cầu nhận nuôi đã được lưu!");
+            window.location.href = "./MenuAfterLogin.html";
+        } else {
+            alert("Đã lưu yêu cầu nhận nuôi nhưng lỗi khi gửi email: " + mailResult.message);
+        }
+    } catch (error) {
+        console.error("Lỗi:", error);
+        alert("Không thể gửi yêu cầu nhận nuôi. Lỗi kết nối server!");
+    }
 });
+
+
 function goToMenuPage() {
-    window.location.href = "./Menu.html";
+    window.location.href = "./MenuAfterLogin.html";
   }

@@ -3,8 +3,10 @@ require("dotenv").config(); // Load biến môi trường
 const express = require("express");
 const MongoStore = require("connect-mongo");
 const mongoose = require("mongoose");
+const nodemailer = require("nodemailer");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
+
 const passport = require("passport");
 const session = require("express-session");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
@@ -311,14 +313,102 @@ app.post("/login", async (req, res) => {
             return res.status(400).json({ message: "⚠️ Sai tên đăng nhập hoặc mật khẩu!" });
         }
 
-        console.log("✅ Đăng nhập thành công, userId:", user._id);
-        res.json({ userId: user._id });
+        // Thiết lập session cho người dùng
+        req.login(user, (err) => {
+            if (err) {
+                console.error("❌ Lỗi khi đăng nhập:", err);
+                return res.status(500).json({ message: "❌ Lỗi máy chủ!" });
+            }
+            console.log("✅ Đăng nhập thành công, userId:", user._id);
+            return res.json({ userId: user._id });
+        });
     } catch (error) {
         console.error("❌ Lỗi khi đăng nhập:", error);
         res.status(500).json({ message: "❌ Lỗi máy chủ!" });
     }
 });
+app.get("/api/currentUser", async (req, res) => {
+    try {
+        if (!req.user) {
+            return res.status(401).json({ message: "Người dùng chưa đăng nhập!" });
+        }
 
+        const user = await User.findById(req.user._id);
+        if (!user) {
+            return res.status(404).json({ message: "Tài khoản không tồn tại!" });
+        }
+
+        res.json({
+            fullName: user.fullName || user.username,
+            phoneNumber: user.phoneNumber || "Chưa có số điện thoại",
+            address: user.address || "Chưa cập nhật địa chỉ",
+            email: user.email || "Chưa có email",
+            avatar: user.avatar || "/default-avatar.png" // Avatar mặc định nếu chưa có
+        });
+    } catch (error) {
+        console.error("❌ Lỗi lấy thông tin người dùng:", error);
+        res.status(500).json({ message: "Lỗi máy chủ!" });
+    }
+});
+
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: "ngonguyentruongan2907@gmail.com",  // Thay bằng email của bạn
+        pass: "liop ubws ajyg gjtq"    // Thay bằng mật khẩu hoặc App Password
+    }
+});
+
+app.post("/send-email", async (req, res) => {
+    const { to, name, phone, address } = req.body;
+
+    const mailOptions = {
+        from: "ngonguyentruongan2907@gmail.com",
+        to,
+        subject: "Xác nhận Yêu Cầu Nhận Nuôi",
+        text: `Xin chào ${name},\n\nBạn đã gửi yêu cầu nhận nuôi thú cưng.\n\nThông tin:\nHọ và Tên: ${name}\nSố điện thoại: ${phone}\nĐịa chỉ: ${address}\n\nThời gian áp dụng là trong vòng 3 ngày, nếu sau 3 ngày yêu cầu sẽ bị hủy.\n\nTrân trọng, PetConnect.`
+    };
+
+    try {
+        await transporter.sendMail(mailOptions);
+        res.json({ success: true, message: "Email đã gửi thành công!" });
+        
+    } catch (error) {
+        res.json({ success: false, message: "Lỗi khi gửi email", error });
+    }
+});
+const adoptionSchema = new mongoose.Schema({
+    petName: { type: String, required: true },
+    status1: { type: String, default: "Chưa có thông tin" },
+    status2:{ type: String, default: "Chưa có thông tin" },
+    adoption: { type: String, default: "Chưa nhận nuôi" },
+    adopter: {
+        name: String,
+        phone: String,
+        address: String,
+        email: String,
+    },
+    createdAt: { type: Date, default: Date.now }
+});
+const Adoption = mongoose.model("Adoption", adoptionSchema);
+app.post("/api/adopt", async (req, res) => {
+    try {
+        // req.body sẽ chứa petName, status, adopter {...}
+        const newAdoption = new Adoption(req.body);
+        await newAdoption.save();
+
+        return res.status(201).json({
+            success: true,
+            message: "Đã lưu yêu cầu nhận nuôi thành công!"
+        });
+    } catch (error) {
+        console.error("❌ Lỗi khi lưu adoption:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Lỗi server khi lưu adoption"
+        });
+    }
+});
 app.get("/logout", (req, res) => {
     req.session.destroy(err => {
         if (err) {
