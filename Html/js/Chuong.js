@@ -55,10 +55,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const cleaningFeeFeeElement = document.getElementById("cleaningFee");
     const discountElement = document.getElementById("discount");
     const totalCostElement = document.getElementById("totalCost");
-  let priceKennel = 21; // Giá mặc định
+  let priceKennel = 460.000; // Giá mặc định
   const storedPrice = localStorage.getItem("price");
   priceKennel = parseFloat(storedPrice.replace(/[^0-9.]/g, ''));
-  let petCount = 1, extraPetFee = 10, pricePerNight = 21, cleaningFee = 20;
+  let petCount = 1, extraPetFee = 150.000, pricePerNight = 230.000, cleaningFee = 260.000;
 
   // Hàm chuyển đổi giá trị input ngày
   function getDateValue(input) {
@@ -83,12 +83,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const subtotal = nights * pricePerNight;
     const finalTotal = subtotal + cleaningFee + extraPetFee - discount;
 
-    nightDetailElement.innerText = nights > 0 ? `$${pricePerNight.toFixed(2)} x ${nights} đêm` : "Chưa chọn ngày";
-    nightPriceElement.innerText = `$${subtotal.toFixed(2)}`;
-    cleaningFeeFeeElement.innerText = `$${cleaningFee.toFixed(2)}`;
-    serviceFeeFeeElement.innerText = `$${extraPetFee.toFixed(2)}`;
-    discountElement.innerText = discount ? `-$${discount.toFixed(2)}` : "$0";
-    totalCostElement.innerText = `$${finalTotal.toFixed(2)}`;
+    nightDetailElement.innerText = nights > 0 ? `${pricePerNight.toFixed(2)} x ${nights} đêm` : "Chưa chọn ngày";
+    nightPriceElement.innerText = `₫${subtotal.toFixed(2)}`;
+    cleaningFeeFeeElement.innerText = `₫${cleaningFee.toFixed(2)}`;
+    serviceFeeFeeElement.innerText = `₫${extraPetFee.toFixed(2)}`;
+    discountElement.innerText = discount ? `-₫${discount.toFixed(2)}` : "₫0";
+    totalCostElement.innerText = `₫${finalTotal.toFixed(2)}`;
   }
 
   function updatePetCount() {

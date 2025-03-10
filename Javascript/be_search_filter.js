@@ -194,9 +194,8 @@ document.addEventListener('DOMContentLoaded', function() {
 function isRoomMatch(card, selectedPrice, selectedRoomType, selectedAmenities) {
     // Kiểm tra giá
     const priceText = card.querySelector('.property-price').textContent;
-    const priceUSD = parseFloat(priceText.replace('$', '').replace('đêm', '').trim());
-    const conversionFactor = 23000; // ví dụ chuyển đổi từ USD sang VND
-    const priceVND = priceUSD * conversionFactor;
+    const priceVND = parseFloat(priceText.replace(/[^\d]/g, ''));
+    
     const matchesPrice = priceVND <= selectedPrice;
   
     // Kiểm tra loại chuồng (giả sử lưu ở thuộc tính data-material)
@@ -271,8 +270,7 @@ function isRoomMatch(card, selectedPrice, selectedRoomType, selectedAmenities) {
 	const minPriceDisplay = document.querySelector('.minprice span');
 	const maxPriceDisplay = document.querySelector('.maxprice span');
 	
-	// Tỉ giá chuyển đổi (giả sử 1 USD = 23000 VND)
-	const conversionFactor = 23000;
+	
 	
 	function showFilter() {
         modal.classList.add('open');
