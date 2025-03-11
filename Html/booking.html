@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Css/Adoption_Confirmation.css">
+    <link rel="stylesheet" href="./Css/base.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.css">
+    <title>Thú Cưng Đã Nhận Nuôi</title>
+
+    <style>
+        .booking-dates-container {
+            display: flex;
+            align-items: center;
+            font-size: 1.4rem;
+        }
+
+        .container-booking-info-content-name {
+            color: var(--primary-color);
+            font-size: 2.4rem;
+            margin-bottom: 10px;
+        }
+
+        .container-booking-info-content-address {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
+
+        .container-booking-info-content-basicInfo {
+            font-size: 1.6rem;
+            margin-bottom: 4px;
+        }
+
+        .booking-dates-line {
+            margin: 0 4px;
+            border: 1px solid #777E90;
+            width: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-fist-content" >
+            <div class="icon-Pet-Connect  " onclick="goToMenuPage()">
+                <div href="./index.html"><img class="icon-Pet-Connect-img" src="./assets/icon/icon-Pet-Connect2.jpg"
+                        alt=""></div>
+
+                <h1 class="icon-Pet-Connect--text">PETCONNECT</h1>
+            </div>
+           
+        </div>
+    </div>
+    <div class="container">
+    <div class="container-head">
+    <div class="container-head-left-content">
+    
+    <h1 class="container-head-left-content-title">Chuồng đã đặt</h1>
+    </div>
+    <div class="container-head-left-content-right">
+    <div class="container-head-left-content-right-avata">
+        <img  id="avatar" alt="" class="container-head-left-content-right-avata-img"
+        src="../assets/img/avaDefault.jpg">
+    </div>
+    </div>
+    </div>
+    <div class="container-booking-info-content" id="bookingsContainer">
+        <!-- Thú cưng sẽ được thêm vào đây bằng JavaScript -->
+    </div>
+    <div class="container-line"></div>
+    
+    </div>
+    <script src="./js/booking.js"></script>
+</body>
+</html>

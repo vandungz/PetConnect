@@ -176,6 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const address = document.querySelector('.container-content--bottom-location').innerText;
       const checkin = document.querySelector('#checkin').value;
       const checkout = document.querySelector('#checkout').value;
+      const imageUrl = document.getElementById('container-img--main-content').src;
       // Lấy thông tin thú cưng từ phần tử mới:
       const pet = document.querySelector('.container-main-content--right-prepayment--pet').innerText;
 
@@ -191,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const discount = parsePrice("discount");
       const subtotal = nightPrice + cleaningFee + serviceFee;
 
-      const bookingData = { roomName, basicInfo, address, checkin, checkout, pet, subtotal, discount };
+      const bookingData = { roomName, basicInfo, address, checkin, checkout, pet, subtotal, discount, imageUrl };
       console.log("bookingData:", bookingData);
       
       // 1) Lưu vào localStorage (hoặc sessionStorage)

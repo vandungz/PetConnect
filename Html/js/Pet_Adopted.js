@@ -64,3 +64,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.error("Lỗi khi tải dữ liệu thú cưng:", error);
     }
 });
+
+// Hàm này gọi khi user bấm logo => trở về trang chủ
+function goToMenuPage() {
+    window.location.href = "./MenuAfterLogin.html";
+}

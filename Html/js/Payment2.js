@@ -13,19 +13,26 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
   const bookingData = JSON.parse(stored);
   console.log("BookingData từ localStorage:", bookingData);
+
+  function parseDDMMYYYY(str) {
+    // str dạng "14/03/2025"
+    const [day, month, year] = str.split("/");
+    return new Date(`${year}-${month}-${day}`); 
+    // => "2025-03-14"
+  }
   
-  // 2. Gọi API để lấy thông tin booking
   try {
     
     // 3. Cập nhật DOM
     document.getElementById("room-name-display").innerText = bookingData.roomName;
     document.getElementById("basic-info-display").innerText = bookingData.basicInfo;
     document.getElementById("address-display").innerText = bookingData.address;
+    document.getElementById("container-img--main-content").src = bookingData.imageUrl || "./assets/img/avaDefault.jpg";
     
-    const checkinDate = new Date(bookingData.checkin);
+    const checkinDate = parseDDMMYYYY(bookingData.checkin);
     document.getElementById("checkinDate").innerText = checkinDate.toLocaleDateString();
     
-    const checkoutDate = new Date(bookingData.checkout);
+    const checkoutDate = parseDDMMYYYY(bookingData.checkout);
     document.getElementById("checkoutDate").innerText = checkoutDate.toLocaleDateString();
     
     // Tìm dòng khớp với pattern "số + THÚ CƯNG"

@@ -415,7 +415,7 @@ app.post("/api/createBooking", async (req, res) => {
   
       const {
         roomName, basicInfo, address,
-        checkin, checkout, pet, subtotal, discount
+        checkin, checkout, pet, subtotal, discount, imageUrl
       } = req.body;
   
       // Convert chuỗi ngày checkin/checkout
@@ -437,7 +437,8 @@ app.post("/api/createBooking", async (req, res) => {
         checkout: checkoutDate,
         pet,
         subtotal,
-        discount
+        discount,
+        imageUrl
       });
   
       await newBooking.save();
@@ -580,7 +581,8 @@ app.get("/vnpay_return", async (req, res) => {
         checkout: checkoutDate,
         pet: bookingData.pet,
         subtotal: bookingData.subtotal,
-        discount: bookingData.discount
+        discount: bookingData.discount,
+        imageUrl: bookingData.imageUrl
       });
       await newBooking.save();
   
