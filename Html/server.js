@@ -53,59 +53,6 @@ function parseDDMMYYYY(str) {
     return new Date(`${year}-${month}-${day}`); // => "2025-03-12"
 }
 
-// Tạo mới một booking
-app.post("/api/hotel", async (req, res) => {
-    try {
-        console.log("req.body:", req.body); // In ra để kiểm tra
-        
-        const { roomName, basicInfo, address, checkin, checkout, pet, subtotal, discount } = req.body;
-  
-        // Parse chuỗi checkin/checkout
-        const checkinDate = parseDDMMYYYY(checkin);
-        const checkoutDate = parseDDMMYYYY(checkout);
-
-        // Kiểm tra có phải Invalid Date không
-        if (isNaN(checkinDate) || isNaN(checkoutDate)) {
-            return res.status(400).json({ error: "Ngày không hợp lệ (dd/mm/yyyy)!" });
-        }
-
-        const newBooking = new Booking({
-            roomName,
-            basicInfo,
-            address,
-            checkin: checkinDate,
-            checkout: checkoutDate,
-            pet,
-            subtotal,
-            discount
-        });
-
-        await newBooking.save();
-        // Trả về booking đã lưu
-        return res.status(201).json(newBooking);
-    }   catch (error) {
-        console.error("Lỗi khi lưu booking:", error);
-        return res.status(500).json({ error: "Lỗi server khi lưu booking" });
-    }
-});
-
-// Lấy booking theo ID
-app.get("/api/hotel/:id", async (req, res) => {
-    try {
-      const bookingId = req.params.id;
-      const booking = await Booking.findById(bookingId);
-  
-      if (!booking) {
-        return res.status(404).json({ error: "Không tìm thấy booking" });
-      }
-  
-      return res.json(booking);
-    } catch (error) {
-      console.error("Lỗi khi lấy booking:", error);
-      return res.status(500).json({ error: "Lỗi server khi lấy booking" });
-    }
-});
-
 // Phục vụ file tĩnh từ thư mục "Html"
 app.use(express.static(path.join(__dirname, "Html")));
 
@@ -454,23 +401,106 @@ app.listen(PORT, () => {
     console.log(`✅ Server đang chạy trên http://127.0.0.1:${PORT}`);
 });
 
+app.post("/api/createBooking", async (req, res) => {
+    if (!req.isAuthenticated()) {
+      return res.status(401).json({ error: "Bạn cần đăng nhập!" });
+    }
+  
+    try {
+      // Lấy user từ session để biết fullName và email
+      const user = await User.findById(req.user._id);
+      if (!user) {
+        return res.status(404).json({ error: "Không tìm thấy user!" });
+      }
+  
+      const {
+        roomName, basicInfo, address,
+        checkin, checkout, pet, subtotal, discount
+      } = req.body;
+  
+      // Convert chuỗi ngày checkin/checkout
+      const checkinDate = parseDDMMYYYY(checkin);
+      const checkoutDate = parseDDMMYYYY(checkout);
+      if (isNaN(checkinDate) || isNaN(checkoutDate)) {
+        return res.status(400).json({ error: "Ngày checkin/checkout không hợp lệ!" });
+      }
+  
+      // Tạo booking
+      const newBooking = new Booking({
+        user: user._id,
+        userFullName: user.fullName || user.username,
+        userEmail: user.email,
+        roomName,
+        basicInfo,
+        address,
+        checkin: checkinDate,
+        checkout: checkoutDate,
+        pet,
+        subtotal,
+        discount
+      });
+  
+      await newBooking.save();
+      console.log("✅ Đã tạo booking sau khi thanh toán:", newBooking._id);
+  
+      // Trả về booking
+      return res.status(201).json(newBooking);
+    } catch (error) {
+      console.error("❌ Lỗi khi tạo booking:", error);
+      return res.status(500).json({ error: "Lỗi server khi tạo booking" });
+    }
+  });
+
+// Lấy booking theo ID
+app.get("/api/hotel/:id", async (req, res) => {
+    try {
+      const bookingId = req.params.id;
+      const booking = await Booking.findById(bookingId);
+  
+      if (!booking) {
+        return res.status(404).json({ error: "Không tìm thấy booking" });
+      }
+  
+      return res.json(booking);
+    } catch (error) {
+      console.error("Lỗi khi lấy booking:", error);
+      return res.status(500).json({ error: "Lỗi server khi lấy booking" });
+    }
+});
+
+app.get("/api/my-bookings", async (req, res) => {
+    if (!req.isAuthenticated()) {
+      return res.status(401).json({ message: "Chưa đăng nhập!" });
+    }
+    const userId = req.user._id;
+    try {
+      const bookings = await Booking.find({ user: userId });
+      res.json(bookings);
+    } catch (err) {
+      res.status(500).json({ message: "Lỗi server" });
+    }
+  });
+
 
 // --- Endpoint tạo URL thanh toán VNPay ---
 const { VNPay, VnpLocale, dateFormat } = require('vnpay');
 
 app.post("/api/vnpay", async (req, res) => {
+    if (!req.isAuthenticated()) {
+        return res.status(401).json({ error: "Bạn cần đăng nhập!" });
+      }
   try {
-    const { bookingId } = req.body;
-    if (!bookingId) {
-      return res.status(400).json({ error: "Missing bookingId" });
+    // Lấy bookingData do client gửi
+    const { bookingData } = req.body;
+    if (!bookingData) {
+      return res.status(400).json({ error: "Missing bookingData" });
     }
 
-    // Lấy thông tin booking
-    const bookingData = await Booking.findById(bookingId);
-    if (!bookingData) return res.status(404).json({ error: "Không tìm thấy booking" });
+    // Lưu tạm vào session (Cách 1)
+    req.session.tempBooking = bookingData;
 
     // Tính tiền
-    const amount = (bookingData.subtotal - bookingData.discount) * 25000;
+    const amount = (bookingData.subtotal - bookingData.discount);
 
     // Khởi tạo VNPay
     const vnpay = new VNPay({
@@ -486,14 +516,16 @@ app.post("/api/vnpay", async (req, res) => {
     const tomorrow = new Date();
     tomorrow.setDate(now.getDate() + 1);
 
+    const randomRef = "TXN_" + Date.now(); // Thay vì bookingId
+
     // Tạo URL thanh toán
     const vnpayUrl = await vnpay.buildPaymentUrl({
       vnp_Amount: amount,
       vnp_IpAddr: req.ip || '127.0.0.1',
-      vnp_TxnRef: bookingId,
+      vnp_TxnRef: randomRef,
       vnp_OrderInfo: `Thanh toán đơn phòng ${bookingData.roomName}`,
       vnp_OrderType: 'billpayment',
-      vnp_ReturnUrl: 'http://127.0.0.1:5500/Html/checked_payment.html',
+      vnp_ReturnUrl: 'http://127.0.0.1:3000/vnpay_return',
       vnp_Locale: VnpLocale.VN,
       vnp_CreateDate: dateFormat(now, 'yyyyMMddHHmmss'),
       vnp_ExpireDate: dateFormat(tomorrow, 'yyyyMMddHHmmss'),
@@ -507,3 +539,60 @@ app.post("/api/vnpay", async (req, res) => {
   }
 });
 
+// ------------------------------------------
+// 3) Route callback: /vnpay_return
+// - VNPay sẽ chuyển hướng user về đây sau khi thanh toán
+// - Ta kiểm tra kết quả thanh toán => nếu thành công => tạo booking
+app.get("/vnpay_return", async (req, res) => {
+    try {
+      // Bước 1: Kiểm tra user đăng nhập
+      if (!req.isAuthenticated()) {
+        return res.status(401).send("Bạn cần đăng nhập!");
+      }
+  
+      // Bước 2: Kiểm tra chữ ký, mã giao dịch... (bạn cần code xác thực VNPay)
+      // (Ở đây demo bỏ qua, giả sử thanh toán THÀNH CÔNG)
+  
+      // Bước 3: Lấy bookingData từ session
+      const bookingData = req.session.tempBooking;
+      if (!bookingData) {
+        return res.status(400).send("Không tìm thấy bookingData tạm!");
+      }
+  
+      // Tạo booking
+      const user = await User.findById(req.user._id);
+      if (!user) {
+        return res.status(404).send("Không tìm thấy user!");
+      }
+  
+      // Chuyển đổi ngày
+      const checkinDate = parseDDMMYYYY(bookingData.checkin);
+      const checkoutDate = parseDDMMYYYY(bookingData.checkout);
+  
+      const newBooking = new Booking({
+        user: user._id,
+        userFullName: user.fullName || user.username,
+        userEmail: user.email,
+        roomName: bookingData.roomName,
+        basicInfo: bookingData.basicInfo,
+        address: bookingData.address,
+        checkin: checkinDate,
+        checkout: checkoutDate,
+        pet: bookingData.pet,
+        subtotal: bookingData.subtotal,
+        discount: bookingData.discount
+      });
+      await newBooking.save();
+  
+      console.log("✅ [VNPay] Đã tạo booking:", newBooking._id);
+  
+      // Xoá dữ liệu tạm để tránh tái sử dụng
+      delete req.session.tempBooking;
+  
+      // Bước 4: Chuyển hướng sang trang "checked_payment.html"
+      return res.redirect("http://127.0.0.1:5500/Html/checked_payment.html");
+    } catch (error) {
+      console.error("Lỗi /vnpay_return:", error);
+      return res.status(500).send("Lỗi server khi xử lý thanh toán!");
+    }
+  });

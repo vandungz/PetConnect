@@ -56,10 +56,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const cleaningFeeFeeElement = document.getElementById("cleaningFee");
     const discountElement = document.getElementById("discount");
     const totalCostElement = document.getElementById("totalCost");
-  let priceKennel = 460.000; // Giá mặc định
+  let priceKennel = 460000; // Giá mặc định
   const storedPrice = localStorage.getItem("price");
   priceKennel = parseFloat(storedPrice.replace(/[^0-9.]/g, ''));
-  let petCount = 1, extraPetFee = 150.000, pricePerNight = 230.000, cleaningFee = 260.000;
+  let petCount = 1, extraPetFee = 150000, pricePerNight = 230000, cleaningFee = 260000;
 
   // Hàm chuyển đổi giá trị input ngày
   function getDateValue(input) {
@@ -78,18 +78,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (checkinDate && checkoutDate) {
       nights = Math.max(1, Math.round((checkoutDate - checkinDate) / (1000 * 60 * 60 * 24)));
-      if (nights >= 3) discount = 150.000;
+      if (nights >= 3) discount = 150000;
     }
 
     const subtotal = nights * pricePerNight;
     const finalTotal = subtotal + cleaningFee + extraPetFee - discount;
 
-    nightDetailElement.innerText = nights > 0 ? `${pricePerNight.toFixed(3)} x ${nights} đêm` : "Chưa chọn ngày";
-    nightPriceElement.innerText = `₫${subtotal.toFixed(3)}`;
-    cleaningFeeFeeElement.innerText = `₫${cleaningFee.toFixed(3)}`;
-    serviceFeeFeeElement.innerText = `₫${extraPetFee.toFixed(3)}`;
-    discountElement.innerText = discount ? `-₫${discount.toFixed(3)}` : "₫0.000";
-    totalCostElement.innerText = `₫${finalTotal.toFixed(3)}`;
+    nightDetailElement.innerText = nights > 0 ? `${pricePerNight} x ${nights} đêm` : "Chưa chọn ngày";
+    nightPriceElement.innerText = `₫${subtotal}`;
+    cleaningFeeFeeElement.innerText = `₫${cleaningFee}`;
+    serviceFeeFeeElement.innerText = `₫${extraPetFee}`;
+    discountElement.innerText = discount ? `-₫${discount}` : "₫0";
+    totalCostElement.innerText = `₫${finalTotal}`;
   }
 
   function updatePetCount() {
@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const parsePrice = (selector) => {
         const el = document.getElementById(selector);
         if (!el) return 0;
-        return parseFloat(el.innerText.replace('$', '').replace('-', '')) || 0;
+        return parseFloat(el.innerText.replace('₫', '').replace('-', '')) || 0;
       };
       const nightPrice = parsePrice("nightPrice");
       const cleaningFee = parsePrice("cleaningFee");
@@ -193,32 +193,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const bookingData = { roomName, basicInfo, address, checkin, checkout, pet, subtotal, discount };
       console.log("bookingData:", bookingData);
-      try {
-        const response = await fetch("http://127.0.0.1:3000/api/hotel", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(bookingData)
-        });
+      
+      // 1) Lưu vào localStorage (hoặc sessionStorage)
+      localStorage.setItem("tempBooking", JSON.stringify(bookingData));
 
-        const data = await response.json();
-        // Sau redirect, bookingId sẽ được truyền qua query string (hoặc lưu vào session/localStorage)
-        window.location.href = `./Payment2.html?bookingId=${data._id}`;
-      } catch (err) {
-        console.error("Lỗi khi lưu booking:", err);
-        return null;
-      }
-
-      const bookRoomBtn = document.getElementById("bookRoomBtn");
-      bookRoomBtn.addEventListener("click", async function () {
-        const data = await sendBookingData();
-        if (data && data._id) {
-          // Lưu vào localStorage để đảm bảo dữ liệu không bị mất qua reload
-          localStorage.setItem("bookingId", data._id);
-          window.location.href = `./Payment2.html?bookingId=${data._id}`;
-        } else {
-          console.error("Không có bookingId trả về từ server.");
-        }
-    });
+      // 2) Chuyển hướng sang Payment2.html
+      window.location.href = "./Payment2.html";
 });
 
 function goToMenuPage() {
